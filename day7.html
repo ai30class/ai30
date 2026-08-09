@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 提問升級清單｜30 天 AI 幼幼班</title>
+<meta name="description" content="10 個填空即用的 AI 提問模板，讓你的 AI 從高級 Google 變成真正的助理。">
+<meta property="og:title" content="AI 提問升級清單｜免費領取">
+<meta property="og:description" content="10 個填空即用的提問模板，讓 AI 從高級 Google 變成真正的助理。">
+<style>
+:root{
+  --pri:#5B4BC4; --pri-l:#EEEDFE; --pri-d:#3C3489;
+  --ok:#1D9E75; --ok-l:#E1F5EE; --ok-d:#0F6E56;
+  --bad:#E24B4A; --bad-l:#FCEBEB; --bad-d:#A32D2D;
+  --tx:#1E1E22; --tx2:#5F5E5A; --tx3:#8A8A85;
+  --bg:#FFFFFF; --bg2:#F7F6F3; --bd:#E5E3DE;
+  --line:#00B900;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-text-size-adjust:100%}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC","Segoe UI",sans-serif;
+  background:var(--bg2);color:var(--tx);line-height:1.75;font-size:16px;
+}
+.wrap{max-width:600px;margin:0 auto;background:var(--bg);min-height:100vh}
+
+.hero{background:var(--pri);color:#fff;padding:44px 24px 36px;text-align:center}
+.badge{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);
+  padding:5px 14px;border-radius:99px;font-size:13px;letter-spacing:.5px;margin-bottom:18px}
+.hero h1{font-size:29px;font-weight:700;line-height:1.35;letter-spacing:-.5px;margin-bottom:12px}
+.hero p{font-size:15px;opacity:.9;line-height:1.7}
+.hero .from{margin-top:20px;font-size:13px;opacity:.75}
+
+.sec{padding:34px 24px;border-bottom:1px solid var(--bd)}
+.sec:last-of-type{border-bottom:none}
+.kicker{font-size:12px;color:var(--pri);font-weight:700;letter-spacing:1.5px;margin-bottom:8px}
+h2{font-size:21px;font-weight:700;line-height:1.4;margin-bottom:8px;letter-spacing:-.3px}
+h3{font-size:16px;font-weight:700;margin:22px 0 8px}
+.sub{color:var(--tx2);font-size:15px;margin-bottom:20px}
+p{margin-bottom:14px}
+p:last-child{margin-bottom:0}
+
+.card{background:var(--bg2);border:1px solid var(--bd);border-radius:12px;padding:16px 18px;margin-bottom:12px}
+.card b{display:block;font-size:15px;margin-bottom:4px}
+.card span{font-size:14px;color:var(--tx2);line-height:1.7}
+.card.bad{background:var(--bad-l);border-color:#F7C1C1}
+.card.bad b{color:var(--bad-d)}
+.card.ok{background:var(--ok-l);border-color:#9FE1CB}
+.card.ok b{color:var(--ok-d)}
+
+.formula{background:var(--pri-l);border:1px solid #CECBF6;border-radius:12px;
+  padding:18px;text-align:center;font-size:15px;font-weight:700;color:var(--pri-d);
+  line-height:2;margin:18px 0}
+
+.tpl{border:1px solid var(--bd);border-radius:12px;overflow:hidden;margin-bottom:12px}
+.tpl-h{background:var(--pri-l);padding:10px 16px;font-size:14px;font-weight:700;color:var(--pri-d);
+  display:flex;align-items:center;gap:10px}
+.tpl-n{background:var(--pri);color:#fff;width:22px;height:22px;border-radius:6px;
+  display:inline-flex;align-items:center;justify-content:center;font-size:12px;flex:0 0 22px}
+.tpl-b{padding:14px 16px;font-size:14px;line-height:1.85;color:var(--tx2);
+  font-family:ui-monospace,"SF Mono",Menlo,monospace;background:#fff;word-break:break-word}
+.blank{color:var(--pri);font-weight:700;background:var(--pri-l);padding:1px 5px;border-radius:4px}
+
+.ba{display:grid;gap:10px;margin-bottom:16px}
+.ba>div{border-radius:10px;padding:13px 15px;font-size:14px;line-height:1.7}
+.ba .b4{background:var(--bad-l);border:1px solid #F7C1C1}
+.ba .af{background:var(--ok-l);border:1px solid #9FE1CB}
+.ba em{display:block;font-style:normal;font-size:12px;font-weight:700;letter-spacing:1px;margin-bottom:5px}
+.ba .b4 em{color:var(--bad-d)}
+.ba .af em{color:var(--ok-d)}
+
+.cta{background:var(--pri-l);padding:34px 24px;text-align:center}
+.cta h2{color:var(--pri-d);margin-bottom:10px}
+.cta .sub{margin-bottom:22px}
+.btn{display:block;width:100%;padding:17px 20px;border-radius:14px;text-decoration:none;
+  font-size:17px;font-weight:700;margin-bottom:12px;transition:opacity .15s}
+.btn:active{opacity:.8}
+.btn-line{background:var(--line);color:#fff}
+.btn-pdf{background:#fff;color:var(--pri-d);border:2px solid var(--pri)}
+.btn-ig{background:var(--tx);color:#fff}
+.btn small{display:block;font-size:13px;font-weight:400;opacity:.85;margin-top:3px}
+
+.task{background:#fff;border:2px dashed var(--pri);border-radius:12px;padding:18px;margin-top:8px}
+.task ol{margin:0;padding-left:20px}
+.task li{font-size:15px;margin-bottom:10px;line-height:1.7}
+.task li:last-child{margin-bottom:0}
+
+footer{padding:28px 24px 40px;text-align:center;color:var(--tx3);font-size:13px;background:var(--bg2)}
+footer a{color:var(--pri);text-decoration:none}
+
+@media(max-width:420px){
+  .hero h1{font-size:25px}
+  h2{font-size:19px}
+  .sec{padding:28px 18px}
+  .cta{padding:28px 18px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="badge">30 天 AI 幼幼班 · Day 7 專屬</div>
+    <h1>AI 提問升級清單</h1>
+    <p>10 個填空即用的模板<br>讓 AI 從「高級 Google」變成真正的助理</p>
+    <div class="from">by @你的IG帳號</div>
+  </div>
+
+  <div class="sec">
+    <div class="kicker">PART 1</div>
+    <h2>為什麼你問不好</h2>
+    <p class="sub">先看看你有沒有中這三槍。</p>
+    <div class="card bad"><b>錯誤一　問得太短</b><span>「幫我寫文案」——AI 不知道你賣什麼、賣給誰、在哪發，只能給你一段誰都能用的廢話。</span></div>
+    <div class="card bad"><b>錯誤二　問完就走</b><span>第一個答案通常只有 60 分。真正的高手把 AI 當同事，會來回討論三四輪。</span></div>
+    <div class="card bad"><b>錯誤三　沒給身分</b><span>沒說「你是誰」，AI 就用最平均的口吻回你。給它一個角色，答案立刻換一個檔次。</span></div>
+  </div>
+
+  <div class="sec">
+    <div class="kicker">PART 2</div>
+    <h2>好提問的 5 個要素</h2>
+    <p class="sub">記不住沒關係，記住下面那條公式就好。</p>
+    <div class="card"><b>1　角色</b><span>你要 AI 用什麼身分回答（資深文案／營養師／面試官）</span></div>
+    <div class="card"><b>2　情境</b><span>發生什麼事、背景是什麼</span></div>
+    <div class="card"><b>3　目標</b><span>你要拿到什麼結果</span></div>
+    <div class="card"><b>4　限制</b><span>字數、語氣、格式、不能出現什麼</span></div>
+    <div class="card"><b>5　範例</b><span>給一個你喜歡的樣子，命中率翻倍</span></div>
+    <div class="formula">角色 ＋ 情境 ＋ 目標 ＋ 限制 ＋ 範例</div>
+  </div>
+
+  <div class="sec">
+    <div class="kicker">PART 3</div>
+    <h2>10 個萬用提問模板</h2>
+    <p class="sub">把 <span class="blank">紫色的空格</span> 換成你的內容，直接貼進 AI 就能用。</p>
+
+    <div class="tpl"><div class="tpl-h"><span class="tpl-n">1</span>寫 email</div>
+      <div class="tpl-b">你是一位擅長商務溝通的助理。幫我寫一封給<span class="blank">收件人</span>的 email，目的是<span class="blank">你想達成的事</span>，語氣<span class="blank">禮貌／輕鬆／堅定</span>，控制在 200 字內。</div></div>
+
+    <div class="tpl"><div class="tpl-h"><span class="tpl-n">2</span>回覆難回的訊息</div>
+      <div class="tpl-b">對方傳來這則訊息：「<span class="blank">貼上原訊息</span>」。我想表達的立場是<span class="blank">你的真實想法</span>，但不想傷感情。幫我寫三個版本的回覆，語氣從溫和到直接。</div></div>
+
+    <div class="tpl"><div class="tpl-h"><span class="tpl-n">3</span>寫社群貼文</div>
+      <div class="tpl-b">你是社群小編。幫我寫一篇 <span class="blank">IG／FB／Threads</span> 貼文，主題是<span class="blank">主題</span>，受眾是<span class="blank">誰</span>，開頭要有鉤子，結尾要有 CTA，300 字內。</div></div>
+
+    <div class="tpl"><div class="tpl-h"><span class="tpl-n">4</span>整理筆記重點</div>
+      <div class="tpl-b">以下是我的<span class="blank">會議記錄／上課筆記</span>：<span class="blank">貼上內容</span>。幫我整理成三個部分：核心結論、待辦事項、我可能漏掉的重點。</div></div>
+
+    <div class="tpl"><div class="tpl-h"><span class="tpl-n">5</span>翻譯與潤飾</div>
+      <div class="tpl-b">把這段翻成<span class="blank">語言</span>：<span class="blank">內容</span>。用途是<span class="blank">給客戶看／發社群／投履歷</span>，請用道地說法，不要直譯，並附上你改動的理由。</div></div>
+
+    <div class="tpl"><div class="tpl-h"><span class="tpl-n">6</span>學一個新東西</div>
+      <div class="tpl-b">我完全零基礎，想學<span class="blank">主題</span>。請用國中生能懂的方式解釋，先給一個生活化的比喻，再列出我該按什麼順序學。</div></div>
+
+    <div class="tpl"><div class="tpl-h"><span class="tpl-n">7</span>做決定</div>
+      <div class="tpl-b">我正在猶豫<span class="blank">A 方案</span>和<span class="blank">B 方案</span>。我的情況是<span class="blank">背景</span>，我最在意的是<span class="blank">關鍵考量</span>。請列出雙方優缺點，最後給我一個明確建議和理由。</div></div>
+
+    <div class="tpl"><div class="tpl-h"><span class="tpl-n">8</span>改寫成人話</div>
+      <div class="tpl-b">把這段文字改寫得更好懂：<span class="blank">內容</span>。要求：刪掉贅字、拆短句、專有名詞加上白話解釋，語氣<span class="blank">口語／專業</span>。</div></div>
+
+    <div class="tpl"><div class="tpl-h"><span class="tpl-n">9</span>發想點子</div>
+      <div class="tpl-b">幫我想 10 個<span class="blank">主題</span>的點子，受眾是<span class="blank">誰</span>。前 5 個要安全好執行，後 5 個要大膽一點。每個附一句話說明。</div></div>
+
+    <div class="tpl"><div class="tpl-h"><span class="tpl-n">10</span>找出我的盲點</div>
+      <div class="tpl-b">這是我的<span class="blank">計畫／文案／履歷</span>：<span class="blank">內容</span>。請扮演一位嚴格的<span class="blank">主管／評審</span>，指出三個最大的問題，並各給一個具體修改建議。</div></div>
+  </div>
+
+  <div class="sec">
+    <div class="kicker">PART 4</div>
+    <h2>升級前後對比</h2>
+    <p class="sub">同一件事，差別就在這裡。</p>
+
+    <h3>情境一　寫產品文案</h3>
+    <div class="ba">
+      <div class="b4"><em>之前</em>幫我寫一段賣咖啡的文案</div>
+      <div class="af"><em>之後</em>你是精品咖啡品牌的文案。幫我寫一段 IG 貼文，主打「單品淺焙、帶果酸」，受眾是喝慣連鎖咖啡想升級的上班族，語氣輕鬆有畫面感，150 字內，結尾引導留言。</div>
+    </div>
+
+    <h3>情境二　準備面試</h3>
+    <div class="ba">
+      <div class="b4"><em>之前</em>面試會問什麼問題</div>
+      <div class="af"><em>之後</em>你是科技業的人資主管。我要面試行銷企劃，三年年資。請出 8 個你真的會問的問題，其中兩題是壓力題，並在每題後面說明你想從答案裡看出什麼。</div>
+    </div>
+
+    <h3>情境三　規劃旅行</h3>
+    <div class="ba">
+      <div class="b4"><em>之前</em>推薦京都行程</div>
+      <div class="af"><em>之後</em>幫我排京都三天兩夜，11 月中，兩個大人，不租車只用大眾運輸。喜歡老街和咖啡廳，不愛人擠人的景點。請按天列出，附交通方式和步行時間。</div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="kicker">PART 5</div>
+    <h2>本週練習任務</h2>
+    <p class="sub">看完不練等於沒看。挑今天就能做的做。</p>
+    <div class="task">
+      <ol>
+        <li>找一件<b>你今天真的要做的事</b>，用模板 1～10 任選一個問 AI。</li>
+        <li>拿到答案後<b>不要停</b>，追問一句「這裡我不滿意，請改成⋯⋯」，感受第二輪的差別。</li>
+        <li>把你最滿意的那組提問<b>存起來</b>，這就是你自己的第一個模板庫。</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h2>接下來，一起走完 30 天</h2>
+    <p class="sub">明天開始進第二週：讓 AI 幫你搞定所有要動筆的事。</p>
+    <a class="btn btn-line" href="https://lin.ee/你的LINE社群連結">加入 LINE 社群<small>每日更新提醒 ＋ 提問卡關直接問我</small></a>
+    <a class="btn btn-pdf" href="誘餌_Day7_AI提問升級清單.pdf" download>下載 PDF 收藏版<small>離線也能看，隨時翻出來用</small></a>
+    <a class="btn btn-ig" href="https://instagram.com/你的IG帳號">回 IG 追蹤我<small>30 天每天一支，不見不散</small></a>
+  </div>
+
+  <footer>
+    30 天 AI 幼幼班 · 從 0 到 1 學 AI<br>
+    <a href="https://instagram.com/你的IG帳號">@你的IG帳號</a>
+  </footer>
+
+</div>
+</body>
+</html>

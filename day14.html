@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 寫作提示詞模板包｜30 天 AI 幼幼班</title>
+<meta name="description" content="5 大場景直接套，填空就能寫出成品">
+<style>
+:root{
+  --pri:#534AB7; --pri-l:#EEEDFE; --pri-d:#3C3489;
+  --ok:#0F6E56; --ok-l:#E1F5EE; --ok-d:#0F6E56;
+  --bad:#E24B4A; --bad-l:#FCEBEB; --bad-d:#A32D2D;
+  --tx:#1E1E22; --tx2:#5F5E5A; --tx3:#8A8A85;
+  --bg:#FFFFFF; --bg2:#F7F6F3; --bd:#E5E3DE;
+  --line:#00B900;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC","Segoe UI",sans-serif;background:var(--bg2);color:var(--tx);line-height:1.75;font-size:16px}
+.wrap{max-width:600px;margin:0 auto;background:var(--bg);min-height:100vh}
+.hero{background:var(--pri);color:#fff;padding:44px 24px 36px;text-align:center}
+.badge{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);padding:5px 14px;border-radius:99px;font-size:13px;letter-spacing:.5px;margin-bottom:18px}
+.hero h1{font-size:27px;font-weight:700;line-height:1.35;letter-spacing:-.5px;margin-bottom:12px}
+.hero p{font-size:15px;opacity:.9;line-height:1.7}
+.hero .from{margin-top:20px;font-size:13px;opacity:.75}
+.sec{padding:34px 24px;border-bottom:1px solid var(--bd)}
+.sec:last-of-type{border-bottom:none}
+.kicker{font-size:12px;color:var(--pri);font-weight:700;letter-spacing:1.5px;margin-bottom:8px}
+h2{font-size:21px;font-weight:700;line-height:1.4;margin-bottom:8px;letter-spacing:-.3px}
+.sub{color:var(--tx2);font-size:15px;margin-bottom:20px}
+p{margin-bottom:14px}
+p:last-child{margin-bottom:0}
+.card{background:var(--bg2);border:1px solid var(--bd);border-radius:12px;padding:16px 18px;margin-bottom:12px}
+.card b{display:block;font-size:15px;margin-bottom:6px;color:var(--pri-d)}
+.card span{font-size:14px;color:var(--tx2);line-height:1.75;display:block}
+.card.bad{background:var(--bad-l);border-color:#F7C1C1}
+.card.bad b{color:var(--bad-d)}
+.card.ok{background:var(--ok-l);border-color:#9FE1CB}
+.card.ok b{color:var(--ok-d)}
+.card.purple{background:var(--pri-l);border-color:#CECBF6}
+.card.purple b{color:var(--pri-d)}
+.formula{background:var(--pri-l);border:1px solid #CECBF6;border-radius:12px;padding:18px;text-align:center;font-size:15px;font-weight:700;color:var(--pri-d);line-height:1.9;margin:18px 0}
+.tpl{border:1px solid var(--bd);border-radius:12px;overflow:hidden;margin-bottom:12px}
+.tpl-h{background:var(--pri-l);padding:10px 16px;font-size:14px;font-weight:700;color:var(--pri-d);display:flex;align-items:center;gap:10px}
+.tpl-n{background:var(--pri);color:#fff;width:22px;height:22px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;flex:0 0 22px}
+.tpl-b{padding:14px 16px;font-size:14px;line-height:1.85;color:var(--tx2);font-family:ui-monospace,"SF Mono",Menlo,monospace;background:#fff;word-break:break-word;white-space:pre-wrap}
+.blank{color:var(--pri);font-weight:700;background:var(--pri-l);padding:1px 5px;border-radius:4px}
+.ba{display:grid;gap:10px;margin-bottom:16px}
+.ba>div{border-radius:10px;padding:13px 15px;font-size:14px;line-height:1.7}
+.ba .b4{background:var(--bad-l);border:1px solid #F7C1C1}
+.ba .af{background:var(--ok-l);border:1px solid #9FE1CB}
+.ba em{display:block;font-style:normal;font-size:12px;font-weight:700;letter-spacing:1px;margin-bottom:5px}
+.ba .b4 em{color:var(--bad-d)}
+.ba .af em{color:var(--ok-d)}
+.tbl{width:100%;border-collapse:collapse;margin-bottom:14px;font-size:13px}
+.tbl th{background:var(--pri);color:#fff;padding:9px 8px;text-align:left;font-weight:700}
+.tbl td{border:1px solid var(--bd);padding:8px;color:var(--tx2);vertical-align:top}
+.tbl tr:nth-child(even) td{background:var(--bg2)}
+.list{display:grid;gap:8px;margin-bottom:14px}
+.list.c2{grid-template-columns:1fr 1fr}
+.list.c3{grid-template-columns:1fr 1fr 1fr}
+.list div{background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:10px 14px;font-size:14px;color:var(--tx2)}
+.steps .st{background:var(--bg2);border:1px solid var(--bd);border-left:4px solid var(--pri);border-radius:10px;padding:12px 16px;margin-bottom:10px;font-size:14px;color:var(--tx2);line-height:1.7}
+.steps .st b{color:var(--pri-d)}
+.cta{background:var(--pri-l);padding:34px 24px;text-align:center}
+.cta h2{color:var(--pri-d);margin-bottom:10px}
+.cta .sub{margin-bottom:22px}
+.btn{display:block;width:100%;padding:17px 20px;border-radius:14px;text-decoration:none;font-size:17px;font-weight:700;margin-bottom:12px;transition:opacity .15s;text-align:center}
+.btn:active{opacity:.8}
+.btn-line{background:var(--line);color:#fff}
+.btn-pdf{background:#fff;color:var(--pri-d);border:2px solid var(--pri)}
+.btn-ig{background:var(--tx);color:#fff}
+.btn small{display:block;font-size:13px;font-weight:400;opacity:.85;margin-top:3px}
+footer{padding:28px 24px 40px;text-align:center;color:var(--tx3);font-size:13px;background:var(--bg2)}
+footer a{color:var(--pri);text-decoration:none}
+@media(max-width:420px){.hero h1{font-size:23px}h2{font-size:19px}.sec{padding:28px 18px}.cta{padding:28px 18px}.list.c2,.list.c3{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <div class="badge">30 天 AI 幼幼班 · Day 14 專屬</div>
+    <h1>AI 寫作提示詞模板包</h1>
+    <p>5 大場景直接套，填空就能寫出成品</p>
+    <div class="from">by @你的IG帳號</div>
+  </div>
+<div class="sec"><div class="kicker">PART 1</div><h2>為什麼你需要模板</h2><p class="sub">這週你學會用 AI 動筆了，但每次都從零想「怎麼問」。</p><div class="card purple"><span>這包把 5 個最常寫的場景，變成「填空就能用」的提示詞。你只要替換關鍵字，AI 直接給成品。領完這包，寫 email、貼文、筆記再也不用卡住。</span></div></div><div class="sec"><div class="kicker">PART 2</div><h2>5 個寫作場景模板</h2><p class="sub">把 [方括號] 換成你的內容，貼進 AI 就能用。</p><div class="card"><b>1　寫 email</b><span>角色：你是一位擅長商務溝通的助理。幫我寫一封給 [收件人] 的 email，目的是 [你想達成的事]，語氣 [禮貌／輕鬆／堅定]，200 字內。<br/>追問：加一段緩衝 ／ 語氣再軟一點 ／ 幫我列 3 個主旨讓我選</span></div><div class="card"><b>2　寫社群貼文</b><span>你是社群小編。幫我寫一篇 [IG／FB／Threads] 貼文，主題 [主題]，受眾 [誰]，開頭要有鉤子，結尾要有 CTA，300 字內。<br/>追問：加 3 個 hashtag ／ 改成爭議一點引留言 ／ 縮成一句金句</span></div><div class="card"><b>3　整理會議筆記</b><span>以下是我的會議記錄：[貼上]。幫我整理成三塊：核心結論 ／ 待辦事項（含負責人與期限）／ 我可能漏掉的重點。<br/>追問：待辦轉成清單 ／ 標出風險點</span></div><div class="card"><b>4　翻譯潤飾</b><span>把這段翻成 [語言]：[內容]。用途是 [給客戶／發社群／投履歷]，請用道地說法不要直譯，並附上你改動的理由。<br/>追問：更口語 ／ 保留專業術語</span></div><div class="card"><b>5　寫文案</b><span>你是 [品牌] 的資深文案。幫我寫 [產品] 的 [平台] 文案，主打 [賣點]，受眾 [誰]，語氣 [風格]，含一個強鉤子開頭。<br/>追問：給 3 個版本 A／B／C ／ 加一個限時感</span></div></div><div class="sec"><div class="kicker">PART 3</div><h2>完整 Before／After</h2><p class="sub">同一件事，差別就在這組提問。</p><h3 style="font-size:15px;font-weight:700;margin:18px 0 8px;color:var(--pri-d)">主題｜用 AI 寫一封請假信</h3><div class="ba"><div class="b4"><em>升級前</em>幫我寫一封請假信</div><div class="af"><em>升級後</em>你是一位貼心的前端工程師。我要請下週三一天事假處理私事，主管是重視進度的技術長。請寫一封 email：先講結論（請假日期），再說工作已交接給誰，最後表示當天保持可聯絡。語氣專業不卑微，150 字內。</div></div></div><div class="sec"><div class="kicker">PART 4</div><h2>追問詞庫 20 句</h2><p class="sub">拿到第一版不滿意？挑幾句追問，答案越來越準。</p><div class="list c2"><div>改口語一點</div><div>加一句 hook</div><div>縮成 50 字</div><div>再專業一點</div><div>舉一個具體例子</div><div>幫我列 3 個版本</div><div>語氣再軟</div><div>加數據支撐</div><div>改成清單式</div><div>補一個結尾 CTA</div><div>更有畫面感</div><div>用小白聽得懂的話</div><div>加一點幽默</div><div>去掉客套話</div><div>結構再清楚</div><div>針對 [對象] 調整</div><div>多給一個角度</div><div>更簡短有力</div><div>加強情緒共鳴</div><div>幫我想個標題</div></div></div><div class="sec"><div class="kicker">PART 5</div><h2>週任務 checklist</h2><p class="sub">做完這 5 步，你就有自己的第一套模板庫。</p><div class="list"><div><b style="color:var(--pri-d)">1.</b> 選一個你這週真的要寫的東西</div><div><b style="color:var(--pri-d)">2.</b> 套用對應模板，填空產出第一版</div><div><b style="color:var(--pri-d)">3.</b> 用追問詞庫追問至少 3 次</div><div><b style="color:var(--pri-d)">4.</b> 對比升級前後，存下最滿意版本</div><div><b style="color:var(--pri-d)">5.</b> 把這組提示詞存成你自己的模板庫</div></div></div>
+  <div class="cta">
+    <h2>接下來，繼續跟完 30 天</h2>
+    <p class="sub">明天照表操課，每天一支，把 AI 用進生活。</p>
+    <a class="btn btn-line" href="https://lin.ee/你的LINE社群連結">加入 LINE 社群<small>每日更新提醒 ＋ 提問卡關直接問我</small></a><a class="btn btn-pdf" href="誘餌_Day14_寫作提示詞模板包.pdf" download>下載 PDF 收藏版<small>離線也能看，隨時翻出來用</small></a><a class="btn btn-ig" href="https://instagram.com/你的IG帳號">回 IG 追蹤我<small>30 天每天一支，不見不散</small></a>
+  </div>
+  <footer>
+    30 天 AI 幼幼班 · 從 0 到 1 學 AI<br>
+    <a href="https://instagram.com/你的IG帳號">@你的IG帳號</a>
+  </footer>
+</div>
+</body>
+</html>

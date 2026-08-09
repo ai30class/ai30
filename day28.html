@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 工作流 SOP 模板｜30 天 AI 幼幼班</title>
+<meta name="description" content="把 AI 接進你的日常，從「會用」變「離不開」">
+<style>
+:root{
+  --pri:#534AB7; --pri-l:#EEEDFE; --pri-d:#3C3489;
+  --ok:#0F6E56; --ok-l:#E1F5EE; --ok-d:#0F6E56;
+  --bad:#E24B4A; --bad-l:#FCEBEB; --bad-d:#A32D2D;
+  --tx:#1E1E22; --tx2:#5F5E5A; --tx3:#8A8A85;
+  --bg:#FFFFFF; --bg2:#F7F6F3; --bd:#E5E3DE;
+  --line:#00B900;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC","Segoe UI",sans-serif;background:var(--bg2);color:var(--tx);line-height:1.75;font-size:16px}
+.wrap{max-width:600px;margin:0 auto;background:var(--bg);min-height:100vh}
+.hero{background:var(--pri);color:#fff;padding:44px 24px 36px;text-align:center}
+.badge{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);padding:5px 14px;border-radius:99px;font-size:13px;letter-spacing:.5px;margin-bottom:18px}
+.hero h1{font-size:27px;font-weight:700;line-height:1.35;letter-spacing:-.5px;margin-bottom:12px}
+.hero p{font-size:15px;opacity:.9;line-height:1.7}
+.hero .from{margin-top:20px;font-size:13px;opacity:.75}
+.sec{padding:34px 24px;border-bottom:1px solid var(--bd)}
+.sec:last-of-type{border-bottom:none}
+.kicker{font-size:12px;color:var(--pri);font-weight:700;letter-spacing:1.5px;margin-bottom:8px}
+h2{font-size:21px;font-weight:700;line-height:1.4;margin-bottom:8px;letter-spacing:-.3px}
+.sub{color:var(--tx2);font-size:15px;margin-bottom:20px}
+p{margin-bottom:14px}
+p:last-child{margin-bottom:0}
+.card{background:var(--bg2);border:1px solid var(--bd);border-radius:12px;padding:16px 18px;margin-bottom:12px}
+.card b{display:block;font-size:15px;margin-bottom:6px;color:var(--pri-d)}
+.card span{font-size:14px;color:var(--tx2);line-height:1.75;display:block}
+.card.bad{background:var(--bad-l);border-color:#F7C1C1}
+.card.bad b{color:var(--bad-d)}
+.card.ok{background:var(--ok-l);border-color:#9FE1CB}
+.card.ok b{color:var(--ok-d)}
+.card.purple{background:var(--pri-l);border-color:#CECBF6}
+.card.purple b{color:var(--pri-d)}
+.formula{background:var(--pri-l);border:1px solid #CECBF6;border-radius:12px;padding:18px;text-align:center;font-size:15px;font-weight:700;color:var(--pri-d);line-height:1.9;margin:18px 0}
+.tpl{border:1px solid var(--bd);border-radius:12px;overflow:hidden;margin-bottom:12px}
+.tpl-h{background:var(--pri-l);padding:10px 16px;font-size:14px;font-weight:700;color:var(--pri-d);display:flex;align-items:center;gap:10px}
+.tpl-n{background:var(--pri);color:#fff;width:22px;height:22px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;flex:0 0 22px}
+.tpl-b{padding:14px 16px;font-size:14px;line-height:1.85;color:var(--tx2);font-family:ui-monospace,"SF Mono",Menlo,monospace;background:#fff;word-break:break-word;white-space:pre-wrap}
+.blank{color:var(--pri);font-weight:700;background:var(--pri-l);padding:1px 5px;border-radius:4px}
+.ba{display:grid;gap:10px;margin-bottom:16px}
+.ba>div{border-radius:10px;padding:13px 15px;font-size:14px;line-height:1.7}
+.ba .b4{background:var(--bad-l);border:1px solid #F7C1C1}
+.ba .af{background:var(--ok-l);border:1px solid #9FE1CB}
+.ba em{display:block;font-style:normal;font-size:12px;font-weight:700;letter-spacing:1px;margin-bottom:5px}
+.ba .b4 em{color:var(--bad-d)}
+.ba .af em{color:var(--ok-d)}
+.tbl{width:100%;border-collapse:collapse;margin-bottom:14px;font-size:13px}
+.tbl th{background:var(--pri);color:#fff;padding:9px 8px;text-align:left;font-weight:700}
+.tbl td{border:1px solid var(--bd);padding:8px;color:var(--tx2);vertical-align:top}
+.tbl tr:nth-child(even) td{background:var(--bg2)}
+.list{display:grid;gap:8px;margin-bottom:14px}
+.list.c2{grid-template-columns:1fr 1fr}
+.list.c3{grid-template-columns:1fr 1fr 1fr}
+.list div{background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:10px 14px;font-size:14px;color:var(--tx2)}
+.steps .st{background:var(--bg2);border:1px solid var(--bd);border-left:4px solid var(--pri);border-radius:10px;padding:12px 16px;margin-bottom:10px;font-size:14px;color:var(--tx2);line-height:1.7}
+.steps .st b{color:var(--pri-d)}
+.cta{background:var(--pri-l);padding:34px 24px;text-align:center}
+.cta h2{color:var(--pri-d);margin-bottom:10px}
+.cta .sub{margin-bottom:22px}
+.btn{display:block;width:100%;padding:17px 20px;border-radius:14px;text-decoration:none;font-size:17px;font-weight:700;margin-bottom:12px;transition:opacity .15s;text-align:center}
+.btn:active{opacity:.8}
+.btn-line{background:var(--line);color:#fff}
+.btn-pdf{background:#fff;color:var(--pri-d);border:2px solid var(--pri)}
+.btn-ig{background:var(--tx);color:#fff}
+.btn small{display:block;font-size:13px;font-weight:400;opacity:.85;margin-top:3px}
+footer{padding:28px 24px 40px;text-align:center;color:var(--tx3);font-size:13px;background:var(--bg2)}
+footer a{color:var(--pri);text-decoration:none}
+@media(max-width:420px){.hero h1{font-size:23px}h2{font-size:19px}.sec{padding:28px 18px}.cta{padding:28px 18px}.list.c2,.list.c3{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <div class="badge">30 天 AI 幼幼班 · Day 28 專屬</div>
+    <h1>AI 工作流 SOP 模板</h1>
+    <p>把 AI 接進你的日常，從「會用」變「離不開」</p>
+    <div class="from">by @你的IG帳號</div>
+  </div>
+<div class="sec"><div class="kicker">PART 1</div><h2>會用 AI 不稀奇</h2><p class="sub">「讓 AI 住進你的日常」才值錢。</p><div class="card purple"><span>這包教你設計專屬工作流：找出重複任務、拆步驟、標出哪段交給 AI。附 5 個常見範例、一張空白模板、7 天養成打卡。</span></div></div><div class="sec"><div class="kicker">PART 2</div><h2>設計工作流 3 步驟</h2><p class="sub">先想清楚，再動手。</p><div class="steps"><div class="st"><b>步驟 1</b><br>找出重複任務：你每週都在做、做了又做的那件事</div><div class="st"><b>步驟 2</b><br>拆解步驟：把它拆成一步步，寫下來</div><div class="st"><b>步驟 3</b><br>標出哪段交 AI：哪些步驟適合讓 AI 做，哪些你來把關</div></div></div><div class="sec"><div class="kicker">PART 3</div><h2>5 個常見工作流範例</h2><p class="sub">每個都是「流程圖」式的日常。</p><div class="card"><b>email 處理</b><span>收到 → AI 分類（重要／可稍後／垃圾）→ AI 擬回覆 → 你改 → 送出</span></div><div class="card"><b>會議記錄</b><span>錄音 → Whisper 轉錄 → AI 整理重點＋待辦 → 你確認</span></div><div class="card"><b>資料整理</b><span>收到表格 → AI 清洗＋分類 → AI 產出圖表 → 你判讀</span></div><div class="card"><b>內容產出</b><span>定主題 → AI 列大綱 → AI 寫初稿 → 你潤飾 → 發布</span></div><div class="card"><b>學習規劃</b><span>定目標 → AI 排計畫 → 每日推進 → AI 週測驗</span></div></div><div class="sec"><div class="kicker">PART 4</div><h2>空白 SOP 模板表</h2><p class="sub">印出來手寫，套用你的任務。</p><table class="tbl"><thead><tr><th>任務</th><th>AI 步驟</th><th>人工步驟</th><th>產出</th><th>節省時間</th></tr></thead><tbody><tr><td>[你的任務]</td><td>[交給 AI 的段]</td><td>[你要把關的段]</td><td>[最後交付物]</td><td>[約 分鐘]</td></tr><tr><td>範例：週報</td><td>AI 彙整本週紀錄</td><td>你確認重點</td><td>一頁週報</td><td>約 40 分</td></tr></tbody></table></div><div class="sec"><div class="kicker">PART 5</div><h2>7 天落地打卡</h2><p class="sub">一天做一項，養成習慣。</p><div class="list"><div>D1 選 1 個重複任務</div><div>D2 寫下你現在怎麼做</div><div>D3 標出可交 AI 的段</div><div>D4 第一次跑通</div><div>D5 優化 prompt</div><div>D6 固化成模板</div><div>D7 複製到第二個任務</div></div></div><div class="sec"><div class="kicker">PART 6</div><h2>進階提示</h2><div class="card purple"><span>把多個工作流串起來（例如 會議 → 待辦 → 追蹤），用自動化工具（如 Zapier／集簡歷）讓它自己跑，你只負責例外狀況。</span></div></div>
+  <div class="cta">
+    <h2>接下來，繼續跟完 30 天</h2>
+    <p class="sub">明天照表操課，每天一支，把 AI 用進生活。</p>
+    <a class="btn btn-line" href="https://lin.ee/你的LINE社群連結">加入 LINE 社群<small>每日更新提醒 ＋ 提問卡關直接問我</small></a><a class="btn btn-pdf" href="誘餌_Day28_AI工作流SOP.pdf" download>下載 PDF 收藏版<small>離線也能看，隨時翻出來用</small></a><a class="btn btn-ig" href="https://instagram.com/你的IG帳號">回 IG 追蹤我<small>30 天每天一支，不見不散</small></a>
+  </div>
+  <footer>
+    30 天 AI 幼幼班 · 從 0 到 1 學 AI<br>
+    <a href="https://instagram.com/你的IG帳號">@你的IG帳號</a>
+  </footer>
+</div>
+</body>
+</html>

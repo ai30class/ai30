@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>短影音爆款腳本模板｜30 天 AI 幼幼班</title>
+<meta name="description" content="填空就能拍，附 3 個完整範例 + 給 AI 的 prompt">
+<style>
+:root{
+  --pri:#534AB7; --pri-l:#EEEDFE; --pri-d:#3C3489;
+  --ok:#0F6E56; --ok-l:#E1F5EE; --ok-d:#0F6E56;
+  --bad:#E24B4A; --bad-l:#FCEBEB; --bad-d:#A32D2D;
+  --tx:#1E1E22; --tx2:#5F5E5A; --tx3:#8A8A85;
+  --bg:#FFFFFF; --bg2:#F7F6F3; --bd:#E5E3DE;
+  --line:#00B900;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC","Segoe UI",sans-serif;background:var(--bg2);color:var(--tx);line-height:1.75;font-size:16px}
+.wrap{max-width:600px;margin:0 auto;background:var(--bg);min-height:100vh}
+.hero{background:var(--pri);color:#fff;padding:44px 24px 36px;text-align:center}
+.badge{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);padding:5px 14px;border-radius:99px;font-size:13px;letter-spacing:.5px;margin-bottom:18px}
+.hero h1{font-size:27px;font-weight:700;line-height:1.35;letter-spacing:-.5px;margin-bottom:12px}
+.hero p{font-size:15px;opacity:.9;line-height:1.7}
+.hero .from{margin-top:20px;font-size:13px;opacity:.75}
+.sec{padding:34px 24px;border-bottom:1px solid var(--bd)}
+.sec:last-of-type{border-bottom:none}
+.kicker{font-size:12px;color:var(--pri);font-weight:700;letter-spacing:1.5px;margin-bottom:8px}
+h2{font-size:21px;font-weight:700;line-height:1.4;margin-bottom:8px;letter-spacing:-.3px}
+.sub{color:var(--tx2);font-size:15px;margin-bottom:20px}
+p{margin-bottom:14px}
+p:last-child{margin-bottom:0}
+.card{background:var(--bg2);border:1px solid var(--bd);border-radius:12px;padding:16px 18px;margin-bottom:12px}
+.card b{display:block;font-size:15px;margin-bottom:6px;color:var(--pri-d)}
+.card span{font-size:14px;color:var(--tx2);line-height:1.75;display:block}
+.card.bad{background:var(--bad-l);border-color:#F7C1C1}
+.card.bad b{color:var(--bad-d)}
+.card.ok{background:var(--ok-l);border-color:#9FE1CB}
+.card.ok b{color:var(--ok-d)}
+.card.purple{background:var(--pri-l);border-color:#CECBF6}
+.card.purple b{color:var(--pri-d)}
+.formula{background:var(--pri-l);border:1px solid #CECBF6;border-radius:12px;padding:18px;text-align:center;font-size:15px;font-weight:700;color:var(--pri-d);line-height:1.9;margin:18px 0}
+.tpl{border:1px solid var(--bd);border-radius:12px;overflow:hidden;margin-bottom:12px}
+.tpl-h{background:var(--pri-l);padding:10px 16px;font-size:14px;font-weight:700;color:var(--pri-d);display:flex;align-items:center;gap:10px}
+.tpl-n{background:var(--pri);color:#fff;width:22px;height:22px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;flex:0 0 22px}
+.tpl-b{padding:14px 16px;font-size:14px;line-height:1.85;color:var(--tx2);font-family:ui-monospace,"SF Mono",Menlo,monospace;background:#fff;word-break:break-word;white-space:pre-wrap}
+.blank{color:var(--pri);font-weight:700;background:var(--pri-l);padding:1px 5px;border-radius:4px}
+.ba{display:grid;gap:10px;margin-bottom:16px}
+.ba>div{border-radius:10px;padding:13px 15px;font-size:14px;line-height:1.7}
+.ba .b4{background:var(--bad-l);border:1px solid #F7C1C1}
+.ba .af{background:var(--ok-l);border:1px solid #9FE1CB}
+.ba em{display:block;font-style:normal;font-size:12px;font-weight:700;letter-spacing:1px;margin-bottom:5px}
+.ba .b4 em{color:var(--bad-d)}
+.ba .af em{color:var(--ok-d)}
+.tbl{width:100%;border-collapse:collapse;margin-bottom:14px;font-size:13px}
+.tbl th{background:var(--pri);color:#fff;padding:9px 8px;text-align:left;font-weight:700}
+.tbl td{border:1px solid var(--bd);padding:8px;color:var(--tx2);vertical-align:top}
+.tbl tr:nth-child(even) td{background:var(--bg2)}
+.list{display:grid;gap:8px;margin-bottom:14px}
+.list.c2{grid-template-columns:1fr 1fr}
+.list.c3{grid-template-columns:1fr 1fr 1fr}
+.list div{background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:10px 14px;font-size:14px;color:var(--tx2)}
+.steps .st{background:var(--bg2);border:1px solid var(--bd);border-left:4px solid var(--pri);border-radius:10px;padding:12px 16px;margin-bottom:10px;font-size:14px;color:var(--tx2);line-height:1.7}
+.steps .st b{color:var(--pri-d)}
+.cta{background:var(--pri-l);padding:34px 24px;text-align:center}
+.cta h2{color:var(--pri-d);margin-bottom:10px}
+.cta .sub{margin-bottom:22px}
+.btn{display:block;width:100%;padding:17px 20px;border-radius:14px;text-decoration:none;font-size:17px;font-weight:700;margin-bottom:12px;transition:opacity .15s;text-align:center}
+.btn:active{opacity:.8}
+.btn-line{background:var(--line);color:#fff}
+.btn-pdf{background:#fff;color:var(--pri-d);border:2px solid var(--pri)}
+.btn-ig{background:var(--tx);color:#fff}
+.btn small{display:block;font-size:13px;font-weight:400;opacity:.85;margin-top:3px}
+footer{padding:28px 24px 40px;text-align:center;color:var(--tx3);font-size:13px;background:var(--bg2)}
+footer a{color:var(--pri);text-decoration:none}
+@media(max-width:420px){.hero h1{font-size:23px}h2{font-size:19px}.sec{padding:28px 18px}.cta{padding:28px 18px}.list.c2,.list.c3{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <div class="badge">30 天 AI 幼幼班 · Day 21 專屬</div>
+    <h1>短影音爆款腳本模板</h1>
+    <p>填空就能拍，附 3 個完整範例 + 給 AI 的 prompt</p>
+    <div class="from">by @你的IG帳號</div>
+  </div>
+<div class="sec"><div class="kicker">PART 1</div><h2>拍片最難的是寫腳本</h2><p class="sub">畫面、對白、節奏，一次想完很累。</p><div class="card purple"><span>這包給你爆款四段式結構、一張填空模板、3 個完整範例，還有一段直接貼給 AI 的 prompt。下次拍片，填空就好。</span></div></div><div class="sec"><div class="kicker">PART 2</div><h2>爆款四段式結構</h2><p class="sub">前 3 秒決定觀眾留不留。</p><div class="formula">前 3 秒抓人（Hook） → 5 秒戳痛點 → 15 秒給解法 → 5 秒喊行動（CTA）</div></div><div class="sec"><div class="kicker">PART 3</div><h2>填空式腳本模板</h2><p class="sub">把每一欄填掉，就是一支完整腳本。</p><div class="card"><b>照這張表填空</b><span>主題： [你這支要講什麼]<br/>對象： [拍給誰看]<br/>Hook（3s）： [一句讓人停下來的話]<br/>痛點（5s）： [他們的困擾／誤區]<br/>解法（15s）： [你給的具體做法]<br/>CTA（5s）： [追蹤／留言／點連結]</span></div></div><div class="sec"><div class="kicker">PART 4</div><h2>3 個完整範例腳本</h2><p class="sub">知識型、產品型、觀點型各一。</p><div class="card"><b>知識型｜AI 提問</b><span>Hook：你每次問 ChatGPT 是不是問一句就走？<br/>痛點：那等於只用到 AI 10% 的力。<br/>解法：給它角色＋情境＋目標，答案立刻升級三級。<br/>CTA：留言「升級」領我的提問清單。</span></div><div class="card"><b>產品型｜手沖咖啡</b><span>Hook：連鎖咖啡喝膩了但又怕自己煮難喝？<br/>痛點：其實你只差一組正確參數。<br/>解法：粉水比 1:15、水溫 92 度、悶蒸 30 秒，三步上手。<br/>CTA：首購官方送濾杯，連結在首頁。</span></div><div class="card"><b>觀點型｜別當高級 Google</b><span>Hook：把 AI 當 Google 用，是你最大的浪費。<br/>痛點：它會產出、會整理、會思考，你卻只拿來查資料。<br/>解法：下次先想「我要它幫我做什麼」，不是「查什麼」。<br/>CTA：追蹤我，每天一個 AI 技巧。</span></div></div><div class="sec"><div class="kicker">PART 5</div><h2>拍攝 checklist（8 項）</h2><p class="sub">開拍前逐項打勾。</p><div class="list"><div>前 3 秒打字幕</div><div>光線充足、臉看得清</div><div>收音清楚（用麥克風或安靜環境）</div><div>豎屏 9:16</div><div>字幕無錯字</div><div>封面有鉤子</div><div>結尾有 CTA</div><div>長度控制在 30–60 秒</div></div></div><div class="sec"><div class="kicker">PART 6</div><h2>給 AI 的提示詞</h2><p class="sub">貼進 AI，它幫你生腳本——送你一隻會下金蛋的雞。</p><div class="tpl"><div class="tpl-h"><span class="tpl-n">1</span>生腳本</div><div class="tpl-b">你是一位短影音編劇。幫我寫一支 <span class="blank">[平台]</span> 短影音腳本，主題 <span class="blank">[主題]</span>，受眾 <span class="blank">[誰]</span>，風格 <span class="blank">[知識／產品／觀點]</span>。結構：3 秒 Hook ＋ 5 秒痛點 ＋ 15 秒解法 ＋ 5 秒 CTA。每句對白單獨成行，並標注畫面提示。</div></div></div>
+  <div class="cta">
+    <h2>接下來，繼續跟完 30 天</h2>
+    <p class="sub">明天照表操課，每天一支，把 AI 用進生活。</p>
+    <a class="btn btn-line" href="https://lin.ee/你的LINE社群連結">加入 LINE 社群<small>每日更新提醒 ＋ 提問卡關直接問我</small></a><a class="btn btn-pdf" href="誘餌_Day21_短影音腳本模板.pdf" download>下載 PDF 收藏版<small>離線也能看，隨時翻出來用</small></a><a class="btn btn-ig" href="https://instagram.com/你的IG帳號">回 IG 追蹤我<small>30 天每天一支，不見不散</small></a>
+  </div>
+  <footer>
+    30 天 AI 幼幼班 · 從 0 到 1 學 AI<br>
+    <a href="https://instagram.com/你的IG帳號">@你的IG帳號</a>
+  </footer>
+</div>
+</body>
+</html>
