@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>30 秒 AI 挑戰｜AI30CLASS</title>
+<style>
+:root{
+  --bg:#15122B;
+  --bg2:#1D1940;
+  --surface:#241F4E;
+  --surface2:#2D2760;
+  --accent:#9184D9;
+  --accent-soft:#C4BBF0;
+  --accent-dim:#6B5FB0;
+  --text:#F3F1FE;
+  --text-dim:#A79EDC;
+  --text-faint:#7C74B4;
+  --line:rgba(145,132,217,.24);
+  --line-strong:rgba(145,132,217,.45);
+  --ok:#5DCAA5;
+  --ok-soft:#9FE1CB;
+  --no:#F0997B;
+  --warn:#EF9F27;
+  --r:14px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:"Inter","Noto Sans TC","PingFang TC","Heiti TC",-apple-system,BlinkMacSystemFont,sans-serif;
+  min-height:100vh;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:520px;margin:0 auto;padding:0 20px 60px;position:relative;min-height:100vh}
+.glow{position:fixed;top:-140px;right:-120px;width:420px;height:420px;border-radius:50%;
+  background:radial-gradient(circle,rgba(145,132,217,.20),transparent 68%);pointer-events:none;z-index:0}
+.glow2{position:fixed;bottom:-160px;left:-140px;width:400px;height:400px;border-radius:50%;
+  background:radial-gradient(circle,rgba(145,132,217,.13),transparent 68%);pointer-events:none;z-index:0}
+.screen{display:none;position:relative;z-index:1;animation:in .32s ease both}
+.screen.on{display:block}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* ---------- Home ---------- */
+.home-hero{text-align:center;padding:52px 0 30px}
+.chick{width:112px;height:112px;object-fit:contain;filter:drop-shadow(0 8px 22px rgba(145,132,217,.35));margin-bottom:14px}
+.brand{font-size:12px;letter-spacing:.14em;color:var(--accent);text-transform:uppercase;margin-bottom:10px}
+h1.big{font-size:33px;font-weight:600;margin:0 0 10px;letter-spacing:-.01em;line-height:1.25}
+.tagline{color:var(--text-dim);font-size:15px;margin:0 0 4px}
+.pill{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line-strong);
+  border-radius:999px;padding:7px 16px;font-size:13px;color:var(--accent-soft);margin-top:18px}
+.streak-dot{width:7px;height:7px;border-radius:50%;background:var(--warn)}
+.btn{display:block;width:100%;border:none;border-radius:var(--r);padding:17px 20px;
+  font-size:16px;font-weight:500;font-family:inherit;cursor:pointer;transition:.18s;letter-spacing:.01em}
+.btn-primary{background:var(--accent);color:#1A1533}
+.btn-primary:hover{background:#A297E4;transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--text-dim);border:1px solid var(--line);margin-top:12px}
+.btn-ghost:hover{border-color:var(--line-strong);color:var(--text)}
+.home-meta{display:flex;gap:10px;margin-top:26px}
+.meta-card{flex:1;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:15px 12px;text-align:center}
+.meta-num{font-size:24px;font-weight:600;color:var(--accent-soft);line-height:1.2}
+.meta-lbl{font-size:11.5px;color:var(--text-faint);margin-top:3px}
+
+/* ---------- Map ---------- */
+.map-head{display:flex;align-items:center;justify-content:space-between;padding:26px 0 18px}
+.map-head h2{margin:0;font-size:19px;font-weight:600}
+.back{background:none;border:none;color:var(--text-dim);font-size:14px;cursor:pointer;font-family:inherit;padding:0}
+.back:hover{color:var(--text)}
+.week-block{margin-bottom:22px}
+.week-title{font-size:12px;color:var(--text-faint);letter-spacing:.06em;margin-bottom:10px;
+  display:flex;align-items:center;gap:8px}
+.week-title::after{content:"";flex:1;height:1px;background:var(--line)}
+.day-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}
+.day{aspect-ratio:1;border-radius:10px;border:1px solid var(--line);background:var(--surface);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;
+  font-size:12px;color:var(--text-faint);cursor:pointer;transition:.16s;font-family:inherit;padding:0}
+.day .d{font-size:14px;font-weight:500}
+.day.done{background:rgba(93,202,165,.13);border-color:rgba(93,202,165,.4);color:var(--ok-soft)}
+.day.now{background:var(--accent);border-color:var(--accent);color:#1A1533;box-shadow:0 4px 16px rgba(145,132,217,.4)}
+.day.locked{opacity:.4;cursor:not-allowed}
+.unlock-all{text-align:center;margin-top:14px}
+.unlock-all button{background:none;border:none;color:var(--text-faint);font-size:12px;
+  cursor:pointer;text-decoration:underline;font-family:inherit}
+
+/* ---------- Game ---------- */
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:24px 0 16px;gap:12px}
+.day-badge{font-size:12px;color:var(--text-dim);letter-spacing:.04em}
+.timer{position:relative;width:52px;height:52px;flex-shrink:0}
+.timer svg{transform:rotate(-90deg)}
+.timer-ring-bg{stroke:var(--surface2)}
+.timer-ring{stroke:var(--accent);stroke-linecap:round;transition:stroke-dashoffset 1s linear,stroke .3s}
+.timer.low .timer-ring{stroke:var(--no)}
+.timer-num{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-size:15px;font-weight:600;font-variant-numeric:tabular-nums}
+.progress-bar{height:3px;background:var(--surface2);border-radius:2px;overflow:hidden;margin-bottom:26px}
+.progress-fill{height:100%;background:var(--accent);border-radius:2px;transition:width .4s ease}
+.q-title{font-size:22px;font-weight:600;line-height:1.4;margin:0 0 8px}
+.q-sub{font-size:13px;color:var(--text-faint);margin-bottom:22px}
+.q-text{font-size:15.5px;color:var(--text);background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r);padding:18px;margin:0 0 20px;line-height:1.75}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  padding:15px 16px;text-align:left;cursor:pointer;transition:.16s;font-family:inherit;
+  font-size:14.5px;color:var(--text);display:flex;gap:12px;align-items:flex-start;line-height:1.6;width:100%}
+.opt:hover:not(:disabled){border-color:var(--line-strong);background:var(--surface2)}
+.opt-key{flex-shrink:0;width:22px;height:22px;border-radius:6px;background:var(--surface2);
+  color:var(--text-dim);font-size:12px;display:flex;align-items:center;justify-content:center;
+  font-weight:500;margin-top:1px}
+.opt:disabled{cursor:default}
+.opt.pick-right{background:rgba(93,202,165,.14);border-color:var(--ok)}
+.opt.pick-right .opt-key{background:var(--ok);color:#0B2B22}
+.opt.pick-wrong{background:rgba(240,153,123,.12);border-color:var(--no)}
+.opt.pick-wrong .opt-key{background:var(--no);color:#3A1608}
+.opt.dim{opacity:.4}
+
+/* ---------- Result ---------- */
+.verdict{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:15px;font-weight:500}
+.verdict.ok{color:var(--ok-soft)}
+.verdict.no{color:var(--no)}
+.verdict.time{color:var(--warn)}
+.verdict .icon{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-size:13px;flex-shrink:0}
+.verdict.ok .icon{background:var(--ok);color:#0B2B22}
+.verdict.no .icon,.verdict.time .icon{background:var(--no);color:#3A1608}
+.verdict.time .icon{background:var(--warn);color:#3A2405}
+.explain-box{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  padding:18px;margin-bottom:16px}
+.explain-box p{margin:0 0 12px;font-size:14.5px;color:var(--text-dim);line-height:1.75}
+.explain-box p:last-child{margin-bottom:0}
+.explain-box p strong{color:var(--text);font-weight:500}
+.tip-box{border:1px solid var(--line-strong);border-radius:var(--r);overflow:hidden;margin-bottom:20px}
+.tip-head{background:rgba(145,132,217,.12);padding:11px 16px;font-size:12px;color:var(--accent-soft);
+  letter-spacing:.05em;display:flex;justify-content:space-between;align-items:center}
+.tip-body{padding:16px;font-size:14px;line-height:1.7;white-space:pre-wrap;word-break:break-word;color:var(--text)}
+.copy-btn{background:rgba(145,132,217,.2);border:1px solid var(--line-strong);color:var(--accent-soft);
+  border-radius:8px;padding:5px 13px;font-size:12px;cursor:pointer;font-family:inherit;transition:.16s}
+.copy-btn:hover{background:rgba(145,132,217,.34)}
+.copy-btn.done{background:var(--ok);color:#0B2B22;border-color:var(--ok)}
+.actions{display:flex;gap:10px}
+.actions .btn{margin-top:0}
+.hint{text-align:center;font-size:12px;color:var(--text-faint);margin-top:18px}
+
+/* ---------- Certificate ---------- */
+.cert-wrap{text-align:center;padding:30px 0 20px}
+.cert-title{font-size:26px;font-weight:600;margin:0 0 6px}
+.cert-sub{color:var(--text-dim);font-size:14px;margin:0 0 22px}
+.name-input{width:100%;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  padding:15px 16px;font-size:16px;color:var(--text);font-family:inherit;margin-bottom:14px;text-align:center}
+.name-input:focus{outline:none;border-color:var(--accent)}
+.name-input::placeholder{color:var(--text-faint)}
+.cert-preview{border:1px solid var(--line-strong);border-radius:var(--r);overflow:hidden;margin:18px 0}
+.cert-preview canvas{display:block;width:100%;height:auto}
+.finish-note{font-size:12.5px;color:var(--text-faint);line-height:1.7;margin-top:14px}
+.toast{position:fixed;left:50%;bottom:34px;transform:translateX(-50%) translateY(20px);
+  background:var(--accent);color:#1A1533;padding:11px 22px;border-radius:999px;font-size:13.5px;
+  font-weight:500;opacity:0;transition:.28s;pointer-events:none;z-index:99}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:400px){
+  h1.big{font-size:28px}
+  .day-grid{gap:5px}
+  .q-title{font-size:20px}
+}
+</style>
+</head>
+<body>
+<div class="glow"></div><div class="glow2"></div>
+<div class="wrap">
+
+  <!-- HOME -->
+  <div class="screen on" id="s-home">
+    <div class="home-hero">
+      <img class="chick" src="assets/chick.png" alt="AI30CLASS 吉祥物">
+      <div class="brand">AI30CLASS</div>
+      <h1 class="big">30 秒 AI 挑戰</h1>
+      <p class="tagline">每天一關，30 天把 AI 真正用起來</p>
+      <div class="pill"><span class="streak-dot"></span><span id="streak-txt">連續 0 天</span></div>
+    </div>
+    <button class="btn btn-primary" id="btn-start">開始今日挑戰</button>
+    <button class="btn btn-ghost" id="btn-map">查看 30 關地圖</button>
+    <div class="home-meta">
+      <div class="meta-card"><div class="meta-num" id="m-done">0</div><div class="meta-lbl">已解鎖關卡</div></div>
+      <div class="meta-card"><div class="meta-num" id="m-tips">0</div><div class="meta-lbl">學到技巧</div></div>
+      <div class="meta-card"><div class="meta-num" id="m-left">30</div><div class="meta-lbl">還剩幾關</div></div>
+    </div>
+    <p class="hint">答錯不扣分，只是先看一下解釋而已。</p>
+  </div>
+
+  <!-- MAP -->
+  <div class="screen" id="s-map">
+    <div class="map-head">
+      <h2>30 關地圖</h2>
+      <button class="back" id="btn-back-home">← 回首頁</button>
+    </div>
+    <div id="map-body"></div>
+    <div class="unlock-all"><button id="btn-unlock">解鎖全部 30 關（測試用）</button></div>
+  </div>
+
+  <!-- GAME -->
+  <div class="screen" id="s-game">
+    <div class="topbar">
+      <div>
+        <div class="day-badge" id="g-day">Day 1 ・ W1 認知升級</div>
+        <div class="day-badge" style="color:var(--text-faint);font-size:11.5px" id="g-title">你只給了它一條線索</div>
+      </div>
+      <div class="timer" id="timer">
+        <svg width="52" height="52">
+          <circle class="timer-ring-bg" cx="26" cy="26" r="22" fill="none" stroke-width="3.5"/>
+          <circle class="timer-ring" id="ring" cx="26" cy="26" r="22" fill="none" stroke-width="3.5"
+            stroke-dasharray="138.2" stroke-dashoffset="0"/>
+        </svg>
+        <div class="timer-num" id="tnum">30</div>
+      </div>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="prog"></div></div>
+    <h2 class="q-title" id="g-q"></h2>
+    <div class="q-sub">30 秒內選一個，選完看 AI 解釋</div>
+    <div class="opts" id="g-opts"></div>
+  </div>
+
+  <!-- RESULT -->
+  <div class="screen" id="s-result">
+    <div class="topbar">
+      <div>
+        <div class="day-badge" id="r-day">Day 1</div>
+        <div class="day-badge" style="color:var(--text-faint);font-size:11.5px" id="r-title"></div>
+      </div>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="prog2"></div></div>
+    <div class="verdict" id="r-verdict"></div>
+    <div class="q-text" id="r-q" style="font-size:14px;color:var(--text-dim);margin-bottom:18px"></div>
+    <div class="explain-box" id="r-explain"></div>
+    <div class="tip-box">
+      <div class="tip-head"><span>今日技巧・可直接複製</span>
+        <button class="copy-btn" id="btn-copy">複製</button></div>
+      <div class="tip-body" id="r-tip"></div>
+    </div>
+    <div class="actions">
+      <button class="btn btn-ghost" id="btn-retry" style="margin-top:0">再玩一次</button>
+      <button class="btn btn-primary" id="btn-next" style="margin-top:0">下一關</button>
+    </div>
+    <p class="hint" id="r-hint"></p>
+  </div>
+
+  <!-- CERTIFICATE -->
+  <div class="screen" id="s-cert">
+    <div class="cert-wrap">
+      <img class="chick" src="assets/chick.png" alt="" style="width:88px;height:88px">
+      <h2 class="cert-title">你完成了 30 關</h2>
+      <p class="cert-sub">輸入名字，把證書存下來貼限動</p>
+      <input class="name-input" id="cert-name" placeholder="你的名字" maxlength="12">
+      <div class="cert-preview"><canvas id="cert-canvas" width="1080" height="1350"></canvas></div>
+      <button class="btn btn-primary" id="btn-dl">下載證書（1080×1350）</button>
+      <button class="btn btn-ghost" id="btn-cert-back">回到地圖</button>
+      <p class="finish-note">30 天前你把 AI 當 Google 用。<br>現在你手上已經有 29 招。</p>
+    </div>
+  </div>
+
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const LEVELS=[
+{d:1,w:"W1 認知升級",t:"你只給了它一條線索",
+q:"你想讓 AI 幫你寫一封請假信。哪一句最可能讓你拿到「改都不用改」的版本？",
+o:["幫我寫請假信","幫我寫請假信，語氣客氣一點","先別寫，先問我三個問題，問完再寫"],a:2,
+e:["A 只給一條線索，AI 只能回最安全、最普通的那個版本——跟你上網找範本差不多。","B 多給一個條件，好一點，但它還是不知道你請幾天、跟主管熟不熟。","C 厲害在把主導權反過來：不是你去想「我該講什麼」，是<strong>它來問你</strong>。缺什麼補什麼，問完的版本通常一次到位。"],
+p:"先別急著寫，先問我三個問題，確認清楚再寫。"},
+{d:2,w:"W1 認知升級",t:"你漏了三件事",
+q:"要跟客戶改約訪時間。哪一句最可能寫出「直接能寄」的信？",
+o:["幫我寫一封信跟客戶改時間","幫我寫一封專業的信","幫我寫給客戶的信，原本約週三下午兩點，要改到週五上午，語氣客氣，順便說一下抱歉造成不便"],a:2,
+e:["A 跟 B 的問題一樣：AI 不知道給誰看、為什麼要改、要什麼語氣，只能亂猜，最後你還是得自己補。","C 把三件事都講了——<strong>給誰看</strong>（客戶）、<strong>為什麼</strong>（週三改週五）、<strong>什麼語氣</strong>（客氣＋道歉）。它不用猜，就能直接寫好。","講白了：你漏掉的資訊，AI 不會自己補，它只會用最普通的方式填滿。"],
+p:"你是我秘書。我講事情，你直接寫成正式信。"},
+{d:3,w:"W1 認知升級",t:"它不敢講深，是你沒給線索",
+q:"想讓 AI 幫你寫一篇減肥的 IG 貼文。哪一句最可能寫出「能直接發」的內容？",
+o:["給我一些減肥方法","幫我寫一篇減肥的貼文","幫我寫給上班族的減肥貼文，要具體、不說教，100 字內"],a:2,
+e:["A 跟 B 會拿到那六個老生常談：多喝水、多運動、早睡早起。不是 AI 不會講深，是它不知道你的情境，只敢給一個絕對不會出錯的答案。","C 給了三樣東西：<strong>情境</strong>（給上班族看）、<strong>目標</strong>（寫成能發的貼文）、<strong>限制</strong>（100 字、不說教）。有這三個，它才敢寫得具體。"],
+p:"你缺哪些資訊才能寫更準？"},
+{d:4,w:"W1 認知升級",t:"先告訴它「你是誰」",
+q:"要幫手沖咖啡品牌想標語。哪一句最可能拿到有記憶點的標語？",
+o:["幫我寫賣手沖咖啡的標語","幫我寫一個厲害的手沖咖啡標語","你是資深品牌文案，擅長寫給年輕人看的短標語。幫我寫手沖咖啡的標語"],a:2,
+e:["A 會拿到「香醇好喝值得品味」——放哪個牌子都能用的萬用句。","B 只是加了「厲害」兩個字，AI 還是一樣不知道厲害的標準是什麼。","C 做對一件事：<strong>先指定「誰來寫」</strong>。給它資深品牌文案的身分，它就會照那個身分平常的詞彙邏輯去想。你不用會寫文案，只要會指定誰寫。"],
+p:"你是＿＿（身分），擅長＿＿。幫我＿＿。"},
+{d:5,w:"W1 認知升級",t:"第一版不是答案，是草稿",
+q:"AI 給你的 IG 開頭是「今天想跟大家分享一個小技巧」。太普通了，你接下來怎麼做最好？",
+o:["重新下一個完全不同的指令，再來一次","跟它說「加個真實數據」","跟它說「把它寫得更好一點」"],a:1,
+e:["C 最常聽到，也最沒用——「更好」是什麼意思？AI 只能再猜一次。","A 是把草稿扔掉重來，前面給的資訊全浪費了。","B 才是對的：<strong>一次只改一件事</strong>。加數據就是加數據，不要同時叫它改語氣又縮字數。改完不滿意，再指定下一個變因。你看，第一個回答本來就不是最終答案，是草稿——AI 預設你會繼續改。"],
+p:"加個真實數據。\n縮成 15 字，要有懸念。"},
+{d:6,w:"W1 認知升級",t:"跑車拿去買菜",
+q:"下面哪一個「不像」在浪費 AI？",
+o:["問完看一眼就關掉","只拿它查事實，例如「台北到高雄多遠」","先講清楚給誰看、要什麼結果，再讓它寫"],a:2,
+e:["A 是「只問不追」——你拿到的其實只是草稿。","B 是把它當 Google——這種題目 Google 更快，你等於拿跑車去買菜。","C 才是協作：先給資訊，再來回討論。講白了這幾天教的都是同一件事：<strong>把 AI 從「查詢工具」變成「協作夥伴」</strong>。"],
+p:"我要什麼結果？\n給誰看？\n長度、語氣怎樣？"},
+{d:7,w:"W1 認知升級",t:"學完就忘，怎麼解",
+q:"學完一週了，怎麼做最不容易忘？",
+o:["把影片存進收藏，有空再回來看","把重點抄成一份筆記","做成一份檢查清單，釘在對話視窗旁邊"],a:2,
+e:["A 大概不會再打開——收藏夾是知識的墳墓，你我都知道。","B 好一點，但筆記寫完通常也躺在某個資料夾裡。","C 厲害在「<strong>用的當下就在複習</strong>」：你每次下指令前掃一眼，掃久了就變直覺。這是學習通病——知識沒變成隨時能翻的東西，就一定會慢慢忘光。"],
+p:"幫我把＿＿、＿＿、＿＿整理成檢查清單，每項一句話，方便打字前掃一眼。"},
+{d:8,w:"W2 對話寫作",t:"看了三次還不會回的訊息",
+q:"對方傳來「你怎麼都不回訊息？」，你看了三次還是不知道怎麼回。哪一句最可能拿到得體的回覆？",
+o:["幫我回他","幫我回他，說我很忙","幫我回一個不尷尬、又表明我最近真的很忙的訊息"],a:2,
+e:["A 什麼都沒給，AI 只能給一個最安全的罐頭回覆。","B 有方向了，但「很忙」講得太硬，對方反而覺得你在敷衍。","C 兩個需求都講了——<strong>不尷尬</strong>（語氣）、<strong>表明真的在忙</strong>（內容）。這種要揣摩對方感受、控制語氣的事，剛好是 AI 最擅長的。"],
+p:"這句話會不會太冷淡？"},
+{d:9,w:"W2 對話寫作",t:"空白框發呆症",
+q:"靈感卡住，盯著空白框發呆。這時候怎麼下指令最好？",
+o:["幫我想一個 IG 貼文點子","幫我寫一篇學 AI 的貼文","幫我寫五個 IG 開頭，主題是學 AI，風格分別是幽默、專業、反問、故事、數據"],a:2,
+e:["A 跟 B 都是要「一個」，你拿到什麼就用什麼，完全沒有選擇空間。","C 一次要五個不同角度——AI 寫東西幾乎零成本，讓它發散，你只要挑、微調，比從零創作輕鬆太多。","而且指定五種風格，等於逼它<strong>不能偷懶給你五個長得一樣的版本</strong>。"],
+p:"把這句改得更有畫面一點。"},
+{d:10,w:"W2 對話寫作",t:"會議記不完",
+q:"你要把一場會議的錄音交給 AI 整理成筆記。哪一個做法整理出來的結果最貼你要的？",
+o:["幫我整理成重點","幫我整理成重點條列，標出待辦事項跟負責人","開會前先跟它說「等一下我貼逐字稿，特別注意跟預算、時程有關的內容」，會後再請它整理"],a:2,
+e:["A 會拿到一堆摘要，但你還是得自己去找待辦在哪。","B 好很多，直接給你待辦跟負責人。","C 多做一步：<strong>開會前就先設定重點方向</strong>。AI 知道你關心預算跟時程，整理出來的重點就不會平均分給每個話題，而是往你要的方向集中。"],
+p:"等一下我貼逐字稿，特別注意跟＿＿有關的內容。"},
+{d:11,w:"W2 對話寫作",t:"翻譯腔",
+q:"一段英文翻成中文，卡卡的、翻譯腔很重。加哪一句最有用？",
+o:["翻成中文","翻得通順一點","翻成自然口語的中文，不要翻譯腔"],a:2,
+e:["A 就是一般翻譯軟體在做的事：逐字對應，卡是正常的。","B 的「通順」太模糊，AI 只能猜你想要多通順。","C 講了兩件事：要<strong>口語</strong>（語氣）、<strong>不要翻譯腔</strong>（排除掉你不想要的）。AI 真的懂上下文在講什麼，你多說一句要什麼感覺，它就照那個感覺重寫——這已經不只是翻譯了。"],
+p:"給我正式、口語、給長輩看三種版本。"},
+{d:12,w:"W2 對話寫作",t:"角色寫對了，那寫給誰看？",
+q:"要寫一段賣面膜的文案。哪一句寫出來的文案最精準？",
+o:["你是行銷專家，幫我寫一段賣面膜的文案","幫我寫一段很厲害的賣面膜文案","你是十年經驗的美妝行銷專家，幫我寫一段賣面膜的文案，寫給大學生看，他們沒什麼預算，很在意 CP 值"],a:2,
+e:["A 你已經會給角色了，但寫出來的東西是不是常「感覺對，卻不是你要的」？因為少了受眾。","同一個專家，寫給二十歲學生跟寫給五十歲老闆，用詞語氣完全不一樣。<strong>你只給角色沒給受眾，AI 只能猜一個中間值</strong>——而那個中間值，對誰都不夠貼。","C 兩個都給了，連「沒預算、在意 CP 值」這種細節都有，它不用猜。"],
+p:"你是＿＿，擅長＿＿。\n你寫的東西是給＿＿看的，他們在意＿＿。"},
+{d:13,w:"W2 對話寫作",t:"講半天它不懂",
+q:"你想寫某種風格的文案，但怎麼形容 AI 都抓不到那個感覺。這時最快的方法是？",
+o:["再多形容幾次，講得更仔細","換一個 AI 工具試試看","把喜歡的文案貼給它，說「參考這個風格，幫我寫一篇賣茶的」"],a:2,
+e:["A 最累，而且感覺本來就很難用文字精準講清楚——你有時候講越多，它反而越糊塗。","B 換工具解決不了「你形容不清楚」這個問題。","C 換個思路：<strong>與其解釋，不如給範例</strong>。AI 很會模仿，看到實際的文字，它抓節奏跟用詞習慣，比你形容半天準得多。"],
+p:"混合這幾種風格。"},
+{d:14,w:"W2 對話寫作",t:"把技巧串成作品",
+q:"你學了一堆技巧，卻從沒產出過一件完整作品。正確的順序是？",
+o:["先想好完美指令，一次就讓 AI 寫出成品","讓 AI 一直寫，寫到你自己滿意為止","給角色情境 → 出第一版 → 追問修到滿意 → 自己微調收尾"],a:2,
+e:["A 會卡在「完美指令」，結果永遠停在第一步。","B 會陷入無限修改，因為你沒設定什麼叫夠好。","C 就是這週學的四步：先設角色情境讓它出草稿，不夠精準就追問修正，最後自己順一下語氣。<strong>技巧是分開學的，串成流程才會變成作品</strong>。"],
+p:"設角色情境 → 出第一版 → 追問修正 → 自己微調\n（存成你的 AI 寫作 SOP）"},
+{d:15,w:"W3 圖像多媒體",t:"不會畫圖也能出圖",
+q:"你用 AI 生了一張圖，覺得哪裡怪怪的但不滿意。接下來怎麼做最有效率？",
+o:["重新下一個更長、更詳細的描述，一次寫好","多生十張，總有一張可以用","針對不滿意的地方，追加描述"],a:2,
+e:["A 一次寫超長的描述，但你其實還不知道問題出在哪，改了半天可能改錯地方。","B 是碰運氣——生一百張，你還是不知道怎麼控制。","C 最快：先隨便下一個描述，看出來的圖哪裡不滿意，<strong>就針對那個地方追加描述</strong>。這也是這整套的核心：第一版是草稿，改比重來快。"],
+p:"其他地方都不動，只把＿＿改成＿＿。"},
+{d:16,w:"W3 圖像多媒體",t:"為什麼別人的圖比較美",
+q:"你想生一張貓的圖。哪一個描述出來的圖最美？",
+o:["一隻貓","一隻可愛的貓，畫漂亮一點","一隻橘貓，坐在窗台，午後陽光，電影感，淺景深"],a:2,
+e:["A 只給主體，出來就是一張很普通的貓。","B 加了「可愛」「漂亮」，但形容詞不是畫面——AI 不知道你要的漂亮是哪一種。","C 三個都給了：<strong>主體</strong>（橘貓）、<strong>場景</strong>（窗台、午後陽光）、<strong>風格</strong>（電影感、淺景深）。你只給三分之一資訊，它就得自己補完剩下的，補得很平庸。"],
+p:"像底片相機拍的／宮崎駿風格／電影感，淺景深"},
+{d:17,w:"W3 圖像多媒體",t:"簡報做不完",
+q:"明天要交簡報，你對著空白頁發呆。最該丟給 AI 的是哪一步？",
+o:["排版跟配色","找圖片素材","想架構（大綱）"],a:2,
+e:["A 跟 B 現在模板跟素材庫都很強，自己拉一拉很快，不是門檻。","真正吃掉你一下午的是<strong>想架構</strong>：這頁要講什麼、下一頁要接什麼。這剛好是 AI 最快的部分。","順序反過來：先讓它搭骨架，你只負責填血肉跟微調，快很多。"],
+p:"幫我做十頁簡報大綱，主題＿＿，對象＿＿。"},
+{d:18,w:"W3 圖像多媒體",t:"一張圖講清一個概念",
+q:"你想把一個知識點做成圖文卡，卡住了。圖文卡真正難的是哪一步？",
+o:["設計跟排版","找一張好看的圖","把一堆內容濃縮成幾句金句"],a:2,
+e:["A 跟 B 現在 Canva 模板很多，選個風格套上去就好，不是門檻。","真正卡住的是<strong>濃縮</strong>——把一整篇東西壓成三到五句，每句都要有分量。","這件事 AI 比你想像中會：你挑重點，它幫你精煉字句。"],
+p:"這句話能不能更短、更有記憶點？"},
+{d:19,w:"W3 圖像多媒體",t:"配音聽起來像機器",
+q:"你用 AI 配音，聽起來死死的、一聽就是機器。問題最可能出在哪？",
+o:["聲音選錯了","語速設定太快","腳本寫得太書面"],a:2,
+e:["A 跟 B 現在都很好調整，而且 AI 配音已經自然到很多人聽不出來，聲音本身通常不是問題。","真正的關鍵是：<strong>AI 念的是你的文字</strong>。你的文字卡，念出來就卡。","書面語寫出來的句子念起來一定死板——因為那根本不是人講話的方式。"],
+p:"寫腳本時故意加語助詞跟停頓：\n對、你知道嗎、說真的"},
+{d:20,w:"W3 圖像多媒體",t:"拍片卡詞",
+q:"你按下錄影鍵就卡詞，拍十遍都不滿意。短影音真正難的是什麼？",
+o:["講話不夠流暢","設備不夠好","沒有結構，觀眾三秒就滑走"],a:2,
+e:["A 是結果不是原因——你卡詞，通常是因為不知道下一句要講什麼。","B 設備影響畫質，不影響觀眾留不留得住。","真正難的是<strong>結構</strong>：觀眾三秒沒被抓住就滑走了。AI 很擅長套公式，你把公式交給它，它幫你把內容填進去，你只管照唸。"],
+p:"幫我寫 60 秒短影音腳本，主題＿＿，用 hook、痛點、解法、行動四段式。"},
+{d:21,w:"W3 圖像多媒體",t:"一個知識點，兩種內容",
+q:"你做好了一張知識圖文卡。接下來怎麼讓這個知識點的效益最大？",
+o:["多發幾個平台","再做第二張圖","把同一個知識點改寫成 30 秒口播腳本，兩種內容一起發"],a:2,
+e:["A 只是同一個東西換地方貼，受眾還是同一群。","B 你還是在做同一種形式。","C 厲害在<strong>換輸出格式</strong>：圖文卡吸引滑手速度慢的人，短影音吸引愛看動態的人。同一個知識點、兩種形式、觸及兩種受眾——你花的是十分鐘，不是兩倍的力氣。"],
+p:"讓 AI 把同一個知識點，先寫成圖文卡文字，再改寫成 30 秒口播腳本。"},
+{d:22,w:"W4 效率變現",t:"Excel 做不完",
+q:"你手上有一大份散亂資料，資料量很大。哪一個動作最能幫你省下核對的時間？",
+o:["整理完之後，自己從頭核對一次","多生幾個版本交叉比對","先問「這份資料裡有沒有異常值？」"],a:2,
+e:["A 最累，而且人眼核對大量資料，本來就容易漏。","B 是拿 AI 的答案比 AI 的答案，意義不大。","C 先讓 AI 幫你抓明顯錯誤或漏填的地方——<strong>這種「找例外」的事，人做很累，AI 做很快</strong>。先把地雷清掉，後面整理出來的表格才可信。"],
+p:"幫我整理成表格，欄位是＿＿。\n整理完再追：「這份資料裡有沒有異常值？」"},
+{d:23,w:"W4 效率變現",t:"AI 當你的免費家教",
+q:"你讓 AI 當家教教 Python，學完一個段落。接下來哪一步最扎實？",
+o:["繼續往下學，不懂的地方再回頭看","請它把這個段落再講一次","讓 AI 出幾題考考你，答錯了讓它解釋你錯在哪"],a:2,
+e:["A 最容易，也最容易「假裝學會」——看得懂跟寫得出來是兩件事。","B 再聽一次還是被動輸入，效果有限。","C 是主動輸出：AI 出題考你，答錯了讓它解釋錯在哪。而且它<strong>不會嫌你煩</strong>，你可以一直重複問到懂，這是真人家教很難做到的。"],
+p:"出幾題考我。\n答錯再說：「解釋我錯在哪。」"},
+{d:24,w:"W4 效率變現",t:"找資料找到眼花",
+q:"你為了做研究找了十篇文章，根本讀不完。怎麼做最好？",
+o:["每篇都請 AI 摘要，十份摘要一次讀完","挑最重要的三篇認真讀","全部貼給 AI，說「整理這幾篇的共同論點和分歧點」"],a:2,
+e:["A 你從讀十篇變成讀十份摘要，其實沒省多少，而且看不出它們之間的關係。","B 是雞生蛋問題——你得先讀完才知道哪三篇重要。","C 讓 AI 做摘要和比對這種機械但耗時的工作，你只留時間做真正需要判斷的事：<strong>看共同論點跟分歧點，馬上知道戰場在哪</strong>。"],
+p:"這些論點裡，哪個證據最薄弱？"},
+{d:25,w:"W4 效率變現",t:"真的會寫文案了嗎",
+q:"你學了一堆技巧，每次寫文案最浪費時間的是哪一段？",
+o:["想第一句開頭","在幾個版本之間挑","每次都要重新跟 AI 解釋品牌背景、受眾、語氣"],a:2,
+e:["A 有技巧可以解，B 是甜蜜的煩惱。","真正吃掉時間的是 C：品牌聲音要記得、受眾要抓對、平台格式要對，<strong>每次都要重講一次</strong>。","這也是為什麼我把這套方法做成了工具——品牌設定存一次，之後選主題、選平台，按一下，AI 就照你的風格寫。"],
+p:"我的品牌是＿＿，受眾是＿＿，他們在意＿＿，語氣要＿＿。"},
+{d:26,w:"W4 效率變現",t:"工具收藏一堆，沒一個用熟",
+q:"你 AI 工具收藏了一大堆，卻沒一個真的用熟。問題在哪？",
+o:["工具還不夠多，要繼續找","應該等工具穩定再開始用","每一類挑一個，用熟再說"],a:2,
+e:["A 是惡性循環——收藏越多越不知道用哪個，最後一個都用不深。","B 工具一直在換，你永遠等不到那天。","C 才是對的：工具不是越多越好，<strong>每一類挑一個用到滾瓜爛熟</strong>，效率比收藏一百個但每個都摸不透高太多。"],
+p:"先從你最常做的那件事開始——常寫東西就先熟寫作工具，有成就感之後再擴展到下一類。"},
+{d:27,w:"W4 效率變現",t:"三個地雷",
+q:"下面哪一個做法「最危險」？",
+o:["照抄 AI 給的市場數據去做簡報","讓 AI 幫你起草 email，自己改過再寄","把公司還沒公開的財報貼給 AI 整理"],a:2,
+e:["A 有風險，但數字查證一下就解決。","B 是對的用法——AI 幫你起頭，判斷跟創意還是你自己來。","C 最嚴重：<strong>資料一旦貼進去，平台可能拿去訓練，你很難收回來</strong>。公司機密跟個資，一次都不要貼。"],
+p:"只要是數字、日期、法規這類錯了會出事的資訊，一定回頭查一次來源。"},
+{d:28,w:"W4 效率變現",t:"技巧想不起來用",
+q:"你 AI 技巧學了一堆，卻是想到才用，從沒變成習慣。最有效的解法是？",
+o:["每天空出一段時間專門練習 AI","把技巧列表貼在桌前提醒自己","把 AI 綁進你原本每天就會做的事裡"],a:2,
+e:["A 最難維持——你等於多出一件新任務，撐不過一週。","B 提醒歸提醒，沒有觸發點你還是會忘。","C 厲害在<strong>不用另外空出時間</strong>：挑三件你每天都會重複做的事，把 AI 寫進流程裡。綁在既有的習慣上，才會真的變成習慣。"],
+p:"email：AI 起草 → 改語氣 → 寄出\n會議：錄音轉字 → AI 整理 → 存檔"},
+{d:29,w:"收尾・回顧",t:"30 天前 vs 現在",
+q:"30 天回頭看，這趟真正練出來的東西是什麼？",
+o:["學會用哪幾個工具","收集了一堆提示詞","遇到事情第一反應變成「這個我可以叫 AI 幫忙」"],a:2,
+e:["A 工具一直在換，明年可能就換掉了。","B 提示詞是別人的情境，不一定貼你的。","C 才是真正練出來的：不是你多會用某個工具，是<strong>你遇到事情的第一反應變了</strong>。這個反射動作，會讓你之後學什麼新工具都很快。"],
+p:"翻回你這 30 天的對話紀錄，隨便挑一個你用 AI 解決掉的麻煩。你會發現比想像中多很多。"},
+{d:30,w:"收尾・回顧",t:"30 天只是起點",
+q:"30 天結束了。從「會用」走到「用得深」，中間差的是什麼？",
+o:["學更多技巧","換更強的工具","有人帶你走過真正的應用場景"],a:2,
+e:["A 技巧早就夠用了——你現在手上已經有 29 招，缺的不是數量。","B 工具會一直進步，但方向得自己找。","C 才是關鍵：自動化、客製助理、接 API 這些，<strong>光靠自學摸索會走很多冤枉路</strong>，要有人帶你走過真正的應用場景。"],
+p:"這關沒有新技巧——你已經有 29 個了。\n今天該做的是把它們從「學過」變成「在用」。\n\n🎓 完成 30 關，領取你的「AI 初學者證書」。"}
+];
+
+const KEY="ai30challenge_v1";
+let S={done:[],unlockAll:false,lastDate:"",streak:0};
+try{const r=localStorage.getItem(KEY);if(r)S=Object.assign(S,JSON.parse(r));}catch(e){}
+
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+const $=id=>document.getElementById(id);
+const show=id=>{document.querySelectorAll(".screen").forEach(s=>s.classList.remove("on"));$(id).classList.add("on");window.scrollTo(0,0)};
+const toast=m=>{const t=$("toast");t.textContent=m;t.classList.add("on");setTimeout(()=>t.classList.remove("on"),1900)};
+
+function refreshHome(){
+  const n=S.done.length;
+  $("m-done").textContent=n;
+  $("m-tips").textContent=n;
+  $("m-left").textContent=30-n;
+  $("streak-txt").textContent = S.streak>0 ? "連續 "+S.streak+" 天" : "還沒開始";
+  const next=nextLevel();
+  $("btn-start").textContent = n===0 ? "開始 Day 1" : (next ? "繼續 Day "+next.d : "30 關全部完成");
+}
+function nextLevel(){return LEVELS.find(l=>!S.done.includes(l.d))||null}
+function isUnlocked(d){
+  if(S.done.includes(d))return true;
+  if(S.unlockAll)return true;
+  const n=nextLevel();
+  return n?d===n.d:false;
+}
+
+function buildMap(){
+  const weeks=[[1,7,"W1 認知升級"],[8,14,"W2 對話寫作"],[15,21,"W3 圖像多媒體"],[22,28,"W4 效率變現"],[29,30,"收尾・回顧"]];
+  let h="";
+  weeks.forEach(([a,b,label])=>{
+    h+=`<div class="week-block"><div class="week-title">${label}</div><div class="day-grid">`;
+    for(let d=a;d<=b;d++){
+      const done=S.done.includes(d), un=isUnlocked(d);
+      let cls="day"+(done?" done":(un?" now":" locked"));
+      h+=`<button class="${cls}" data-d="${d}"><span class="d">${d}</span></button>`;
+    }
+    h+=`</div></div>`;
+  });
+  $("map-body").innerHTML=h;
+  document.querySelectorAll(".day").forEach(b=>{
+    b.onclick=()=>{const d=+b.dataset.d;if(isUnlocked(d))startLevel(d);else toast("還沒解鎖，先完成前一關");};
+  });
+}
+
+let cur=null,timer=null,left=30,answered=false;
+const CIRC=2*Math.PI*22;
+
+function startLevel(d){
+  cur=LEVELS.find(l=>l.d===d);if(!cur)return;
+  answered=false;left=30;
+  $("g-day").textContent="Day "+cur.d+" ・ "+cur.w;
+  $("g-title").textContent=cur.t;
+  $("g-q").textContent=cur.q;
+  $("prog").style.width=(S.done.length/30*100)+"%";
+  $("timer").classList.remove("low");
+  $("ring").style.strokeDashoffset="0";
+  $("tnum").textContent="30";
+  const box=$("g-opts");box.innerHTML="";
+  cur.o.forEach((txt,i)=>{
+    const b=document.createElement("button");
+    b.className="opt";b.innerHTML=`<span class="opt-key">${"ABC"[i]}</span><span>${txt}</span>`;
+    b.onclick=()=>pick(i,b);
+    box.appendChild(b);
+  });
+  show("s-game");
+  clearInterval(timer);
+  timer=setInterval(()=>{
+    left--;
+    $("tnum").textContent=left;
+    $("ring").style.strokeDashoffset=(CIRC*(1-left/30)).toFixed(1);
+    if(left<=10)$("timer").classList.add("low");
+    if(left<=0){clearInterval(timer);finish(-1,null)}
+  },1000);
+}
+
+function pick(i,btn){
+  if(answered)return;answered=true;clearInterval(timer);
+  const right = i===cur.a;
+  document.querySelectorAll(".opt").forEach((b,j)=>{
+    b.disabled=true;
+    if(j===cur.a)b.classList.add("pick-right");
+    else if(j===i)b.classList.add("pick-wrong");
+    else b.classList.add("dim");
+  });
+  setTimeout(()=>finish(i,right),620);
+}
+
+function finish(i,right){
+  clearInterval(timer);
+  const timeout = i===-1;
+  if(!S.done.includes(cur.d)){
+    S.done.push(cur.d);
+    const today=new Date().toISOString().slice(0,10);
+    if(S.lastDate!==today){S.streak=(S.lastDate===yesterday())?S.streak+1:1;S.lastDate=today}
+    save();
+  }
+  $("r-day").textContent="Day "+cur.d+" ・ "+cur.w;
+  $("r-title").textContent=cur.t;
+  $("prog2").style.width=(S.done.length/30*100)+"%";
+  $("r-q").textContent=cur.q;
+  const v=$("r-verdict");
+  if(timeout){v.className="verdict time";v.innerHTML=`<span class="icon">!</span>時間到，看一下解釋`; }
+  else if(right){v.className="verdict ok";v.innerHTML=`<span class="icon">✓</span>答對了`;}
+  else{v.className="verdict no";v.innerHTML=`<span class="icon">✕</span>答錯了，沒關係`;}
+  $("r-explain").innerHTML=cur.e.map(x=>`<p>${x}</p>`).join("");
+  $("r-tip").textContent=cur.p;
+  $("btn-copy").textContent="複製";$("btn-copy").classList.remove("done");
+  const nx=nextLevel();
+  const btnN=$("btn-next");
+  if(cur.d===30&&S.done.length===30){
+    btnN.textContent="領取結業證書";
+    $("r-hint").textContent="30 關全部完成。";
+  }else if(nx){btnN.textContent="下一關・Day "+nx.d;$("r-hint").textContent="明天再來可以接下一關。";}
+  else{btnN.textContent="回到地圖";$("r-hint").textContent="";}
+  show("s-result");
+}
+
+function yesterday(){const d=new Date();d.setDate(d.getDate()-1);return d.toISOString().slice(0,10)}
+
+$("btn-start").onclick=()=>{const n=nextLevel();if(n)startLevel(n.d);else showCert()};
+$("btn-map").onclick=()=>{buildMap();show("s-map")};
+$("btn-back-home").onclick=()=>{refreshHome();show("s-home")};
+$("btn-unlock").onclick=()=>{S.unlockAll=true;save();buildMap();toast("已解鎖全部 30 關")};
+$("btn-retry").onclick=()=>startLevel(cur.d);
+$("btn-next").onclick=()=>{
+  if(cur.d===30&&S.done.length===30){showCert();return}
+  const nx=nextLevel();if(nx)startLevel(nx.d);else{buildMap();show("s-map")}
+};
+$("btn-copy").onclick=()=>{
+  const t=cur.p;
+  const done=()=>{$("btn-copy").textContent="已複製";$("btn-copy").classList.add("done");toast("技巧已複製，去試試看")};
+  if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(done,fallback)}
+  else fallback();
+  function fallback(){
+    const ta=document.createElement("textarea");ta.value=t;ta.style.position="fixed";ta.style.opacity="0";
+    document.body.appendChild(ta);ta.select();
+    try{document.execCommand("copy");done()}catch(e){toast("複製失敗，請手動選取")}
+    document.body.removeChild(ta);
+  }
+};
+
+/* ---------- Certificate ---------- */
+function drawCert(name){
+  const c=$("cert-canvas"),x=c.getContext("2d"),W=1080,H=1350;
+  const g=x.createLinearGradient(0,0,W,H);
+  g.addColorStop(0,"#1D1940");g.addColorStop(1,"#15122B");
+  x.fillStyle=g;x.fillRect(0,0,W,H);
+  const rg=x.createRadialGradient(W*0.82,150,0,W*0.82,150,520);
+  rg.addColorStop(0,"rgba(145,132,217,.28)");rg.addColorStop(1,"rgba(145,132,217,0)");
+  x.fillStyle=rg;x.fillRect(0,0,W,H);
+  const rg2=x.createRadialGradient(80,H-120,0,80,H-120,460);
+  rg2.addColorStop(0,"rgba(145,132,217,.16)");rg2.addColorStop(1,"rgba(145,132,217,0)");
+  x.fillStyle=rg2;x.fillRect(0,0,W,H);
+
+  x.strokeStyle="rgba(145,132,217,.45)";x.lineWidth=2;
+  x.strokeRect(54,54,W-108,H-108);
+  x.strokeStyle="rgba(145,132,217,.18)";x.lineWidth=1;
+  x.strokeRect(70,70,W-140,H-140);
+
+  x.save();x.translate(W/2,232);
+  x.fillStyle="#9184D9";
+  x.beginPath();x.moveTo(0,-46);x.lineTo(74,0);x.lineTo(0,46);x.lineTo(-74,0);x.closePath();x.fill();
+  x.fillStyle="#6B5FB0";
+  x.beginPath();x.moveTo(-52,14);x.lineTo(0,46);x.lineTo(52,14);x.lineTo(38,40);x.lineTo(-38,40);x.closePath();x.fill();
+  x.strokeStyle="#C4BBF0";x.lineWidth=4;x.lineCap="round";
+  x.beginPath();x.moveTo(0,-46);x.quadraticCurveTo(46,6,52,58);x.stroke();
+  x.fillStyle="#C4BBF0";
+  x.beginPath();x.arc(53,68,9,0,Math.PI*2);x.fill();
+  x.restore();
+
+  x.textAlign="center";
+  x.fillStyle="#9184D9";x.font="500 26px 'Noto Sans TC','PingFang TC',sans-serif";
+  x.fillText("A I 3 0 C L A S S",W/2,392);
+  x.fillStyle="#F3F1FE";x.font="600 82px 'Noto Sans TC','PingFang TC',sans-serif";
+  x.fillText("AI 初學者證書",W/2,506);
+  x.strokeStyle="rgba(145,132,217,.5)";x.lineWidth=2;
+  x.beginPath();x.moveTo(W/2-150,556);x.lineTo(W/2+150,556);x.stroke();
+
+  x.fillStyle="#A79EDC";x.font="400 30px 'Noto Sans TC','PingFang TC',sans-serif";
+  x.fillText("茲證明",W/2,634);
+  x.fillStyle="#F3F1FE";x.font="600 64px 'Noto Sans TC','PingFang TC',sans-serif";
+  x.fillText(name||"你的名字",W/2,730);
+  x.strokeStyle="rgba(145,132,217,.3)";x.lineWidth=1;
+  x.beginPath();x.moveTo(W/2-230,772);x.lineTo(W/2+230,772);x.stroke();
+
+  x.fillStyle="#C4BBF0";x.font="400 32px 'Noto Sans TC','PingFang TC',sans-serif";
+  x.fillText("完成 30 秒 AI 挑戰 全 30 關",W/2,850);
+  x.fillStyle="#A79EDC";x.font="400 27px 'Noto Sans TC','PingFang TC',sans-serif";
+  x.fillText("從把 AI 當 Google 用，到真的用起來",W/2,910);
+
+  x.fillStyle="#9184D9";x.font="400 25px 'Noto Sans TC','PingFang TC',sans-serif";
+  x.fillText(fmtDate(),W/2,1030);
+  x.fillStyle="#7C74B4";x.font="400 23px 'Noto Sans TC','PingFang TC',sans-serif";
+  x.fillText("@ai30class  ・  30 天 AI 幼幼班",W/2,1084);
+}
+function fmtDate(){const d=new Date();return `${d.getFullYear()} 年 ${d.getMonth()+1} 月 ${d.getDate()} 日`}
+function showCert(){drawCert($("cert-name").value.trim());show("s-cert")}
+$("cert-name").oninput=()=>drawCert($("cert-name").value.trim());
+$("btn-dl").onclick=()=>{
+  try{
+    const url=$("cert-canvas").toDataURL("image/png");
+    const a=document.createElement("a");a.href=url;a.download="AI初學者證書.png";
+    document.body.appendChild(a);a.click();document.body.removeChild(a);
+    toast("證書已下載，去貼限動吧");
+  }catch(e){toast("下載失敗，請長按圖片另存")}
+};
+$("btn-cert-back").onclick=()=>{buildMap();show("s-map")};
+
+refreshHome();
+</script>
+</body>
+</html>
