@@ -1,162 +1,280 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-Hant">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>30 天 AI 幼幼班 · 免費資源總站</title>
-<meta name="description" content="30 天 AI 幼幼班免費資源總站：Day 7 免費領，Day 14 起加 LINE 每週私訊發送。把 AI 變簡單，讓零基礎的人也能真的用起來。">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI30CLASS｜用 AI 把想法做出來</title>
+<meta name="description" content="一個不會寫程式的普通人，用 AI 把想法做成真的有人在用的東西。作品、分享內容，和 30 天 AI 幼幼班免費資源。">
 <meta property="og:type" content="website">
-<meta property="og:title" content="30 天 AI 幼幼班 · 免費資源總站">
-<meta property="og:description" content="30 天 AI 幼幼班免費資源總站：Day 7 免費領，Day 14 起加 LINE 每週私訊發送。把 AI 變簡單，讓零基礎的人也能真的用起來。">
+<meta property="og:title" content="AI30CLASS｜用 AI 把想法做出來">
+<meta property="og:description" content="一個不會寫程式的普通人，用 AI 把想法做成真的有人在用的東西。作品、分享內容，和 30 天 AI 幼幼班免費資源。">
 <meta property="og:image" content="https://ai30class.github.io/ai30/og-image.png">
-<meta property="og:url" content="https://ai30class.github.io/ai30/">
 <meta property="og:locale" content="zh_TW">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="30 天 AI 幼幼班 · 免費資源總站">
-<meta name="twitter:description" content="30 天 AI 幼幼班免費資源總站：Day 7 免費領，Day 14 起加 LINE 每週私訊發送。把 AI 變簡單，讓零基礎的人也能真的用起來。">
 <meta name="twitter:image" content="https://ai30class.github.io/ai30/og-image.png">
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --pri:#534AB7; --pri-l:#EEEDFE; --pri-d:#3C3489;
-  --ok:#0F6E56; --ok-l:#E1F5EE; --ok-d:#0F6E56;
-  --tx:#1E1E22; --tx2:#5F5E5A; --tx3:#8A8A85;
-  --bg:#FFFFFF; --bg2:#F7F6F3; --bd:#E5E3DE;
-  --line:#00B900;
+  --bg:#F7F6F3; --paper:#FFFFFF; --ink:#1B1A22; --muted:#5F5E66; --soft:#8E8C96; --line:#E7E4EE;
+  --brand:#5B4BC4; --brand2:#3C3489; --brand-soft:#EEEDFE; --glow:#8F7CFF; --pink:#F2A9D6;
+  --line-green:#06C755;
+  --r-lg:24px; --r-md:16px; --shadow:0 18px 50px -24px rgba(44,32,120,.35);
 }
-*{box-sizing:border-box;margin:0;padding:0;-webkit-text-size-adjust:100%}
-body{font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC","Segoe UI",sans-serif;background:var(--bg2);color:var(--tx);line-height:1.75;font-size:16px}
-.wrap{max-width:600px;margin:0 auto;background:var(--bg);min-height:100vh}
-.hero{background:var(--pri);color:#fff;padding:46px 24px 38px;text-align:center}
-.badge{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);padding:5px 14px;border-radius:99px;font-size:13px;letter-spacing:.5px;margin-bottom:18px}
-.hero h1{font-size:27px;font-weight:700;line-height:1.35;letter-spacing:-.5px;margin-bottom:12px}
-.hero p{font-size:15px;opacity:.92;line-height:1.7}
-.hero .from{margin-top:20px;font-size:13px;opacity:.78}
-.sec{padding:34px 24px;border-bottom:1px solid var(--bd)}
-.sec:last-of-type{border-bottom:none}
-.kicker{font-size:12px;color:var(--pri);font-weight:700;letter-spacing:1.5px;margin-bottom:8px}
-h2{font-size:21px;font-weight:700;line-height:1.4;margin-bottom:8px;letter-spacing:-.3px}
-.sub{color:var(--tx2);font-size:15px;margin-bottom:20px}
-.baits{display:grid;gap:12px;margin-bottom:6px}
-.bait{display:block;text-decoration:none;background:var(--bg2);border:1px solid var(--bd);border-radius:14px;padding:16px 18px;transition:border-color .15s,transform .1s}
-.bait:active{transform:scale(.99)}
-.bait:hover{border-color:var(--pri)}
-.bait .top{display:flex;align-items:center;gap:10px;margin-bottom:6px}
-.bait .day{flex:0 0 auto;background:var(--pri);color:#fff;font-size:12px;font-weight:700;padding:3px 9px;border-radius:99px;letter-spacing:.5px}
-.bait .name{font-size:16px;font-weight:700;color:var(--pri-d);line-height:1.35}
-.bait .tag{font-size:11px;font-weight:700;padding:2px 9px;border-radius:99px;margin-left:auto}
-.tag-free{background:var(--ok-l);color:var(--ok-d)}
-.tag-line{background:#E6F1FB;color:#185FA5}
-.bait .desc{font-size:14px;color:var(--tx2);line-height:1.7}
-.bait .go{margin-top:10px;font-size:13px;font-weight:700;color:var(--pri);display:flex;align-items:center;gap:5px}
-.steps .st{background:var(--bg2);border:1px solid var(--bd);border-left:4px solid var(--pri);border-radius:10px;padding:12px 16px;margin-bottom:10px;font-size:14px;color:var(--tx2);line-height:1.7}
-.steps .st b{color:var(--pri-d)}
-.cta{background:var(--pri-l);padding:34px 24px;text-align:center}
-.cta h2{color:var(--pri-d);margin-bottom:10px}
-.cta .sub{margin-bottom:22px}
-.btn{display:block;width:100%;padding:17px 20px;border-radius:14px;text-decoration:none;font-size:17px;font-weight:700;margin-bottom:12px;transition:opacity .15s;text-align:center}
-.btn:active{opacity:.8}
-.btn-line{background:var(--line);color:#fff}
-.line-direct{margin-top:12px;font-size:13px;color:#8a8a8a;line-height:1.6;text-align:center}
-.line-direct a{color:var(--line);font-weight:600;word-break:break-all;text-decoration:underline}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.8 "Noto Sans TC",-apple-system,BlinkMacSystemFont,"PingFang TC",sans-serif;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
 
-.btn-ig{background:var(--tx);color:#fff}
-.btn-fb{background:#1877F2;color:#fff}
-.btn-fbgroup{background:#145DBF;color:#fff}
-.btn small{display:block;font-size:13px;font-weight:400;opacity:.85;margin-top:3px}
-.btn-garden{background:var(--ok);color:#fff}
-.garden .kicker{color:var(--ok)}
-.note{font-size:13px;color:var(--tx3);line-height:1.7;margin-top:14px}
-footer{padding:28px 24px 40px;text-align:center;color:var(--tx3);font-size:13px;background:var(--bg2)}
-footer a{color:var(--pri);text-decoration:none}
-@media(max-width:420px){.hero h1{font-size:23px}h2{font-size:19px}.sec{padding:28px 18px}.cta{padding:28px 18px}}
+/* nav */
+.nav{position:sticky;top:0;z-index:20;backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);background:rgba(60,52,137,.72);color:#fff}
+.nav .wrap{display:flex;align-items:center;gap:22px;height:58px}
+.logo{font-weight:900;letter-spacing:.14em;font-size:15px;text-decoration:none}
+.nav-links{display:flex;gap:20px;margin-left:auto;font-size:14.5px}
+.nav-links a{text-decoration:none;opacity:.85}
+.nav-links a:hover{opacity:1}
+.nav-cta{background:var(--line-green);color:#fff;text-decoration:none;font-weight:700;font-size:14px;border-radius:999px;padding:7px 16px}
+@media (max-width:640px){.nav-links{display:none}.nav-cta{margin-left:auto}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;color:#fff;background:linear-gradient(165deg,#6555D6 0%,var(--brand) 30%,var(--brand2) 78%)}
+.hero::before,.hero::after{content:"";position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;pointer-events:none}
+.hero::before{width:520px;height:520px;background:var(--glow);top:-180px;right:-120px}
+.hero::after{width:420px;height:420px;background:var(--pink);bottom:-220px;left:-140px;opacity:.28}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.25fr .75fr;gap:48px;align-items:center;padding-top:76px;padding-bottom:120px}
+.chip{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;letter-spacing:.06em;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:5px 14px}
+.chip i{width:8px;height:8px;border-radius:50%;background:#7CF2B0;box-shadow:0 0 0 4px rgba(124,242,176,.22)}
+.hero h1{font-weight:900;font-size:clamp(30px,4.4vw,46px);line-height:1.22;letter-spacing:-.01em;margin:22px 0 18px}
+.nb{display:inline-block}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,#FFFFFF,#D9D2FF);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:clamp(16px,1.9vw,18.5px);color:rgba(255,255,255,.88);max-width:34em;margin:0}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;font-weight:700;border-radius:999px;padding:14px 26px;font-size:16px;transition:transform .2s ease,box-shadow .2s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn-line{background:var(--line-green);color:#fff;box-shadow:0 12px 28px -12px rgba(6,199,85,.8)}
+.btn-ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.4)}
+.portrait{justify-self:center;position:relative;width:min(300px,70vw);aspect-ratio:1}
+.portrait::before{content:"";position:absolute;inset:-14px;border-radius:50%;background:conic-gradient(from 200deg,rgba(255,255,255,.0),rgba(255,255,255,.55),rgba(217,210,255,.9),rgba(255,255,255,0));filter:blur(.3px)}
+.portrait img{position:relative;width:100%;height:100%;border-radius:50%;object-fit:cover;border:6px solid rgba(255,255,255,.9);box-shadow:0 30px 60px -20px rgba(20,10,80,.55)}
+@media (max-width:760px){
+  .hero .wrap{grid-template-columns:1fr;gap:28px;padding-top:40px;padding-bottom:104px;text-align:left}
+  .portrait{order:-1;width:148px;justify-self:start}
+  .portrait::before{inset:-8px}
+  .portrait img{border-width:4px}
+}
+
+/* facts */
+.facts{position:relative;z-index:2;margin-top:-64px}
+.facts-card{background:var(--paper);border-radius:var(--r-lg);box-shadow:var(--shadow);display:grid;grid-template-columns:repeat(3,1fr)}
+.fact{padding:26px 24px;text-align:center}
+.fact+.fact{border-left:1px solid var(--line)}
+.fact b{display:block;font-size:clamp(28px,4vw,38px);font-weight:900;color:var(--brand2);line-height:1.1}
+.fact span{font-size:14.5px;color:var(--muted)}
+@media (max-width:560px){.fact{padding:18px 8px}.fact span{font-size:12.5px}}
+
+/* sections */
+section{padding:96px 0 0}
+.kicker{display:inline-block;font-size:12.5px;font-weight:900;letter-spacing:.22em;color:var(--brand);background:var(--brand-soft);border-radius:999px;padding:3px 12px}
+h2{font-weight:900;font-size:clamp(26px,3.6vw,38px);line-height:1.3;margin:14px 0 10px;letter-spacing:-.01em}
+.section-sub{color:var(--muted);font-size:17px;margin:0 0 44px;max-width:38em}
+
+/* works */
+.work{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-bottom:84px}
+.work:nth-child(even) .phone-wrap{order:-1}
+.tag{display:inline-block;font-size:13px;font-weight:700;color:var(--brand2);background:var(--brand-soft);border-radius:8px;padding:2px 10px}
+.work h3{font-weight:900;font-size:clamp(24px,3vw,30px);margin:12px 0 8px}
+.work p{color:var(--muted);margin:0 0 16px;font-size:16.5px}
+.work ul{list-style:none;padding:0;margin:0 0 22px}
+.work li{position:relative;padding-left:26px;margin:8px 0;font-size:15.5px}
+.work li::before{content:"";position:absolute;left:0;top:.62em;width:14px;height:14px;border-radius:50%;background:var(--brand-soft);box-shadow:inset 0 0 0 4px var(--brand)}
+.proof{display:inline-flex;align-items:center;gap:8px;background:#EAF8F0;color:#0B7A3F;font-weight:700;font-size:14.5px;border-radius:10px;padding:6px 12px;margin-bottom:18px}
+.more{display:inline-flex;align-items:center;gap:6px;font-weight:700;color:var(--brand);text-decoration:none;border-bottom:2px solid rgba(91,75,196,.25);padding-bottom:2px}
+.more:hover{border-color:var(--brand)}
+.phone-wrap{display:flex;justify-content:center;position:relative}
+.phone-wrap::before{content:"";position:absolute;width:78%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(143,124,255,.28),rgba(143,124,255,0) 70%);top:50%;left:50%;transform:translate(-50%,-50%)}
+.phone{position:relative;width:min(270px,72vw);border-radius:40px;padding:10px;background:#15131E;box-shadow:0 40px 70px -30px rgba(40,25,110,.55),inset 0 0 0 2px #2B2838}
+.phone img{border-radius:31px;width:100%;height:auto;aspect-ratio:9/19.5;object-fit:cover;object-position:top}
+@media (max-width:760px){
+  .work{grid-template-columns:1fr;gap:30px;margin-bottom:68px}
+  .work .phone-wrap{order:-1}
+}
+
+/* share */
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.share{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);padding:28px 24px;transition:transform .25s ease,box-shadow .25s ease}
+.share:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.badge{width:56px;height:56px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:26px;color:#fff;background:linear-gradient(145deg,#7B6CE0,var(--brand2));margin-bottom:16px}
+.share h3{margin:0 0 6px;font-size:19px;font-weight:900}
+.share p{margin:0;color:var(--muted);font-size:15.5px}
+.ig-note{margin-top:22px;color:var(--muted)}
+.ig-note a{color:var(--brand);font-weight:700}
+@media (max-width:760px){.three{grid-template-columns:1fr}}
+
+/* free */
+.free{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.free a{display:flex;align-items:center;gap:14px;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-md);padding:14px 16px;text-decoration:none;transition:border-color .2s ease,transform .2s ease}
+.free a:hover{border-color:rgba(91,75,196,.45);transform:translateY(-2px)}
+.day{flex:none;width:58px;text-align:center;font-weight:900;font-size:13px;color:var(--brand2);background:var(--brand-soft);border-radius:10px;padding:6px 0;line-height:1.25}
+.day b{display:block;font-size:20px}
+.free strong{display:block;font-size:15.5px}
+.free small{color:var(--soft);font-size:13px}
+@media (max-width:640px){.free{grid-template-columns:1fr}}
+
+/* cta */
+.cta{position:relative;overflow:hidden;margin:110px 0 0;border-radius:32px;padding:56px 28px;text-align:center;color:#fff;background:linear-gradient(160deg,#6555D6 0%,var(--brand) 35%,var(--brand2) 85%)}
+.cta::before{content:"";position:absolute;width:460px;height:460px;border-radius:50%;background:var(--glow);filter:blur(80px);opacity:.45;top:-240px;left:50%;transform:translateX(-50%)}
+.cta *{position:relative}
+.cta h2{color:#fff;margin:0 0 12px}
+.cta p{color:rgba(255,255,255,.9);font-size:17px;margin:0 auto 28px;max-width:30em}
+
+footer{text-align:center;color:var(--soft);font-size:14px;padding:48px 0 56px}
+footer nav{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-bottom:10px}
+footer a{text-decoration:none}
+footer a:hover{color:var(--brand)}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
 </style>
-<!-- Google Analytics 4：把 G-4Y1B1TYJM4 換成你的 GA4 測量 ID（申請步驟見 SOP §數據追蹤）。未填前不追蹤，頁面正常。 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4Y1B1TYJM4"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4Y1B1TYJM4');</script>
 </head>
 <body>
-<div class="wrap">
-  <div class="hero">
-    <div class="badge">30 天 AI 幼幼班 · 資源總站</div>
-    <h1>免費資源總站</h1>
-    <p>把 AI 變簡單——Day 7 免費領，Day 14 起加 LINE 每週收。</p>
-    <div class="from">by @ai30class</div>
-  </div>
 
-  <div class="sec">
-    <div class="kicker">你能拿到什麼</div>
-    <h2>7 個實戰誘餌，照你現在卡的地方挑</h2>
-    <p class="sub">Day 7 免費直接下載；Day 14 起加入 LINE 每週私訊發送，不用自己記。</p>
-    <div class="baits">
-      <a class="bait" href="day7.html">
-        <div class="top"><span class="day">Day 7</span><span class="name">AI 提問升級清單</span><span class="tag tag-free">免費</span></div>
-        <div class="desc">5 個場景的填空提問模板，問出好答案，不再得到廢話。</div>
-        <div class="go">免費領取 →</div>
-      </a>
-      <a class="bait" href="day14.html">
-        <div class="top"><span class="day">Day 14</span><span class="name">寫作提示詞模板包</span><span class="tag tag-line">LINE 解鎖</span></div>
-        <div class="desc">5 場景寫作模板 ＋ 20 句追問詞庫，AI 變你的文字助理。</div>
-        <div class="go">加 LINE 解鎖 →</div>
-      </a>
-      <a class="bait" href="day15.html">
-        <div class="top"><span class="day">Day 15</span><span class="name">AI 繪圖工具包</span><span class="tag tag-line">LINE 解鎖</span></div>
-        <div class="desc">3 工具比較 ＋ 10 個 prompt 模板 ＋ 15 個風格詞，上手就出圖。</div>
-        <div class="go">加 LINE 解鎖 →</div>
-      </a>
-      <a class="bait" href="day21.html">
-        <div class="top"><span class="day">Day 21</span><span class="name">短影音腳本模板</span><span class="tag tag-line">LINE 解鎖</span></div>
-        <div class="desc">四段式結構 ＋ 3 完整範例 ＋ 拍攝清單，照抄就能拍。</div>
-        <div class="go">加 LINE 解鎖 →</div>
-      </a>
-      <a class="bait" href="day26.html">
-        <div class="top"><span class="day">Day 26</span><span class="name">AI 工具清單</span><span class="tag tag-line">LINE 解鎖</span></div>
-        <div class="desc">5 大類 30 個工具，標★首選 ＋ 官網，省去你試錯。</div>
-        <div class="go">加 LINE 解鎖 →</div>
-      </a>
-      <a class="bait" href="day28.html">
-        <div class="top"><span class="day">Day 28</span><span class="name">AI 工作流 SOP</span><span class="tag tag-line">LINE 解鎖</span></div>
-        <div class="desc">5 個工作流範例 ＋ 空白 SOP 表，把重複事交給 AI。</div>
-        <div class="go">加 LINE 解鎖 →</div>
-      </a>
-      <a class="bait" href="day30.html">
-        <div class="top"><span class="day">Day 30</span><span class="name">下一步地圖</span><span class="tag tag-line">LINE 解鎖</span></div>
-        <div class="desc">30 天回顧 ＋ 進階 4 階段 ＋ LINE 社群福利，精彩在後面。</div>
-        <div class="go">加 LINE 解鎖 →</div>
-      </a>
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top">AI30CLASS</a>
+    <nav class="nav-links"><a href="#work">作品</a><a href="#share">分享</a><a href="#free">免費資源</a></nav>
+    <a class="nav-cta" href="https://lin.ee/rGA0S1s">加 LINE</a>
+  </div>
+</header>
+
+<div class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <span class="chip"><i></i>邊做邊分享</span>
+      <h1><span class="nb">一個不會寫程式的</span><span class="nb">普通人，</span><br><em><span class="nb">用 AI 把想法</span><span class="nb">做出來。</span></em></h1>
+      <p class="lead">我在這裡分享正在讀的書、正在做的東西，還有你問我的問題。如果你也想做點自己的東西，但還不知道從哪開始——一起走吧。</p>
+      <div class="btns">
+        <a class="btn btn-line" href="https://lin.ee/rGA0S1s">加我的 LINE</a>
+        <a class="btn btn-ghost" href="#work">看我做了什麼 ↓</a>
+      </div>
     </div>
+    <div class="portrait"><img src="avatar.jpg" alt="AI30CLASS" width="360" height="360"></div>
   </div>
-
-  <div class="sec">
-    <div class="kicker">怎麼用</div>
-    <h2>三步拿到，零阻力</h2>
-    <div class="steps">
-      <div class="st"><b>① 領 Day 7 免費誘餌</b>：進去點「下載 PDF 收藏版」，零阻力先拿到。</div>
-      <div class="st"><b>② 加 LINE</b>：Day 14 起每週私訊發送後續 PDF，還能進 FB 學員社團討論答疑。</div>
-      <div class="st"><b>③ 跟完 30 天</b>：IG 每天一支，從 0 到 1 真的用起 AI。</div>
-    </div>
-  </div>
-
-  <div class="sec garden">
-    <div class="kicker">用 AI 做點東西</div>
-    <h2>🌱 知識小花園 · 作業守護台</h2>
-    <p class="sub">我用 AI 做了一個讓小孩主動寫功課的小遊戲——食蟲植物大戰拖延怪。這是我「把 AI 變簡單」的實作案例，也是你練 AI 落地最好的靈感來源。</p>
-    <a class="btn btn-garden" href="game.html">進入知識小花園<small>看我怎麼用講的做出來 ＋ 玩遊戲</small></a>
-  </div>
-
-  <div class="cta">
-    <h2>選你的頻道，資源持續更新</h2>
-    <p class="sub">Day 7 免費領完後，挑一個頻道跟著我繼續：LINE 每週收實戰包，FB 社團跟學員一起練。</p>
-    <a class="btn btn-line" href="https://lin.ee/rGA0S1s">加入 LINE 社群<small>Day 14 起每週實戰 PDF 直接推播 ＋ 卡關直接問我</small></a>
-    <div class="line-direct">手機點此直接加入 LINE（免掃碼）：<a href="https://line.me/R/ti/p/@914blqcf">line.me/R/ti/p/@914blqcf</a></div>
-    <a class="btn btn-fbgroup" href="https://fb.com/groups/ai30class/">加入 FB 學員社團<small>週更 PDF ＋ 學員互相討論、曬作業</small></a>
-    <a class="btn btn-fb" href="https://facebook.com/ai30class">去 FB 看更多 AI 實戰<small>更多免費 AI 實戰與限動教學</small></a>
-  </div>
-
-  <footer>
-    30 天 AI 幼幼班 · 從 0 到 1 學 AI<br>
-    <a href="https://facebook.com/ai30class">FB 粉專</a>
-  </footer>
 </div>
+
+<div class="wrap facts reveal">
+  <div class="facts-card">
+    <div class="fact"><b>3 個</b><span>用 AI 做的作品</span></div>
+    <div class="fact"><b>0 行</b><span>自己寫的程式</span></div>
+    <div class="fact"><b>30 天</b><span>AI 幼幼班挑戰</span></div>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <section id="work">
+    <span class="kicker">WORK</span>
+    <h2>我做過的東西</h2>
+    <p class="section-sub">全部都是我跟 AI 一句一句講出來的。不是示範，是真的有人在用。</p>
+
+    <div class="works">
+      <article class="work reveal">
+        <div>
+          <span class="tag">給美業店家</span>
+          <h3>美業管家</h3>
+          <p>美睫、美甲、紋繡、美容工作室的線上預約與店務系統。</p>
+          <div class="proof">✓ 已經有店家付費在用</div>
+          <ul>
+            <li>顧客自己在手機上約時段，不用一直回 LINE</li>
+            <li>預約、排班、結帳一個地方管完</li>
+          </ul>
+          <a class="more" href="https://meiyecrm.com">看美業管家 →</a>
+        </div>
+        <div class="phone-wrap"><div class="phone"><img src="work_meiye.jpg" alt="美業管家畫面" loading="lazy" width="600" height="1300"></div></div>
+      </article>
+
+      <article class="work reveal">
+        <div>
+          <span class="tag">給家長和小孩</span>
+          <h3>知識小花園・作業守護台</h3>
+          <p>讓孩子每天打卡，把該做的事做完，做完換爸媽設定的真實獎勵。</p>
+          <ul>
+            <li>寫完功課、家長簽名，就能打退拖延怪、賺到陽光</li>
+            <li>考試前幫你排好每天要讀哪一課</li>
+            <li>免費，加到手機主畫面就能玩</li>
+          </ul>
+          <a class="more" href="game.html">看介紹＋玩遊戲 →</a>
+        </div>
+        <div class="phone-wrap"><div class="phone"><img src="work_garden.jpg" alt="知識小花園畫面" loading="lazy" width="600" height="1300"></div></div>
+      </article>
+
+      <article class="work reveal">
+        <div>
+          <span class="tag">給經營社群的人</span>
+          <h3>文案工作台</h3>
+          <p>品牌資料填一次，之後選主題、選平台，按一下就寫好文案。</p>
+          <ul>
+            <li>照你的口吻寫，不用每次重講一次你是誰</li>
+            <li>一次給三個版本讓你挑</li>
+          </ul>
+          <a class="more" href="https://copybench-seven.vercel.app">試用文案工作台 →</a>
+        </div>
+        <div class="phone-wrap"><div class="phone"><img src="work_copy.jpg" alt="文案工作台畫面" loading="lazy" width="600" height="1300"></div></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="share">
+    <span class="kicker">SHARE</span>
+    <h2>我在分享什麼</h2>
+    <p class="section-sub">邊做邊講，只講我真的讀過、做過、試過的。</p>
+    <div class="three">
+      <div class="share reveal"><div class="badge">讀</div><h3>讀到的一個觀點</h3><p>書裡的一個道理，對上我自己做東西的經驗。</p></div>
+      <div class="share reveal"><div class="badge">做</div><h3>正在做的東西</h3><p>卡在哪、怎麼判斷、怎麼解，過程都攤開講。</p></div>
+      <div class="share reveal"><div class="badge">答</div><h3>你問我的問題</h3><p>挑大家私訊問我的問題，公開回答。</p></div>
+    </div>
+    <p class="ig-note">新內容都在 IG <a href="https://www.instagram.com/ai30class/">@ai30class</a>，LINE 也會同步。</p>
+  </section>
+
+  <section id="free">
+    <span class="kicker">FREE</span>
+    <h2>30 天 AI 幼幼班・免費資源</h2>
+    <p class="section-sub">從 0 到 1 學 AI 的 30 天挑戰，每一份都能免費拿。</p>
+    <div class="free">
+      <a class="reveal" href="day7.html"><span class="day">DAY<b>7</b></span><span><strong>AI 提問升級清單</strong><small>免費直接下載</small></span></a>
+      <a class="reveal" href="day14.html"><span class="day">DAY<b>14</b></span><span><strong>寫作提示詞模板包</strong><small>加 LINE 領</small></span></a>
+      <a class="reveal" href="day15.html"><span class="day">DAY<b>15</b></span><span><strong>AI 繪圖工具包</strong><small>加 LINE 領</small></span></a>
+      <a class="reveal" href="day21.html"><span class="day">DAY<b>21</b></span><span><strong>短影音腳本模板</strong><small>加 LINE 領</small></span></a>
+      <a class="reveal" href="day26.html"><span class="day">DAY<b>26</b></span><span><strong>30 個 AI 工具清單</strong><small>加 LINE 傳「工具」</small></span></a>
+      <a class="reveal" href="day28.html"><span class="day">DAY<b>28</b></span><span><strong>AI 工作流 SOP 模板</strong><small>加 LINE 傳「工作流」</small></span></a>
+      <a class="reveal" href="day30.html"><span class="day">DAY<b>30</b></span><span><strong>下一步地圖</strong><small>加 LINE 傳「下一步」</small></span></a>
+    </div>
+  </section>
+
+  <div class="cta reveal">
+    <h2>想做點自己的東西，但卡住了？</h2>
+    <p>私訊我，跟我說你卡在哪、你已經試過什麼。我會一個一個回，也會挑幾個問題拍影片回答。</p>
+    <a class="btn btn-line" href="https://lin.ee/rGA0S1s">加 LINE 私訊我</a>
+  </div>
+
+</main>
+
+<footer>
+  <nav><a href="https://www.instagram.com/ai30class/">Instagram</a><a href="https://facebook.com/ai30class">Facebook</a><a href="https://fb.com/groups/ai30class/">FB 學員社團</a><a href="https://lin.ee/rGA0S1s">LINE</a></nav>
+  © 2026 AI30CLASS
+</footer>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+  var io=new IntersectionObserver(function(entries){entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}})},{rootMargin:'0px 0px -8% 0px',threshold:.08});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
 </body>
 </html>
