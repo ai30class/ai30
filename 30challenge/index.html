@@ -162,6 +162,110 @@ h1.big{font-size:33px;font-weight:600;margin:0 0 10px;letter-spacing:-.01em;line
   .day-grid{gap:5px}
   .q-title{font-size:20px}
 }
+
+/* ---------- 進階區：AI 練功房（初／中／高階） ---------- */
+.zone{margin-top:34px}
+.zone-head{font-size:12px;color:var(--text-faint);letter-spacing:.06em;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.zone-head::after{content:"";flex:1;height:1px;background:var(--line)}
+.test-cta{display:block;width:100%;text-align:left;font-family:inherit;color:var(--text);cursor:pointer;transition:.18s;
+  background:linear-gradient(135deg,rgba(145,132,217,.28),rgba(107,95,176,.16));border:1px solid var(--line-strong);border-radius:var(--r);padding:18px}
+.test-cta:hover{border-color:var(--accent)}
+.test-cta .t1{font-size:17px;font-weight:600;margin-bottom:4px}
+.test-cta .t2{font-size:13px;color:var(--text-dim);line-height:1.6}
+.test-cta .lv{display:inline-block;margin-top:10px;font-size:12px;color:var(--accent-soft);border:1px solid var(--line-strong);border-radius:999px;padding:3px 11px}
+.tiers{display:flex;flex-direction:column;gap:10px;margin-top:12px}
+.tier-card{display:flex;align-items:center;gap:14px;width:100%;text-align:left;font-family:inherit;color:var(--text);cursor:pointer;transition:.16s;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:15px 16px}
+.tier-card:hover{border-color:var(--line-strong);background:var(--surface2)}
+.tier-card.mine{border-color:var(--accent)}
+.tier-ic{width:38px;height:38px;border-radius:10px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.tier-main{flex:1;min-width:0}
+.tier-name{font-size:15px;font-weight:600}
+.tier-desc{font-size:12.5px;color:var(--text-dim);margin-top:2px}
+.tier-tag{font-size:11px;border-radius:999px;padding:3px 10px;flex-shrink:0;white-space:nowrap}
+.tier-tag.open{background:rgba(93,202,165,.14);color:var(--ok-soft);border:1px solid rgba(93,202,165,.4)}
+.tier-tag.lock{background:rgba(239,159,39,.12);color:var(--warn);border:1px solid rgba(239,159,39,.4)}
+.sub-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:26px 0 6px}
+.sub-head h2{margin:0;font-size:19px;font-weight:600}
+.sub-lead{font-size:13.5px;color:var(--text-dim);margin:0 0 20px;line-height:1.7}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;margin-bottom:14px}
+.card h3{margin:0 0 6px;font-size:16px;font-weight:600}
+.card .muted{font-size:13px;color:var(--text-dim);margin:0 0 12px}
+.gl-item{border:1px solid var(--line);border-radius:12px;margin-bottom:8px;overflow:hidden;background:var(--bg2)}
+.gl-head{display:flex;justify-content:space-between;align-items:center;padding:13px 15px;cursor:pointer}
+.gl-head .term{font-weight:600;font-size:14.5px}
+.gl-head .en{color:var(--text-faint);font-weight:400;font-size:12px;margin-left:5px}
+.gl-head .arr{color:var(--accent);font-size:12px;transition:transform .15s}
+.gl-item.open .arr{transform:rotate(180deg)}
+.gl-body{display:none;padding:0 15px 15px;font-size:14px;color:var(--text-dim);line-height:1.75}
+.gl-item.open .gl-body{display:block}
+.gl-body .ana{margin-top:9px;background:var(--surface2);border-radius:9px;padding:9px 12px;font-size:13px;color:var(--accent-soft)}
+.mini-q{border:1px solid var(--line);border-radius:12px;padding:15px;margin-bottom:12px;background:var(--bg2)}
+.mini-q .qq{font-size:14.5px;font-weight:500;margin:0 0 10px}
+.mini-q .opts{gap:8px}
+.mini-q .opt{padding:11px 14px;font-size:14px}
+.mini-ex{display:none;margin-top:10px;font-size:13px;color:var(--text-dim);background:var(--surface2);border-radius:9px;padding:10px 12px;line-height:1.7}
+.level-big{text-align:center;padding:44px 0 14px}
+.level-big .lv-name{font-size:42px;font-weight:700;color:var(--accent-soft);margin:6px 0}
+.level-big .lv-score{font-size:13px;color:var(--text-faint)}
+.rv-item{border-top:1px solid var(--line);padding:13px 0;font-size:13.5px;line-height:1.7}
+.rv-item:first-child{border-top:none}
+.rv-item .rv-q{color:var(--text);font-weight:500}
+.rv-item .rv-a{color:var(--text-dim);margin-top:4px}
+.rv-item .rv-mark{font-size:12px;margin-right:6px}
+.seg{display:flex;gap:6px;background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:4px;margin-bottom:16px}
+.seg button{flex:1;border:none;background:none;color:var(--text-dim);font-family:inherit;font-size:13px;padding:9px 4px;border-radius:9px;cursor:pointer}
+.seg button.on{background:var(--accent);color:#1A1533;font-weight:600}
+.pane{display:none}
+.pane.on{display:block}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin:4px 0 14px}
+.chip{background:var(--bg2);border:1px solid var(--line);color:var(--text-dim);border-radius:9px;padding:7px 11px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.chip:hover{border-color:var(--line-strong);color:var(--text)}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#1A1533;font-weight:600}
+.fld-lbl{display:block;font-size:13px;color:var(--text-dim);margin:12px 0 6px}
+.fld{width:100%;background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:14.5px;color:var(--text);
+  font-family:inherit;resize:vertical;min-height:58px;line-height:1.6}
+.fld:focus{outline:none;border-color:var(--accent)}
+.fld::placeholder{color:var(--text-faint)}
+input.fld{min-height:0}
+.draft{background:var(--bg2);border-left:3px solid var(--accent);border-radius:10px;padding:13px 15px;font-size:14px;color:var(--text-dim);line-height:1.7;margin-bottom:6px}
+.draft .note{display:block;margin-top:6px;font-size:12.5px;color:var(--text-faint)}
+.fb{margin-top:14px;background:rgba(145,132,217,.12);border:1px solid var(--line-strong);border-radius:12px;padding:15px;
+  font-size:14px;line-height:1.75;color:var(--text);white-space:pre-wrap;word-break:break-word}
+.fb.warn{background:rgba(240,153,123,.1);border-color:rgba(240,153,123,.45)}
+.fb .copy-btn{margin-top:10px}
+.lock-box{border:1px dashed var(--line-strong);border-radius:var(--r);padding:20px 18px;margin-bottom:16px;text-align:center}
+.lock-box .lk{font-size:26px;margin-bottom:6px}
+.lock-box p{font-size:13.5px;color:var(--text-dim);margin:0 0 14px;line-height:1.7}
+a.btn{text-decoration:none;text-align:center}
+.code-row{display:flex;gap:8px;margin-top:12px}
+.code-row input{flex:1;min-width:0;background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:15px;
+  color:var(--text);font-family:inherit;text-align:center;letter-spacing:.06em}
+.code-row input:focus{outline:none;border-color:var(--accent)}
+.code-row .btn{width:auto;padding:12px 20px;margin:0}
+.code-msg{font-size:12.5px;color:var(--text-faint);min-height:18px;margin-top:8px}
+.locked-list{margin:0 0 16px;padding:0;list-style:none;text-align:left}
+.locked-list li{padding:12px 0;border-top:1px solid var(--line);font-size:14px}
+.locked-list li:first-child{border-top:none}
+.locked-list .ll-t{font-weight:500}
+.locked-list .ll-d{font-size:12.5px;color:var(--text-faint);margin-top:2px}
+.gym-stat{font-size:13px;color:var(--text-dim);margin:0 0 4px}
+.gym-badge{font-size:13.5px;color:var(--accent-soft);font-weight:500;margin:0 0 16px;min-height:1px}
+.dom-row{display:flex;align-items:center;gap:10px;margin:9px 0;font-size:13.5px}
+.dom-name{width:112px;flex-shrink:0;color:var(--text)}
+.dom-bar{flex:1;height:8px;background:var(--surface2);border-radius:4px;overflow:hidden}
+.dom-fill{height:100%;border-radius:4px}
+.dom-fill.s0{width:4%;background:var(--no)}
+.dom-fill.s1{width:50%;background:var(--warn)}
+.dom-fill.s2{width:100%;background:var(--ok)}
+.dom-num{width:34px;text-align:right;color:var(--text-faint);font-size:12.5px;font-variant-numeric:tabular-nums}
+.lv-weak{font-size:13px;color:var(--text-dim);margin:12px 0 0;line-height:1.7}
+.dm-card{border-color:var(--line-strong)}
+.dm-msg{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:13px 15px;font-size:15px;color:var(--text);margin-bottom:12px;word-break:break-word}
+.dm-actions{display:flex;gap:10px}
+.dm-actions .btn{margin:0;padding:14px 12px;font-size:14.5px}
+.disclaimer{font-size:11.5px;color:var(--text-faint);line-height:1.7;margin-top:22px;text-align:center}
+.disclaimer strong{color:var(--text-dim);font-weight:500}
 </style>
 </head>
 <body>
@@ -185,6 +289,20 @@ h1.big{font-size:33px;font-weight:600;margin:0 0 10px;letter-spacing:-.01em;line
       <div class="meta-card"><div class="meta-num" id="m-left">30</div><div class="meta-lbl">還剩幾關</div></div>
     </div>
     <p class="hint">答錯不扣分，只是先看一下解釋而已。</p>
+
+    <div class="zone">
+      <div class="zone-head">30 關之外・AI 練功房</div>
+      <button class="test-cta" id="btn-test">
+        <div class="t1">試試看你有多了解 AI</div>
+        <div class="t2">14 題、只點不打字。對照國際 Claude 認證看的 7 項 AI 能力，測完告訴你哪一塊最弱、該從哪一階開始練。</div>
+        <span class="lv" id="my-level" style="display:none"></span>
+      </button>
+      <div class="tiers">
+        <button class="tier-card" data-tier="1"><div class="tier-ic">🌱</div><div class="tier-main"><div class="tier-name">初階・名詞小字典</div><div class="tier-desc">prompt、模型、幻覺⋯這些字到底是什麼意思</div></div><span class="tier-tag" id="tag-1"></span></button>
+        <button class="tier-card" data-tier="2"><div class="tier-ic">✍️</div><div class="tier-main"><div class="tier-name">中階・動手練</div><div class="tier-desc">提問四要素、追問三連問、圖像提示詞</div></div><span class="tier-tag" id="tag-2"></span></button>
+        <button class="tier-card" data-tier="3"><div class="tier-ic">🧩</div><div class="tier-main"><div class="tier-name">高階・把單點連成系統</div><div class="tier-desc">工作流步驟卡、指令模板、大事拆小步</div></div><span class="tier-tag" id="tag-3"></span></button>
+      </div>
+    </div>
   </div>
 
   <!-- MAP -->
@@ -252,8 +370,204 @@ h1.big{font-size:33px;font-weight:600;margin:0 0 10px;letter-spacing:-.01em;line
       <input class="name-input" id="cert-name" placeholder="你的名字" maxlength="12">
       <div class="cert-preview"><canvas id="cert-canvas" width="1080" height="1350"></canvas></div>
       <button class="btn btn-primary" id="btn-dl">下載證書（1080×1350）</button>
+      <button class="btn btn-ghost" id="btn-cert-next">下一步：測測你現在是哪一階</button>
       <button class="btn btn-ghost" id="btn-cert-back">回到地圖</button>
       <p class="finish-note">30 天前你把 AI 當 Google 用。<br>現在你手上已經有 29 招。</p>
+    </div>
+  </div>
+
+  <!-- 分級檢測 -->
+  <div class="screen" id="s-test">
+    <div class="topbar">
+      <div>
+        <div class="day-badge">AI 程度分級檢測</div>
+        <div class="day-badge" style="color:var(--text-faint);font-size:11.5px" id="t-count">第 1 / 14 題</div>
+      </div>
+      <button class="back" id="t-quit">✕ 離開</button>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="t-prog"></div></div>
+    <h2 class="q-title" id="t-q"></h2>
+    <div class="q-sub">沒有時間限制，選「你真的會這樣做」的那個</div>
+    <div class="opts" id="t-opts"></div>
+  </div>
+
+  <!-- 檢測結果 -->
+  <div class="screen" id="s-level">
+    <div class="level-big">
+      <div class="brand">你的 AI 程度</div>
+      <div class="lv-name" id="lv-name"></div>
+      <div class="lv-score" id="lv-score"></div>
+    </div>
+    <div class="explain-box" id="lv-desc"></div>
+    <div class="card">
+      <h3>7 項 AI 能力</h3>
+      <p class="muted">每一項 2 題。參照國際 Claude 認證（Associate）公開的能力範圍整理。</p>
+      <div id="lv-bars"></div>
+      <p class="lv-weak" id="lv-weak"></p>
+    </div>
+    <div class="card dm-card">
+      <h3>卡在哪一項，直接問我</h3>
+      <p class="muted">把你最卡的那一項私訊給我，我回你怎麼補。複製下面這句，貼到 LINE 就好。</p>
+      <div class="dm-msg" id="lv-dm"></div>
+      <div class="dm-actions">
+        <button class="btn btn-ghost" id="lv-dm-copy">複製這句</button>
+        <a class="btn btn-primary" href="https://lin.ee/rGA0S1s" target="_blank" rel="noopener">開 LINE 私訊</a>
+      </div>
+    </div>
+    <button class="btn btn-primary" id="lv-go">從這一階開始</button>
+    <button class="btn btn-ghost" id="lv-review-btn">看 14 題解析</button>
+    <div class="card" id="lv-review" style="display:none;margin-top:14px"></div>
+    <button class="btn btn-ghost" id="lv-retest">重新測一次</button>
+    <button class="btn btn-ghost" data-home>回首頁</button>
+    <p class="disclaimer">本檢測由 AI30CLASS 自製，參照 Anthropic Claude 認證公開的能力範圍設計，<strong>不是官方考試，與 Anthropic 無關</strong>，也不代表任何認證資格。Claude 官方認證目前需透過 Claude Partner Network 合作組織報名。</p>
+  </div>
+
+  <!-- 初階 -->
+  <div class="screen" id="s-t1">
+    <div class="sub-head"><h2>🌱 初階・名詞小字典</h2><button class="back" data-home>← 首頁</button></div>
+    <p class="sub-lead">別人講「prompt」「模型」「幻覺」的時候，你不用假裝聽懂。點開每張卡看白話解釋，看完做小測驗。</p>
+    <div id="gl-list"></div>
+    <div class="card" style="margin-top:18px">
+      <h3>小測驗</h3>
+      <p class="muted">先選答案，再看解釋——選了才知道自己原來是這樣想的。</p>
+      <div id="mq-list"></div>
+    </div>
+    <button class="btn btn-primary" id="t1-next">下一階：動手練 →</button>
+  </div>
+
+  <!-- 中階 -->
+  <div class="screen" id="s-t2">
+    <div class="sub-head"><h2>✍️ 中階・動手練</h2><button class="back" data-home>← 首頁</button></div>
+    <p class="sub-lead">光看懂不夠，要自己下指令才會。三種練習，交出去 AI 教練會點評。</p>
+    <div class="lock-box" id="t2-lock">
+      <div class="lk">🔒</div>
+      <p>中階練習加 LINE 就能解鎖。<br>加好友後，歡迎訊息裡就有解鎖碼。</p>
+      <a class="btn btn-primary" href="https://lin.ee/rGA0S1s" target="_blank" rel="noopener">加 LINE 領解鎖碼</a>
+      <div class="code-row"><input id="t2-code" placeholder="輸入解鎖碼" autocomplete="off"><button class="btn btn-ghost" data-unlock="t2">解鎖</button></div>
+      <div class="code-msg" id="t2-msg"></div>
+    </div>
+    <div id="t2-body">
+      <p class="gym-stat" id="gym-stat"></p>
+      <p class="gym-badge" id="gym-badge"></p>
+      <div class="seg" data-seg="t2">
+        <button data-p="t2a" class="on">提問四要素</button><button data-p="t2b">追問三連問</button><button data-p="t2c">圖像提示詞</button>
+      </div>
+
+      <div class="pane on" id="t2a">
+        <div class="card">
+          <h3>提問練習所</h3>
+          <p class="muted">挑一個情境，把四格填滿。四個都講到，AI 猜的成分就很低。</p>
+          <div class="chips" id="a-chips"></div>
+          <label class="fld-lbl">① 角色——AI 現在要扮演誰？</label>
+          <textarea class="fld" id="a-role" placeholder="例如：一個很會排解人際卡點、講話直接但不傷人的朋友"></textarea>
+          <label class="fld-lbl">② 情境——現在是什麼狀況？</label>
+          <textarea class="fld" id="a-ctx" placeholder="例如：跟同事各排各的班表，時段一直對不上，已經來回喬了三次"></textarea>
+          <label class="fld-lbl">③ 目標——你要它產出什麼？</label>
+          <textarea class="fld" id="a-goal" placeholder="例如：幫我想一句話，主動提出兩個可行時段讓對方選"></textarea>
+          <label class="fld-lbl">④ 限制——有什麼不能踩的線？</label>
+          <textarea class="fld" id="a-lim" placeholder="例如：不要聽起來在指責對方、語氣平和、50 字以內"></textarea>
+          <button class="btn btn-primary" id="a-go" style="margin-top:16px">交給 AI 教練點評</button>
+          <div id="a-fb"></div>
+        </div>
+      </div>
+
+      <div class="pane" id="t2b">
+        <div class="card">
+          <h3>追問三連問</h3>
+          <p class="muted">AI 第一次的回答常常「講了等於沒講」。選一個情境，練習用三句追問把它問到能用。</p>
+          <div class="chips" id="b-chips"></div>
+          <div class="draft" id="b-draft"></div>
+          <label class="fld-lbl">追問①——哪裡太籠統？要它更具體</label>
+          <textarea class="fld" id="b-1" placeholder="例如：這段講了等於沒講，給我兩個今天就能做的具體做法，每個一句話"></textarea>
+          <label class="fld-lbl">追問②——AI 誤會了什麼？把正確情況補給它</label>
+          <textarea class="fld" id="b-2" placeholder="例如：它不知道我已經試過這方法沒用，把這個限制講清楚讓它重想"></textarea>
+          <label class="fld-lbl">追問③——格式不合用？請它換個呈現方式</label>
+          <textarea class="fld" id="b-3" placeholder="例如：改成條列式，每點不超過一句話，方便我直接照著做"></textarea>
+          <button class="btn btn-primary" id="b-go" style="margin-top:16px">交給 AI 教練點評</button>
+          <div id="b-fb"></div>
+        </div>
+      </div>
+
+      <div class="pane" id="t2c">
+        <div class="card">
+          <h3>圖像提示詞</h3>
+          <p class="muted">畫圖 AI 聽不懂「幫我做一張好看的圖」。三格填空，練出一句能用的描述。點下面的情境會帶一個起手式。</p>
+          <div class="chips" id="c-chips"></div>
+          <label class="fld-lbl">① 主體——畫面裡主要是什麼？</label>
+          <textarea class="fld" id="c-sub" placeholder="例如：一隻橘貓坐在窗台上"></textarea>
+          <label class="fld-lbl">② 風格——用什麼視覺風格？</label>
+          <textarea class="fld" id="c-sty" placeholder="例如：底片相機質感、淺景深、自然光"></textarea>
+          <label class="fld-lbl">③ 氛圍——看了要有什麼感覺？</label>
+          <textarea class="fld" id="c-mood" placeholder="例如：午後的慵懶、安靜、溫暖"></textarea>
+          <button class="btn btn-primary" id="c-go" style="margin-top:16px">交給 AI 教練點評</button>
+          <div id="c-fb"></div>
+        </div>
+      </div>
+      <button class="btn btn-ghost" id="t2-next">下一階：把單點連成系統 →</button>
+    </div>
+  </div>
+
+  <!-- 高階 -->
+  <div class="screen" id="s-t3">
+    <div class="sub-head"><h2>🧩 高階・把單點連成系統</h2><button class="back" data-home>← 首頁</button></div>
+    <p class="sub-lead">會下指令只是單點。高階練的是：把重複的事變成流程、把好用的指令變成模板、把一件大事拆成 AI 做得來的小步驟。</p>
+    <div class="lock-box" id="t3-lock">
+      <div class="lk">🔒</div>
+      <p>高階加 LINE 就能解鎖，跟中階用同一組解鎖碼。<br>這一階會練這三件事：</p>
+      <ul class="locked-list" id="t3-preview"></ul>
+      <a class="btn btn-primary" href="https://lin.ee/rGA0S1s" target="_blank" rel="noopener">加 LINE 領解鎖碼</a>
+      <div class="code-row"><input id="t3-code" placeholder="輸入解鎖碼" autocomplete="off"><button class="btn btn-ghost" data-unlock="t3">解鎖</button></div>
+      <div class="code-msg" id="t3-msg"></div>
+    </div>
+    <div id="t3-body">
+      <div class="seg" data-seg="t3">
+        <button data-p="t3a" class="on">工作流步驟卡</button><button data-p="t3b">指令模板</button><button data-p="t3c">大事拆小步</button>
+      </div>
+
+      <div class="pane on" id="t3a">
+        <div class="card">
+          <h3>工作流步驟卡</h3>
+          <p class="muted">挑一件你每週都會重複做的事，寫成步驟卡。寫清楚哪一步給 AI、哪一步自己把關，下次照卡做不用再動腦。</p>
+          <label class="fld-lbl">這件事是什麼？</label>
+          <input class="fld" id="w-task" placeholder="例如：每週整理一次店裡的預約與客人回訪名單">
+          <label class="fld-lbl">什麼時候觸發？</label>
+          <input class="fld" id="w-when" placeholder="例如：每週日晚上">
+          <label class="fld-lbl">步驟（一行一步，至少三步）</label>
+          <textarea class="fld" id="w-steps" style="min-height:96px" placeholder="例如：&#10;匯出這週預約紀錄&#10;貼給 AI，請它挑出超過一個月沒回來的客人&#10;我自己看過名單，刪掉不適合聯絡的人"></textarea>
+          <label class="fld-lbl">哪一步你一定要自己把關？為什麼？</label>
+          <textarea class="fld" id="w-check" placeholder="例如：最後名單要自己看，AI 不知道哪個客人最近剛客訴過"></textarea>
+          <button class="btn btn-primary" id="w-go" style="margin-top:16px">組成步驟卡</button>
+          <div id="w-fb"></div>
+        </div>
+      </div>
+
+      <div class="pane" id="t3b">
+        <div class="card">
+          <h3>指令模板</h3>
+          <p class="muted">一個你常用、效果不錯的指令，每次都重打很浪費。把會變的地方挖成空格，變成一用再用的模板。</p>
+          <label class="fld-lbl">原本那句好用的指令</label>
+          <textarea class="fld" id="p-orig" style="min-height:80px" placeholder="例如：你是一個溫和的店長，幫我回覆一位抱怨等太久的客人，先道歉、說明原因、提出下次優先安排，80 字內"></textarea>
+          <label class="fld-lbl">每次會變的地方（用逗號分開）</label>
+          <input class="fld" id="p-vars" placeholder="例如：抱怨等太久,說明原因,下次優先安排">
+          <button class="btn btn-primary" id="p-go" style="margin-top:16px">變成模板</button>
+          <div id="p-fb"></div>
+        </div>
+      </div>
+
+      <div class="pane" id="t3c">
+        <div class="card">
+          <h3>大事拆小步</h3>
+          <p class="muted">一句話把一件大事全丟給 AI，只會拿到一份很空的計畫。先拆成幾步，每一步各自交代清楚。</p>
+          <label class="fld-lbl">最後想完成什麼？</label>
+          <input class="fld" id="d-goal" placeholder="例如：下個月辦一場 20 人的小型體驗活動">
+          <label class="fld-lbl">拆成哪幾步（一行一步，至少三步）</label>
+          <textarea class="fld" id="d-steps" style="min-height:96px" placeholder="例如：&#10;訂出活動目的跟對象&#10;排流程跟時間表&#10;寫報名訊息&#10;列活動前一天的檢查清單"></textarea>
+          <label class="fld-lbl">第一步要怎麼交代給 AI？</label>
+          <textarea class="fld" id="d-first" placeholder="例如：你是活動企劃，幫我想三個適合 20 人、兩小時的體驗活動目的，各附一句適合的對象"></textarea>
+          <button class="btn btn-primary" id="d-go" style="margin-top:16px">組成拆解清單</button>
+          <div id="d-fb"></div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -415,7 +729,7 @@ p:"這關沒有新技巧——你已經有 29 個了。\n今天該做的是把�
 ];
 
 const KEY="ai30challenge_v1";
-let S={done:[],unlockAll:false,lastDate:"",streak:0};
+let S={done:[],unlockAll:false,lastDate:"",streak:0,tier:"free",level:0,test:null,gym:[]};
 try{const r=localStorage.getItem(KEY);if(r)S=Object.assign(S,JSON.parse(r));}catch(e){}
 
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
@@ -431,6 +745,7 @@ function refreshHome(){
   $("streak-txt").textContent = S.streak>0 ? "連續 "+S.streak+" 天" : "還沒開始";
   const next=nextLevel();
   $("btn-start").textContent = n===0 ? "開始 Day 1" : (next ? "繼續 Day "+next.d : "30 關全部完成");
+  refreshTiers();
 }
 function nextLevel(){return LEVELS.find(l=>!S.done.includes(l.d))||null}
 function isUnlocked(d){
@@ -621,6 +936,395 @@ $("btn-dl").onclick=()=>{
   }catch(e){toast("下載失敗，請長按圖片另存")}
 };
 $("btn-cert-back").onclick=()=>{buildMap();show("s-map")};
+
+/* =====================================================================
+   AI 練功房（初／中／高階）——2026-09 從獨立原型併進 30 秒挑戰
+   解鎖碼不寫在這個頁面：交給文案工作台後端 /api/unlock 驗證，
+   回傳 tier（line／student），這裡只記結果。同一組碼兩個工具通用。
+   ===================================================================== */
+const UNLOCK_API="https://copybench-seven.vercel.app/api/unlock";
+const pick1=a=>a[Math.floor(Math.random()*a.length)];
+
+function copyText(t){
+  const ok=()=>toast("已複製");
+  if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(ok,fb);}else fb();
+  function fb(){
+    const ta=document.createElement("textarea");ta.value=t;ta.style.position="fixed";ta.style.opacity="0";
+    document.body.appendChild(ta);ta.select();
+    try{document.execCommand("copy");ok()}catch(e){toast("複製失敗，請手動選取")}
+    document.body.removeChild(ta);
+  }
+}
+function feedback(id,ok,text,copy){
+  const box=$(id);box.innerHTML="";
+  const d=document.createElement("div");d.className="fb"+(ok?"":" warn");d.textContent=text;
+  if(copy){
+    const b=document.createElement("button");b.className="copy-btn";b.textContent="複製";
+    b.onclick=()=>{copyText(copy);b.textContent="已複製";b.classList.add("done")};
+    d.appendChild(document.createElement("br"));d.appendChild(b);
+  }
+  box.appendChild(d);
+}
+const val=id=>$(id).value.trim();
+const lines=id=>val(id).split(/\n+/).map(s=>s.trim()).filter(Boolean);
+
+/* ---------- 分級檢測（14 題，只點不打字）----------
+   7 項能力參照 Anthropic Claude 認證（Associate）公開的能力範圍（第三方整理），每項 2 題。
+   自製題目，非官方考題。題目順序：前 4 題是基礎觀念，由淺到深。 */
+const DOMS=["下提示詞","判斷輸出好壞","選對模型跟工具","設計工作流程","專案跟知識庫","負責任使用","排除問題"];
+const DOM_TIP=[
+ "去「中階・提問四要素」練把角色、情境、目標、限制講齊",
+ "每次拿到 AI 的東西，先檢查日期、數字、價格這些事實，再決定要不要用",
+ "去「初階・名詞小字典」看「技能／外掛」跟「聯網搜尋」：什麼事該用會上網查的 AI、什麼時候要上傳檔案",
+ "去「高階」練步驟卡跟拆步驟",
+ "去「初階・名詞小字典」看「專案／常駐設定」：把背景資料存起來，AI 才不用每次重問",
+ "個資不貼、醫療法律不讓 AI 下結論，這兩條記住就擋掉大部分風險",
+ "回答不好就追問、對話太長就請它整理摘要再開新對話"
+];
+const TEST=[
+{d:4,q:"一般情況下，你開了一個新對話，AI 還記得你在別的對話講過的事嗎？",o:["記得，AI 會記住你所有的對話","不記得，新對話要重新交代一次","只記得最重要的部分"],a:1,
+ e:"一般來說每個對話是分開的（有些工具有「記憶」功能，但別指望它記得細節）。換新對話，重要背景要重講一次——或者存成專案／常駐設定。"},
+{d:1,q:"AI 很有自信地給你一個法規條號跟罰款金額，你應該？",o:["直接照用，講得這麼肯定一定對","回頭查證原始來源","換另一個 AI 問，兩個答案一樣就對"],a:1,
+ e:"這叫「幻覺」：AI 會很有自信地講錯。兩個 AI 講一樣也不代表對——數字、法規、日期這種錯了會出事的，一定查原始來源。"},
+{d:6,q:"AI 第一次的回答不夠好，最有效率的做法是？",o:["關掉，重開一個新對話再問","針對不滿意的地方繼續追問","換一個 AI 工具試試"],a:1,
+ e:"追問最快：AI 還記得前面的內容，你只要講清楚哪裡要改。重開對話等於把前面給的資訊全丟掉。"},
+{d:5,q:"下面哪一個「不該」貼給 AI？",o:["一篇公開的新聞報導","客人的姓名、電話和病歷資料","你自己寫的草稿"],a:1,
+ e:"個資跟機密一旦貼上去就很難收回，有些平台可能拿去訓練。客人的個人資料一律不要貼。"},
+{d:0,q:"下面哪一個指令，AI 最可能一次就給你能用的結果？",o:["幫我排下週的班表","幫我排下週的班表，公平一點","你是店長，幫我排下週三個人的班表，每人每週休兩天、週末至少兩人在班，用表格呈現"],a:2,
+ e:"C 四件事都講了：角色（店長）、情境（三個人、下週）、目標（班表）、限制（休兩天、週末兩人、表格）。「公平一點」太模糊，AI 只能猜。"},
+{d:0,q:"AI 的建議很籠統（例如「多方評估再做決定」），哪一句追問最有用？",o:["再詳細一點","給我兩個今天就能做的具體做法，每個一句話","你確定嗎？"],a:1,
+ e:"「再詳細一點」AI 只會把同樣的空話講長。B 指定了數量、時間、長度，逼它給出能執行的東西。"},
+{d:2,q:"想知道今天最新的颱風停班消息，哪個做法最可靠？",o:["直接問一般的聊天 AI","用有「上網搜尋」功能的 AI，並請它附上來源","問它昨天的新聞，自己推算"],a:1,
+ e:"AI 學到的資料有截止日，今天發生的事它不會知道，硬問只會亂猜。要即時消息就用會上網查的 AI，而且請它附來源，你才能點進去確認。"},
+{d:2,q:"一份 30 頁的 PDF 合約想請 AI 整理重點，第一步怎麼做？",o:["貼其中一小段就好","用能上傳檔案的 AI，直接上傳整份","憑記憶跟 AI 描述合約內容"],a:1,
+ e:"很多 AI 可以直接讀檔案。給它完整原文，它才不會漏掉你沒貼到的條款；憑記憶描述，等於讓它根據你的誤解做整理。"},
+{d:1,q:"AI 幫你寫好一則活動公告，發出去前最該檢查什麼？",o:["字數夠不夠長","日期、價格、地址這些事實有沒有錯","形容詞用得夠不夠多"],a:1,
+ e:"文字順不順可以慢慢改，事實寫錯就是出包：日期錯了人家白跑、價格錯了你得認。AI 常常自己「補」一個看起來合理的數字，發出去前逐項對過。"},
+{d:4,q:"想讓 AI 回答客人問題時照你們店的價目表跟規定講，最好的做法？",o:["相信 AI 自己知道","把價目表跟規定交給它當參考資料，並要它只根據這些資料回答","叫它講保守一點"],a:1,
+ e:"AI 不知道你店裡的規定，不給資料它只能編。把資料交給它當參考（很多工具可以存成「專案」一直帶著），再規定「資料裡沒有的就說不知道」。"},
+{d:5,q:"客人問某種保養品能不能治療痘痘，你請 AI 回答，最恰當的做法？",o:["直接把 AI 的回答轉給客人","當參考就好，醫療問題請客人問醫師，不自己下結論","叫 AI 講肯定一點比較專業"],a:1,
+ e:"醫療、法律、財務這種講錯會傷人的問題，AI 可以幫你整理資訊，但不能替你下結論，更不能用它的話對客人背書。"},
+{d:6,q:"跟 AI 聊了很久，它開始忘記你一開始講的條件，怎麼辦？",o:["在同一個對話一直提醒它","請它把目前的重點整理成摘要，開新對話貼上摘要再繼續","換一個 AI 從頭來"],a:1,
+ e:"對話太長會超過 AI 一次記得住的量，最前面的條件會被擠掉。請它先整理摘要，帶著摘要開新對話，等於幫它把記憶重新整理乾淨。"},
+{d:3,q:"同一件事你每週都要請 AI 做一次（例如整理週報），最省力的做法是？",o:["每次重新想、重新打一遍指令","把效果好的指令存成模板，每次只換內容","每週換不同的 AI 試試看"],a:1,
+ e:"效果好的指令是資產。存成模板、把會變的地方挖空，下次只填內容，品質也穩定。"},
+{d:3,q:"要辦一件複雜的事（例如一場小活動），怎麼交給 AI 最好？",o:["一句話全丟給它：「幫我辦一場活動」","先拆成幾步（目的→流程→報名訊息→檢查清單），一步一步請它做","等 AI 更聰明一點再說"],a:1,
+ e:"一句話丟大事，只會拿到一份很空的計畫。拆成小步、每一步交代清楚，每一步你也都能檢查。"}
+];
+const LV=[null,
+ {name:"初階",go:"從初階開始",desc:"你對 AI 的基本概念還有幾個洞——很正常，很多人用了很久都沒搞清楚「模型」「上下文」「幻覺」是什麼。<strong>先把名詞搞懂</strong>，後面練習會快很多。"},
+ {name:"中階",go:"從中階開始",desc:"基本概念你懂了，缺的是手感：下指令時把角色、情境、目標、限制講齊，拿到籠統的回答知道怎麼追問。<strong>這一階要你自己動手寫</strong>。"},
+ {name:"高階",go:"從高階開始",desc:"你已經會用 AI 了。接下來差的不是更多技巧，是<strong>把單點連成系統</strong>——重複的事變流程、好用的指令變模板、大事拆成小步。"}
+];
+let tIdx=0,tAns=[];
+function startTest(){tIdx=0;tAns=[];renderTestQ();show("s-test")}
+function renderTestQ(){
+  const it=TEST[tIdx];
+  $("t-count").textContent="第 "+(tIdx+1)+" / "+TEST.length+" 題";
+  $("t-prog").style.width=(tIdx/TEST.length*100)+"%";
+  $("t-q").textContent=it.q;
+  const box=$("t-opts");box.innerHTML="";
+  it.o.forEach((txt,i)=>{
+    const b=document.createElement("button");b.className="opt";
+    b.innerHTML=`<span class="opt-key">${"ABC"[i]}</span><span></span>`;b.lastChild.textContent=txt;
+    b.onclick=()=>testPick(i);box.appendChild(b);
+  });
+}
+function testPick(i){
+  if(tAns.length>tIdx)return;
+  tAns.push(i);
+  const it=TEST[tIdx];
+  $("t-opts").querySelectorAll(".opt").forEach((b,j)=>{
+    b.disabled=true;
+    if(j===it.a)b.classList.add("pick-right");else if(j===i)b.classList.add("pick-wrong");else b.classList.add("dim");
+  });
+  setTimeout(()=>{tIdx++;if(tIdx<TEST.length)renderTestQ();else finishTest()},620);
+}
+const testValid=()=>!!(S.test&&S.test.ans&&S.test.ans.length===TEST.length);
+function domScores(ans){
+  const s=DOMS.map(()=>0);
+  TEST.forEach((it,i)=>{if(ans[i]===it.a)s[it.d]++});
+  return s;
+}
+function finishTest(){
+  const ok=tAns.map((a,i)=>a===TEST[i].a);
+  const basic=ok.slice(0,4).filter(Boolean).length;
+  const score=ok.filter(Boolean).length;
+  // 基礎觀念錯 2 題以上先回初階；其餘看總分：12 題以上高階
+  const level = basic<3 ? 1 : (score>=12 ? 3 : 2);
+  S.level=level;S.test={score,ans:tAns.slice()};save();
+  showLevel();
+}
+function renderBars(){
+  const s=domScores(S.test.ans);
+  $("lv-bars").innerHTML="";
+  DOMS.forEach((name,i)=>{
+    const r=document.createElement("div");r.className="dom-row";
+    r.innerHTML=`<span class="dom-name"></span><span class="dom-bar"><span class="dom-fill s${s[i]}" style="display:block"></span></span><span class="dom-num">${s[i]}/2</span>`;
+    r.querySelector(".dom-name").textContent=name;
+    $("lv-bars").appendChild(r);
+  });
+  const weak=DOMS.map((n,i)=>[i,s[i]]).filter(x=>x[1]<2).sort((a,b)=>a[1]-b[1]).slice(0,2);
+  $("lv-weak").textContent = weak.length
+    ? "最該先補："+weak.map(([i])=>"「"+DOMS[i]+"」——"+DOM_TIP[i]).join("；")+"。"
+    : "7 項都拿滿了，基本功很扎實。接下來差的是把單點連成系統。";
+  // 固定開頭「練功房：」讓私訊紀錄算得出這 20 人裡有幾個是練功房帶來的
+  $("lv-dm").textContent = weak.length
+    ? "練功房：我最卡的是「"+DOMS[weak[0][0]]+"」"
+    : "練功房：我 7 項都拿滿了，想問怎麼把 AI 用得更深";
+  $("lv-dm-copy").textContent="複製這句";
+}
+$("lv-dm-copy").onclick=()=>{copyText($("lv-dm").textContent);$("lv-dm-copy").textContent="已複製，去 LINE 貼上"};
+function showLevel(){
+  const L=LV[S.level];
+  $("lv-name").textContent=L.name;
+  $("lv-score").textContent="答對 "+S.test.score+" / "+TEST.length+" 題";
+  $("lv-desc").innerHTML="<p>"+L.desc+"</p>";
+  renderBars();
+  $("lv-go").textContent=L.go;
+  $("lv-review").style.display="none";
+  $("lv-review-btn").textContent="看 "+TEST.length+" 題解析";
+  show("s-level");
+}
+function renderReview(){
+  const box=$("lv-review");box.innerHTML="";
+  TEST.forEach((it,i)=>{
+    const mine=S.test.ans[i],right=mine===it.a;
+    const d=document.createElement("div");d.className="rv-item";
+    d.innerHTML=`<div class="rv-q"><span class="rv-mark"></span></div><div class="rv-a"></div>`;
+    d.querySelector(".rv-mark").textContent=right?"✓":"✕";
+    d.querySelector(".rv-mark").style.color=right?"var(--ok)":"var(--no)";
+    d.querySelector(".rv-q").append((i+1)+". "+it.q+"（"+DOMS[it.d]+"）");
+    d.querySelector(".rv-a").textContent=(right?"":"你選：「"+it.o[mine]+"」。 ")+"正解：「"+it.o[it.a]+"」。 "+it.e;
+    box.appendChild(d);
+  });
+}
+
+/* ---------- 解鎖（交給文案工作台後端驗碼） ---------- */
+// 2026-09-29：M5 暫緩（9/27 改走成長型博主路線），高階跟中階一樣加 LINE 就解鎖
+const tierOK=n=> n===1 || S.tier==="line" || S.tier==="student";
+async function unlock(where){
+  const code=$(where+"-code").value.trim(), msg=$(where+"-msg");
+  if(!code){msg.textContent="先輸入解鎖碼";return}
+  msg.textContent="驗證中⋯";
+  let tier=null;
+  try{
+    const r=await fetch(UNLOCK_API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({code})});
+    if(r.status===200){tier=(await r.json()).tier}
+    else if(r.status===401){msg.textContent="這組碼不對，再檢查一下";return}
+    else if(r.status===429){msg.textContent="試太多次了，一小時後再試";return}
+    else{msg.textContent="驗證服務暫時有問題，晚點再試";return}
+  }catch(e){msg.textContent="現在連不上驗證服務，晚點再試";return}
+  if(tier==="student"){S.tier="student"}
+  else if(tier==="line"&&S.tier!=="student"){S.tier="line"}
+  save();$(where+"-code").value="";
+  msg.textContent="";toast("中階、高階都解鎖了 🎁");
+  openTier(where==="t2"?2:3);
+}
+
+/* ---------- 首頁進階區 ---------- */
+function refreshTiers(){
+  const lvEl=$("my-level");
+  if(S.level&&testValid()){lvEl.style.display="inline-block";lvEl.textContent="你的程度："+LV[S.level].name+"（"+S.test.score+"/"+TEST.length+"）・再測一次"}
+  else lvEl.style.display="none";
+  const tag=(n,open,openTxt,lockTxt)=>{const t=$("tag-"+n);t.className="tier-tag "+(open?"open":"lock");t.textContent=open?openTxt:lockTxt};
+  tag(1,true,"開放","");
+  tag(2,tierOK(2),"已解鎖","加 LINE 解鎖");
+  tag(3,tierOK(3),"已解鎖","加 LINE 解鎖");
+  document.querySelectorAll(".tier-card").forEach(c=>c.classList.toggle("mine",+c.dataset.tier===S.level));
+}
+function openTier(n){
+  if(n===1){renderT1();show("s-t1");return}
+  const id="t"+n, open=tierOK(n);
+  $(id+"-lock").style.display=open?"none":"block";
+  $(id+"-body").style.display=open?"block":"none";
+  if(n===2)renderGymStat();
+  show("s-"+id);
+}
+
+/* ---------- 初階：名詞小字典＋小測驗 ---------- */
+const GLOSSARY=[
+{t:"提示詞",en:"Prompt",d:"你打給 AI 的那句話／那段指令。AI 全部的判斷都只靠這句話，你沒講的它不知道。",a:"類比：跟餐廳點餐一樣，你沒說「不要香菜」，端上來就會有香菜。"},
+{t:"AI 模型",en:"Model",d:"你現在是在跟哪一個「大腦」講話。ChatGPT、Claude、Gemini 是不同公司做的不同模型，個性跟強項不太一樣。",a:"類比：像不同的顧問，同一個問題，找的人不同，建議的角度也不一樣。"},
+{t:"對話記憶／上下文",en:"Context",d:"在同一個對話裡，AI 會記得你們剛剛聊過什麼；開一個「新對話」，它就不記得之前講過的事了。",a:"類比：跟同一個人繼續聊 vs. 換一個完全沒見過你的人重新聊。"},
+{t:"生成",en:"Generate",d:"AI 產出東西的方式，不是「查」出正確答案，是根據學過的大量資料「組」出一個看起來合理的答案。",a:"這也是它有時候會講出聽起來很對、其實是錯的東西的原因（見下面「幻覺」）。"},
+{t:"幻覺",en:"Hallucination",d:"AI 有時候會很有自信地講出不存在的事、錯的數字、掰出來的來源——它不是故意騙你，是真的「以為」自己講對了。",a:"重要的事（價格、法規、數字）一定自己再查證一次。"},
+{t:"追問",en:"Follow-up",d:"針對 AI 剛剛的回答繼續調整，不是重開一個對話從頭來。追問通常比重問更快改到你要的樣子。",a:"類比：跟同事說「這裡講具體一點、那裡改成條列」，而不是叫他整份重做。"},
+{t:"角色設定",en:"System Prompt",d:"先跟 AI 說「你現在要扮演誰」。同一個問題，設定不同角色，回答的語氣跟角度會整個不一樣。",a:"中階「提問四要素」裡的「角色」那一格，練的就是這個。"},
+{t:"技能／外掛",en:"Skill / Tool",d:"很多 AI 工具可以另外「打開」特定本事，像是讀 PDF、上網查資料、畫圖——通常不用另外裝 App，在設定裡開啟就能用。",a:"類比：AI 本體像一個很會聊天的員工，技能／外掛就是額外發給他的工具箱。"},
+{t:"聯網搜尋",en:"Web Search",d:"AI 學到的資料有截止日，之後發生的事它不知道。有「上網搜尋」功能的 AI 會先去網路上找資料再回答，問即時消息（天氣、新聞、最新規定）要用這種，而且請它附來源。",a:"類比：一個是只靠記憶回答的人，一個是會先查資料再回答的人。"},
+{t:"專案／常駐設定",en:"Projects / Custom Instructions",d:"很多 AI 工具可以把你的背景資料（店的規定、價目表、你的身分）存起來，之後每次對話都自動帶著，不用每次重講；還能要求它只根據這些資料回答。",a:"類比：新同事第一天就拿到一本工作手冊，之後不用每件事都重新交代。"},
+{t:"Token",en:"Token",d:"AI 計算文字長度的單位，不完全等於一個字。每次能處理的量有上限，聊太長，AI 可能會開始「忘記」前面講過的內容。",a:"類比：便條紙大小有限，寫太多，前面的字就被擠出紙外。"}
+];
+const MINIQ=[
+{q:"你打給 AI 的那句話，官方名稱叫什麼？",o:["提示詞（Prompt）","關鍵字","通關密語"],a:0,e:"就是提示詞。它決定了 AI 這次要做什麼、怎麼做——講得越清楚，AI 猜的成分越少。"},
+{q:"AI 在同一個對話裡記得你們剛剛聊的內容，這叫什麼？",o:["雲端硬碟","對話記憶／上下文","自動儲存"],a:1,e:"開一個新對話，這份記憶就重置了，重要的背景要重新交代。"},
+{q:"AI 很有自信地講出不存在或錯誤的資訊，這叫什麼？",o:["當機","系統更新中","幻覺"],a:2,e:"是幻覺。它是真的「以為」自己對——重要的事一定自己查證。"},
+{q:"AI 第一次回答不夠好，比較快的做法是？",o:["開一個新對話重問","針對它的回答繼續追問","放棄改用別的方法"],a:1,e:"追問比重開快，因為 AI 還記得前面的內容，你只要講清楚哪裡要改。"},
+{q:"讓 AI 能讀 PDF、查資料、畫圖的額外功能叫什麼？",o:["技能／外掛（Skill）","會員專屬客服","病毒"],a:0,e:"技能／外掛。通常不用另外裝 App，設定裡開啟就能用。"}
+];
+let t1Done=false;
+function renderT1(){
+  if(t1Done)return;t1Done=true;
+  const gl=$("gl-list");
+  GLOSSARY.forEach(g=>{
+    const it=document.createElement("div");it.className="gl-item";
+    it.innerHTML=`<div class="gl-head"><span class="term"></span><span class="arr">▾</span></div><div class="gl-body"><div></div><div class="ana"></div></div>`;
+    const term=it.querySelector(".term");term.textContent=g.t;
+    const en=document.createElement("span");en.className="en";en.textContent="（"+g.en+"）";term.appendChild(en);
+    it.querySelector(".gl-body div").textContent=g.d;it.querySelector(".ana").textContent=g.a;
+    it.querySelector(".gl-head").onclick=()=>it.classList.toggle("open");
+    gl.appendChild(it);
+  });
+  const mq=$("mq-list");
+  MINIQ.forEach((m,qi)=>{
+    const w=document.createElement("div");w.className="mini-q";
+    w.innerHTML=`<p class="qq"></p><div class="opts"></div><div class="mini-ex"></div>`;
+    w.querySelector(".qq").textContent=(qi+1)+". "+m.q;
+    const ops=w.querySelector(".opts"),ex=w.querySelector(".mini-ex");
+    m.o.forEach((txt,i)=>{
+      const b=document.createElement("button");b.className="opt";
+      b.innerHTML=`<span class="opt-key">${"ABC"[i]}</span><span></span>`;b.lastChild.textContent=txt;
+      b.onclick=()=>{
+        ops.querySelectorAll(".opt").forEach((x,j)=>{x.disabled=true;if(j===m.a)x.classList.add("pick-right");else if(j===i)x.classList.add("pick-wrong");else x.classList.add("dim")});
+        ex.style.display="block";ex.textContent=(i===m.a?"✓ 答對了！":"這題選錯了，沒關係——")+m.e;
+      };
+      ops.appendChild(b);
+    });
+    mq.appendChild(w);
+  });
+}
+
+/* ---------- 中階：三種練習（情境刻意避開行銷文案，那塊是文案工作台的事） ---------- */
+const A_SCN=[
+{k:"喬班表",role:"一個很會排解人際卡點、講話直接但不傷人的朋友",ctx:"跟同事各排各的班表，時段一直對不上，已經來回喬了三次",goal:"幫我想一句話，主動提出兩個可行時段讓對方選",lim:"不要聽起來在指責對方、語氣平和、50 字以內"},
+{k:"待辦排優先順序",role:"一個很會抓重點的助理",ctx:"今天有八件事要做，只有四小時，其中兩件明天就要交",goal:"幫我排出先後順序，並標出哪些可以延後",lim:"條列、每件附一句理由、不超過十行"},
+{k:"看懂合約條款",role:"一個會用白話講法律的朋友（不是律師）",ctx:"我是承租方，要簽店面租約，其中一條在講提前解約的違約金",goal:"用白話告訴我這條對我有什麼風險",lim:"不要法律術語、三點以內、不確定的地方直接說不確定"},
+{k:"拿不定主意的決定",role:"一個會幫人理清思路、但不替人做決定的朋友",ctx:"考慮要不要多請一個兼職，預算有限但最近真的忙不過來",goal:"列出請與不請各自的好處跟代價",lim:"不要直接叫我做決定、每邊最多三點、最後問我一個幫我判斷的問題"},
+{k:"整理對話重點",role:"一個很會做會議紀錄的秘書",ctx:"等一下我會貼一段跟廠商的長對話，裡面談了價格、交期跟付款方式",goal:"整理成三段重點，並列出雙方各自答應要做的事",lim:"不要加入對話裡沒提到的內容、每段三行內"}
+];
+const B_SCN=[
+{k:"喬班表",d:"您好，關於本週排班，如需調整請提前告知，我們會盡量配合安排，謝謝合作。",n:"官腔、沒有給任何具體時段，對方看完還是不知道怎麼喬。"},
+{k:"待辦排優先順序",d:"1. 回覆客戶訊息　2. 整理發票　3. 訂購耗材　4. 打掃環境　5. 規劃下週行程",n:"AI 只是把你講的順序照抄一遍，沒有真的排出誰先誰後。"},
+{k:"看懂合約條款",d:"此條款規定甲方於乙方違反約定時，得依相關法律規定主張權利並請求損害賠償。",n:"把條款換句話說，但講出來還是一樣難懂。"},
+{k:"拿不定主意的決定",d:"這是一個需要謹慎評估的決定，建議您多方蒐集資訊，並考慮自身情況後再做選擇。",n:"講了等於沒講，是萬用廢話模板。"}
+];
+const C_SCN=[
+{k:"早餐桌面",v:"木頭桌上的一份早餐：吐司、荷包蛋、一杯咖啡，從正上方俯拍"},
+{k:"雨天咖啡店",v:"下雨天街角的小咖啡店，玻璃窗上有雨滴，裡面亮著暖黃燈光"},
+{k:"新年賀卡",v:"一張新年賀卡插畫，中間一盞紅色燈籠，周圍有小煙火"},
+{k:"讀書會海報",v:"一場讀書會的宣傳海報，畫面中間是一疊書跟一杯熱茶"}
+];
+let aKey=A_SCN[0].k,bKey=B_SCN[0].k;
+function chipRow(boxId,list,active,onPick){
+  const box=$(boxId);box.innerHTML="";
+  list.forEach(s=>{
+    const c=document.createElement("button");c.className="chip"+(s.k===active?" on":"");c.textContent=s.k;
+    c.onclick=()=>{box.querySelectorAll(".chip").forEach(x=>x.classList.remove("on"));c.classList.add("on");onPick(s)};
+    box.appendChild(c);
+  });
+}
+function setA(s){aKey=s.k;$("a-role").placeholder="例如："+s.role;$("a-ctx").placeholder="例如："+s.ctx;$("a-goal").placeholder="例如："+s.goal;$("a-lim").placeholder="例如："+s.lim;$("a-fb").innerHTML=""}
+function setB(s){bKey=s.k;$("b-draft").innerHTML="<strong>AI 給的第一版回答：</strong><br>";$("b-draft").append("「"+s.d+"」");
+  const n=document.createElement("span");n.className="note";n.textContent="問題在哪："+s.n;$("b-draft").appendChild(n);$("b-fb").innerHTML=""}
+chipRow("a-chips",A_SCN,aKey,setA);setA(A_SCN[0]);
+chipRow("b-chips",B_SCN,bKey,setB);setB(B_SCN[0]);
+chipRow("c-chips",C_SCN,null,s=>{$("c-sub").value=s.v});
+
+const BADGES=[[10,"🥋 練功達人——手上已經有一份「AI 共事手感」的證明了"],[6,"🔥 小有心得——再練幾次就要出師了"],[3,"🌱 漸入佳境——抓到跟 AI 共事的節奏了"],[1,"👣 新手上路——第一步踩出去了"]];
+function renderGymStat(){
+  const n=S.gym.length;
+  $("gym-stat").textContent=n?"已完成 "+n+" 次練習":"還沒練過，挑一個開始吧";
+  const b=BADGES.find(x=>n>=x[0]);$("gym-badge").textContent=b?b[1]:"";
+}
+function logGym(m,s){S.gym.push({m,s,t:Date.now()});save();renderGymStat()}
+
+$("a-go").onclick=()=>{
+  const f={角色:val("a-role"),情境:val("a-ctx"),目標:val("a-goal"),限制:val("a-lim")};
+  const miss=Object.keys(f).filter(k=>!f[k]);
+  if(miss.length){feedback("a-fb",false,"還缺「"+miss.join("、")+"」沒填。少一格，AI 猜的成分就變多——補完再交一次，看看差別。");return}
+  const prompt="你是"+f.角色+"。現在的情況是："+f.情境+"。請幫我"+f.目標+"。請注意："+f.限制+"。";
+  feedback("a-fb",true,
+    pick1(["👍 四個要素都到位，這已經是一個合格的指令：","🎯 四格都填滿了，指令組出來了：","✅ 到位！這句拿去問 AI，猜的成分已經很低："])+"\n\n"+prompt+"\n\n教練點評：\n・"+
+    pick1(["情境寫得越具體（有數字、有時間、有卡在哪），AI 給的東西越不像罐頭","角色講清楚「什麼樣的人」，比只寫職稱更能讓 AI 抓到你要的口氣","目標寫成「一件可以直接交出來的東西」，AI 才不會給你一堆選項讓你自己挑"])+
+    "\n・限制記得寫「不要什麼」，比只寫「要什麼」更能擋住 AI 自己亂加的東西\n・下一步：貼去 AI 試試，回答不滿意，就去「追問三連問」練怎麼問下去",prompt);
+  logGym("提問四要素",aKey);
+};
+$("b-go").onclick=()=>{
+  const got=[["具體化",val("b-1")],["修正假設",val("b-2")],["換格式",val("b-3")]].filter(x=>x[1]);
+  if(!got.length){feedback("b-fb",false,"三句追問至少寫一句看看——就算只練「更具體」也可以。");return}
+  feedback("b-fb",true,
+    pick1(["👍 你這次練了：","🎯 這輪追問練到了：","✅ 教練看到你練的角度："])+got.map(x=>x[0]).join("、")+"。\n\n教練點評：\n・追問不用長，一句講清楚「哪裡不對＋要改成怎樣」就有效\n・"+
+    (got.length<3?"還有沒練到的角度。具體化／修正假設／換格式這三招，不管叫 AI 做什麼事都用得上，下次三句都練練看":"三個角度都練到了，這就是最泛用的「三連問」——之後 AI 給你任何籠統的答案，都可以直接套")+
+    "\n・把「原因」講出來（例如「這方法我試過沒用」，而不是只說「重想」），AI 才知道往哪個方向改");
+  logGym("追問三連問",bKey);
+};
+$("c-go").onclick=()=>{
+  const f={主體:val("c-sub"),風格:val("c-sty"),氛圍:val("c-mood")};
+  const miss=Object.keys(f).filter(k=>!f[k]);
+  if(miss.length){feedback("c-fb",false,"還缺「"+miss.join("、")+"」。畫圖 AI 特別需要具體描述，沒填的地方它會自己亂補。");return}
+  const prompt=f.主體+"，"+f.風格+"，整體氛圍："+f.氛圍;
+  feedback("c-fb",true,
+    pick1(["可以送出的描述組出來了：","三格拼起來，已經夠具體了：","這句可以拿去畫圖了："])+"\n\n"+prompt+
+    "\n\n教練點評：\n・主體寫出「在哪裡、什麼角度」，比只寫一個名詞更容易出你要的畫面\n・風格用「底片感、水彩、插畫、電影感」這種明確的詞，AI 比聽「好看」準得多\n・出圖後哪裡不滿意，只針對那一處追加描述，不要整句重寫",prompt);
+  logGym("圖像提示詞",f.主體.slice(0,12));
+};
+
+/* ---------- 高階：把單點連成系統（加 LINE 解鎖） ---------- */
+const T3_PREVIEW=[["工作流步驟卡","把每週重複做的事寫成步驟卡，標出哪一步給 AI、哪一步自己把關"],["指令模板","把好用的指令挖空，變成一用再用的模板"],["大事拆小步","把一件大事拆成 AI 做得來的小步驟，每一步都交代清楚"]];
+T3_PREVIEW.forEach(([t,d])=>{const li=document.createElement("li");li.innerHTML=`<div class="ll-t"></div><div class="ll-d"></div>`;
+  li.querySelector(".ll-t").textContent="🔒 "+t;li.querySelector(".ll-d").textContent=d;$("t3-preview").appendChild(li)});
+
+$("w-go").onclick=()=>{
+  const task=val("w-task"),when=val("w-when"),steps=lines("w-steps"),chk=val("w-check");
+  const miss=[];if(!task)miss.push("這件事是什麼");if(!when)miss.push("觸發時機");if(steps.length<3)miss.push("至少三個步驟");if(!chk)miss.push("自己把關的那一步");
+  if(miss.length){feedback("w-fb",false,"還缺：「"+miss.join("、")+"」。步驟卡的價值在於下次照著做不用動腦，缺一塊就得重想。");return}
+  const card="【步驟卡】"+task+"\n觸發時機："+when+"\n"+steps.map((s,i)=>(i+1)+". "+s).join("\n")+"\n⚠ 自己把關："+chk;
+  const hasAI=steps.some(s=>/ai/i.test(s));
+  feedback("w-fb",true,"步驟卡組好了，存起來下次照做：\n\n"+card+"\n\n教練點評：\n・"+
+    (hasAI?"你有寫明哪一步交給 AI，這張卡下次拿出來就能直接執行":"目前沒有一步寫明「交給 AI」。把最花時間、最機械的那一步標出來交給 AI，這張卡才真的幫你省時間")+
+    "\n・「自己把關」那一步不要省——AI 不知道你知道的現場狀況，最後一道判斷要留給自己\n・同一件事照卡做過三次，再回頭改卡：哪一步其實可以合併、哪一步可以整個交給 AI",card);
+};
+$("p-go").onclick=()=>{
+  const orig=val("p-orig"),vars=val("p-vars").split(/[,，、]/).map(s=>s.trim()).filter(Boolean);
+  if(!orig||!vars.length){feedback("p-fb",false,"原本的指令跟「會變的地方」都要填。會變的地方用逗號分開，例如：客人名字,抱怨的事");return}
+  let tpl=orig;const notFound=[];
+  vars.forEach((v,i)=>{if(tpl.includes(v))tpl=tpl.split(v).join("【＿＿"+(i+1)+"】");else notFound.push(v)});
+  if(notFound.length===vars.length){feedback("p-fb",false,"你列的「會變的地方」在原本的指令裡都找不到，要一字不差照原句抄。找不到的："+notFound.join("、"));return}
+  const legend=vars.filter(v=>!notFound.includes(v)).map(v=>"【＿＿"+(vars.indexOf(v)+1)+"】＝ 原本是「"+v+"」").join("\n");
+  feedback("p-fb",true,"模板做好了：\n\n"+tpl+"\n\n"+legend+(notFound.length?"\n\n（這幾個在原句裡找不到，沒有挖空："+notFound.join("、")+"）":"")+
+    "\n\n教練點評：\n・角色、語氣、長度限制這些「不變的部分」才是模板的價值，要保留下來\n・把模板存在手機備忘錄或常用片語，下次貼上只換空格\n・用了幾次發現某個空格其實都填一樣的，就把它寫死，模板越用越精",tpl);
+};
+$("d-go").onclick=()=>{
+  const goal=val("d-goal"),steps=lines("d-steps"),first=val("d-first");
+  const miss=[];if(!goal)miss.push("最後想完成什麼");if(steps.length<3)miss.push("至少拆成三步");if(!first)miss.push("第一步怎麼交代");
+  if(miss.length){feedback("d-fb",false,"還缺：「"+miss.join("、")+"」。");return}
+  const plan="【目標】"+goal+"\n"+steps.map((s,i)=>"第 "+(i+1)+" 步："+s).join("\n")+"\n\n【第一步交給 AI 的指令】\n"+first;
+  const hasRole=/你是/.test(first);
+  feedback("d-fb",true,"拆解清單組好了：\n\n"+plan+"\n\n教練點評：\n・"+
+    (hasRole?"第一步的指令有給角色，很好——每一步都可以換最適合的角色":"第一步的指令還沒給角色。加一句「你是＿＿」，AI 的回答會準很多")+
+    "\n・每一步做完，把結果貼回同一個對話再交代下一步，AI 會記得前面的決定\n・拆完才發現某一步太大？那一步就再拆一次，拆到 AI 一次做得完為止",plan);
+};
+
+/* ---------- 綁定 ---------- */
+$("btn-test").onclick=startTest;
+$("btn-cert-next").onclick=startTest;
+$("t-quit").onclick=()=>{refreshHome();show("s-home")};
+$("lv-go").onclick=()=>openTier(S.level||1);
+$("lv-retest").onclick=startTest;
+$("lv-review-btn").onclick=()=>{const b=$("lv-review");if(b.style.display==="none"){renderReview();b.style.display="block";$("lv-review-btn").textContent="收起解析"}else{b.style.display="none";$("lv-review-btn").textContent="看 "+TEST.length+" 題解析"}};
+$("t1-next").onclick=()=>openTier(2);
+$("t2-next").onclick=()=>openTier(3);
+document.querySelectorAll(".tier-card").forEach(c=>c.onclick=()=>openTier(+c.dataset.tier));
+document.querySelectorAll("[data-home]").forEach(b=>b.onclick=()=>{refreshHome();show("s-home")});
+document.querySelectorAll("[data-unlock]").forEach(b=>b.onclick=()=>unlock(b.dataset.unlock));
+["t2-code","t3-code"].forEach(id=>$(id).addEventListener("keydown",e=>{if(e.key==="Enter")unlock(id.slice(0,2))}));
+document.querySelectorAll("[data-seg]").forEach(seg=>{
+  seg.querySelectorAll("button").forEach(b=>b.onclick=()=>{
+    seg.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));
+    b.closest(".screen").querySelectorAll(".pane").forEach(p=>p.classList.toggle("on",p.id===b.dataset.p));
+  });
+});
 
 refreshHome();
 </script>
