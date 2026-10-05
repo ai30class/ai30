@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>30 秒 AI 挑戰｜AI30CLASS</title>
 <style>
 :root{
@@ -153,7 +153,7 @@ h1.big{font-size:33px;font-weight:600;margin:0 0 10px;letter-spacing:-.01em;line
 .cert-preview{border:1px solid var(--line-strong);border-radius:var(--r);overflow:hidden;margin:18px 0}
 .cert-preview canvas{display:block;width:100%;height:auto}
 .finish-note{font-size:12.5px;color:var(--text-faint);line-height:1.7;margin-top:14px}
-.toast{position:fixed;left:50%;bottom:34px;transform:translateX(-50%) translateY(20px);
+.toast{position:fixed;left:50%;bottom:34px;transform:translateX(-50%) translateY(20px);white-space:nowrap;max-width:92vw;overflow:hidden;text-overflow:ellipsis;
   background:var(--accent);color:#1A1533;padding:11px 22px;border-radius:999px;font-size:13.5px;
   font-weight:500;opacity:0;transition:.28s;pointer-events:none;z-index:99}
 .toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
@@ -223,7 +223,7 @@ h1.big{font-size:33px;font-weight:600;margin:0 0 10px;letter-spacing:-.01em;line
 .chip:hover{border-color:var(--line-strong);color:var(--text)}
 .chip.on{background:var(--accent);border-color:var(--accent);color:#1A1533;font-weight:600}
 .fld-lbl{display:block;font-size:13px;color:var(--text-dim);margin:12px 0 6px}
-.fld{width:100%;background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:14.5px;color:var(--text);
+.fld{width:100%;background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:16px;color:var(--text);
   font-family:inherit;resize:vertical;min-height:58px;line-height:1.6}
 .fld:focus{outline:none;border-color:var(--accent)}
 .fld::placeholder{color:var(--text-faint)}
@@ -239,7 +239,7 @@ input.fld{min-height:0}
 .lock-box p{font-size:13.5px;color:var(--text-dim);margin:0 0 14px;line-height:1.7}
 a.btn{text-decoration:none;text-align:center}
 .code-row{display:flex;gap:8px;margin-top:12px}
-.code-row input{flex:1;min-width:0;background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:15px;
+.code-row input{flex:1;min-width:0;background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:16px;
   color:var(--text);font-family:inherit;text-align:center;letter-spacing:.06em}
 .code-row input:focus{outline:none;border-color:var(--accent)}
 .code-row .btn{width:auto;padding:12px 20px;margin:0}
@@ -312,7 +312,7 @@ a.btn{text-decoration:none;text-align:center}
       <button class="back" id="btn-back-home">← 回首頁</button>
     </div>
     <div id="map-body"></div>
-    <div class="unlock-all"><button id="btn-unlock">解鎖全部 30 關（測試用）</button></div>
+    <div class="unlock-all" id="unlock-all" style="display:none"><button id="btn-unlock">解鎖全部 30 關（測試用）</button></div>
   </div>
 
   <!-- GAME -->
@@ -322,6 +322,7 @@ a.btn{text-decoration:none;text-align:center}
         <div class="day-badge" id="g-day">Day 1 ・ W1 認知升級</div>
         <div class="day-badge" style="color:var(--text-faint);font-size:11.5px" id="g-title">你只給了它一條線索</div>
       </div>
+      <button class="back" id="g-quit" style="margin-left:auto;margin-right:10px">✕ 離開</button>
       <div class="timer" id="timer">
         <svg width="52" height="52">
           <circle class="timer-ring-bg" cx="26" cy="26" r="22" fill="none" stroke-width="3.5"/>
@@ -347,7 +348,8 @@ a.btn{text-decoration:none;text-align:center}
     </div>
     <div class="progress-bar"><div class="progress-fill" id="prog2"></div></div>
     <div class="verdict" id="r-verdict"></div>
-    <div class="q-text" id="r-q" style="font-size:14px;color:var(--text-dim);margin-bottom:18px"></div>
+    <div class="q-text" id="r-q" style="font-size:14px;color:var(--text-dim);margin-bottom:8px"></div>
+    <div class="q-text" id="r-ans" style="font-size:14px;color:var(--ok);margin-bottom:18px"></div>
     <div class="explain-box" id="r-explain"></div>
     <div class="tip-box">
       <div class="tip-head"><span>今日技巧・可直接複製</span>
@@ -359,6 +361,7 @@ a.btn{text-decoration:none;text-align:center}
       <button class="btn btn-primary" id="btn-next" style="margin-top:0">下一關</button>
     </div>
     <p class="hint" id="r-hint"></p>
+    <button class="btn btn-ghost" id="btn-r-home">回首頁</button>
   </div>
 
   <!-- CERTIFICATE -->
@@ -578,13 +581,13 @@ a.btn{text-decoration:none;text-align:center}
 const LEVELS=[
 {d:1,w:"W1 認知升級",t:"你只給了它一條線索",
 q:"你想讓 AI 幫你寫一封請假信。哪一句最可能讓你拿到「改都不用改」的版本？",
-o:["幫我寫請假信","幫我寫請假信，語氣客氣一點","先別寫，先問我三個問題，問完再寫"],a:2,
-e:["A 只給一條線索，AI 只能回最安全、最普通的那個版本——跟你上網找範本差不多。","B 多給一個條件，好一點，但它還是不知道你請幾天、跟主管熟不熟。","C 厲害在把主導權反過來：不是你去想「我該講什麼」，是<strong>它來問你</strong>。缺什麼補什麼，問完的版本通常一次到位。"],
+o:["幫我寫請假信","先別寫，先問我三個問題，問完再寫","幫我寫請假信，語氣客氣一點"],a:1,
+e:["A 只給一條線索，AI 只能回最安全、最普通的那個版本——跟你上網找範本差不多。","C 多給一個條件，好一點，但它還是不知道你請幾天、跟主管熟不熟。","B 厲害在把主導權反過來：不是你去想「我該講什麼」，是<strong>它來問你</strong>。缺什麼補什麼，問完的版本通常一次到位。"],
 p:"先別急著寫，先問我三個問題，確認清楚再寫。"},
 {d:2,w:"W1 認知升級",t:"你漏了三件事",
 q:"要跟客戶改約訪時間。哪一句最可能寫出「直接能寄」的信？",
-o:["幫我寫一封信跟客戶改時間","幫我寫一封專業的信","幫我寫給客戶的信，原本約週三下午兩點，要改到週五上午，語氣客氣，順便說一下抱歉造成不便"],a:2,
-e:["A 跟 B 的問題一樣：AI 不知道給誰看、為什麼要改、要什麼語氣，只能亂猜，最後你還是得自己補。","C 把三件事都講了——<strong>給誰看</strong>（客戶）、<strong>為什麼</strong>（週三改週五）、<strong>什麼語氣</strong>（客氣＋道歉）。它不用猜，就能直接寫好。","講白了：你漏掉的資訊，AI 不會自己補，它只會用最普通的方式填滿。"],
+o:["幫我寫給客戶的信，原本約週三下午兩點，要改到週五上午，語氣客氣，順便說一下抱歉造成不便","幫我寫一封信跟客戶改時間","幫我寫一封專業的信"],a:0,
+e:["B 跟 C 的問題一樣：AI 不知道給誰看、為什麼要改、要什麼語氣，只能亂猜，最後你還是得自己補。","A 把三件事都講了——<strong>給誰看</strong>（客戶）、<strong>為什麼</strong>（週三改週五）、<strong>什麼語氣</strong>（客氣＋道歉）。它不用猜，就能直接寫好。","講白了：你漏掉的資訊，AI 不會自己補，它只會用最普通的方式填滿。"],
 p:"你是我秘書。我講事情，你直接寫成正式信。"},
 {d:3,w:"W1 認知升級",t:"它不敢講深，是你沒給線索",
 q:"想讓 AI 幫你寫一篇減肥的 IG 貼文。哪一句最可能寫出「能直接發」的內容？",
@@ -598,18 +601,18 @@ e:["A 會拿到「香醇好喝值得品味」——放哪個牌子都能用的�
 p:"你是＿＿（身分），擅長＿＿。幫我＿＿。"},
 {d:5,w:"W1 認知升級",t:"第一版不是答案，是草稿",
 q:"AI 給你的 IG 開頭是「今天想跟大家分享一個小技巧」。太普通了，你接下來怎麼做最好？",
-o:["重新下一個完全不同的指令，再來一次","跟它說「加個真實數據」","跟它說「把它寫得更好一點」"],a:1,
-e:["C 最常聽到，也最沒用——「更好」是什麼意思？AI 只能再猜一次。","A 是把草稿扔掉重來，前面給的資訊全浪費了。","B 才是對的：<strong>一次只改一件事</strong>。加數據就是加數據，不要同時叫它改語氣又縮字數。改完不滿意，再指定下一個變因。你看，第一個回答本來就不是最終答案，是草稿——AI 預設你會繼續改。"],
+o:["跟它說「加個真實數據」","重新下一個完全不同的指令，再來一次","跟它說「把它寫得更好一點」"],a:0,
+e:["C 最常聽到，也最沒用——「更好」是什麼意思？AI 只能再猜一次。","B 是把草稿扔掉重來，前面給的資訊全浪費了。","A 才是對的：<strong>一次只改一件事</strong>。加數據就是加數據，不要同時叫它改語氣又縮字數。改完不滿意，再指定下一個變因。你看，第一個回答本來就不是最終答案，是草稿——AI 預設你會繼續改。"],
 p:"加個真實數據。\n縮成 15 字，要有懸念。"},
 {d:6,w:"W1 認知升級",t:"跑車拿去買菜",
 q:"下面哪一個「不像」在浪費 AI？",
-o:["問完看一眼就關掉","只拿它查事實，例如「台北到高雄多遠」","先講清楚給誰看、要什麼結果，再讓它寫"],a:2,
-e:["A 是「只問不追」——你拿到的其實只是草稿。","B 是把它當 Google——這種題目 Google 更快，你等於拿跑車去買菜。","C 才是協作：先給資訊，再來回討論。講白了這幾天教的都是同一件事：<strong>把 AI 從「查詢工具」變成「協作夥伴」</strong>。"],
+o:["問完看一眼就關掉","先講清楚給誰看、要什麼結果，再讓它寫","只拿它查事實，例如「台北到高雄多遠」"],a:1,
+e:["A 是「只問不追」——你拿到的其實只是草稿。","C 是把它當 Google——這種題目 Google 更快，你等於拿跑車去買菜。","B 才是協作：先給資訊，再來回討論。講白了這幾天教的都是同一件事：<strong>把 AI 從「查詢工具」變成「協作夥伴」</strong>。"],
 p:"我要什麼結果？\n給誰看？\n長度、語氣怎樣？"},
 {d:7,w:"W1 認知升級",t:"學完就忘，怎麼解",
 q:"學完一週了，怎麼做最不容易忘？",
-o:["把影片存進收藏，有空再回來看","把重點抄成一份筆記","做成一份檢查清單，釘在對話視窗旁邊"],a:2,
-e:["A 大概不會再打開——收藏夾是知識的墳墓，你我都知道。","B 好一點，但筆記寫完通常也躺在某個資料夾裡。","C 厲害在「<strong>用的當下就在複習</strong>」：你每次下指令前掃一眼，掃久了就變直覺。這是學習通病——知識沒變成隨時能翻的東西，就一定會慢慢忘光。"],
+o:["做成一份檢查清單，釘在對話視窗旁邊","把影片存進收藏，有空再回來看","把重點抄成一份筆記"],a:0,
+e:["B 大概不會再打開——收藏夾是知識的墳墓，你我都知道。","C 好一點，但筆記寫完通常也躺在某個資料夾裡。","A 厲害在「<strong>用的當下就在複習</strong>」：你每次下指令前掃一眼，掃久了就變直覺。這是學習通病——知識沒變成隨時能翻的東西，就一定會慢慢忘光。"],
 p:"幫我把＿＿、＿＿、＿＿整理成檢查清單，每項一句話，方便打字前掃一眼。"},
 {d:8,w:"W2 對話寫作",t:"看了三次還不會回的訊息",
 q:"對方傳來「你怎麼都不回訊息？」，你看了三次還是不知道怎麼回。哪一句最可能拿到得體的回覆？",
@@ -618,13 +621,13 @@ e:["A 什麼都沒給，AI 只能給一個最安全的罐頭回覆。","B 有方
 p:"這句話會不會太冷淡？"},
 {d:9,w:"W2 對話寫作",t:"空白框發呆症",
 q:"靈感卡住，盯著空白框發呆。這時候怎麼下指令最好？",
-o:["幫我想一個 IG 貼文點子","幫我寫一篇學 AI 的貼文","幫我寫五個 IG 開頭，主題是學 AI，風格分別是幽默、專業、反問、故事、數據"],a:2,
-e:["A 跟 B 都是要「一個」，你拿到什麼就用什麼，完全沒有選擇空間。","C 一次要五個不同角度——AI 寫東西幾乎零成本，讓它發散，你只要挑、微調，比從零創作輕鬆太多。","而且指定五種風格，等於逼它<strong>不能偷懶給你五個長得一樣的版本</strong>。"],
+o:["幫我想一個 IG 貼文點子","幫我寫五個 IG 開頭，主題是學 AI，風格分別是幽默、專業、反問、故事、數據","幫我寫一篇學 AI 的貼文"],a:1,
+e:["A 跟 C 都是要「一個」，你拿到什麼就用什麼，完全沒有選擇空間。","B 一次要五個不同角度——AI 寫東西幾乎零成本，讓它發散，你只要挑、微調，比從零創作輕鬆太多。","而且指定五種風格，等於逼它<strong>不能偷懶給你五個長得一樣的版本</strong>。"],
 p:"把這句改得更有畫面一點。"},
 {d:10,w:"W2 對話寫作",t:"會議記不完",
 q:"你要把一場會議的錄音交給 AI 整理成筆記。哪一個做法整理出來的結果最貼你要的？",
-o:["幫我整理成重點","幫我整理成重點條列，標出待辦事項跟負責人","開會前先跟它說「等一下我貼逐字稿，特別注意跟預算、時程有關的內容」，會後再請它整理"],a:2,
-e:["A 會拿到一堆摘要，但你還是得自己去找待辦在哪。","B 好很多，直接給你待辦跟負責人。","C 多做一步：<strong>開會前就先設定重點方向</strong>。AI 知道你關心預算跟時程，整理出來的重點就不會平均分給每個話題，而是往你要的方向集中。"],
+o:["幫我整理成重點","開會前先跟它說「等一下我貼逐字稿，特別注意跟預算、時程有關的內容」，會後再請它整理","幫我整理成重點條列，標出待辦事項跟負責人"],a:1,
+e:["A 會拿到一堆摘要，但你還是得自己去找待辦在哪。","C 好很多，直接給你待辦跟負責人。","B 多做一步：<strong>開會前就先設定重點方向</strong>。AI 知道你關心預算跟時程，整理出來的重點就不會平均分給每個話題，而是往你要的方向集中。"],
 p:"等一下我貼逐字稿，特別注意跟＿＿有關的內容。"},
 {d:11,w:"W2 對話寫作",t:"翻譯腔",
 q:"一段英文翻成中文，卡卡的、翻譯腔很重。加哪一句最有用？",
@@ -633,8 +636,8 @@ e:["A 就是一般翻譯軟體在做的事：逐字對應，卡是正常的。",
 p:"給我正式、口語、給長輩看三種版本。"},
 {d:12,w:"W2 對話寫作",t:"角色寫對了，那寫給誰看？",
 q:"要寫一段賣面膜的文案。哪一句寫出來的文案最精準？",
-o:["你是行銷專家，幫我寫一段賣面膜的文案","幫我寫一段很厲害的賣面膜文案","你是十年經驗的美妝行銷專家，幫我寫一段賣面膜的文案，寫給大學生看，他們沒什麼預算，很在意 CP 值"],a:2,
-e:["A 你已經會給角色了，但寫出來的東西是不是常「感覺對，卻不是你要的」？因為少了受眾。","同一個專家，寫給二十歲學生跟寫給五十歲老闆，用詞語氣完全不一樣。<strong>你只給角色沒給受眾，AI 只能猜一個中間值</strong>——而那個中間值，對誰都不夠貼。","C 兩個都給了，連「沒預算、在意 CP 值」這種細節都有，它不用猜。"],
+o:["你是十年經驗的美妝行銷專家，幫我寫一段賣面膜的文案，寫給大學生看，他們沒什麼預算，很在意 CP 值","你是行銷專家，幫我寫一段賣面膜的文案","幫我寫一段很厲害的賣面膜文案"],a:0,
+e:["B 你已經會給角色了，但寫出來的東西是不是常「感覺對，卻不是你要的」？因為少了受眾。","同一個專家，寫給二十歲學生跟寫給五十歲老闆，用詞語氣完全不一樣。<strong>你只給角色沒給受眾，AI 只能猜一個中間值</strong>——而那個中間值，對誰都不夠貼。","A 兩個都給了，連「沒預算、在意 CP 值」這種細節都有，它不用猜。"],
 p:"你是＿＿，擅長＿＿。\n你寫的東西是給＿＿看的，他們在意＿＿。"},
 {d:13,w:"W2 對話寫作",t:"講半天它不懂",
 q:"你想寫某種風格的文案，但怎麼形容 AI 都抓不到那個感覺。這時最快的方法是？",
@@ -643,18 +646,18 @@ e:["A 最累，而且感覺本來就很難用文字精準講清楚——你有�
 p:"混合這幾種風格。"},
 {d:14,w:"W2 對話寫作",t:"把技巧串成作品",
 q:"你學了一堆技巧，卻從沒產出過一件完整作品。正確的順序是？",
-o:["先想好完美指令，一次就讓 AI 寫出成品","讓 AI 一直寫，寫到你自己滿意為止","給角色情境 → 出第一版 → 追問修到滿意 → 自己微調收尾"],a:2,
-e:["A 會卡在「完美指令」，結果永遠停在第一步。","B 會陷入無限修改，因為你沒設定什麼叫夠好。","C 就是這週學的四步：先設角色情境讓它出草稿，不夠精準就追問修正，最後自己順一下語氣。<strong>技巧是分開學的，串成流程才會變成作品</strong>。"],
+o:["先想好完美指令，一次就讓 AI 寫出成品","給角色情境 → 出第一版 → 追問修到滿意 → 自己微調收尾","讓 AI 一直寫，寫到你自己滿意為止"],a:1,
+e:["A 會卡在「完美指令」，結果永遠停在第一步。","C 會陷入無限修改，因為你沒設定什麼叫夠好。","B 就是這週學的四步：先設角色情境讓它出草稿，不夠精準就追問修正，最後自己順一下語氣。<strong>技巧是分開學的，串成流程才會變成作品</strong>。"],
 p:"設角色情境 → 出第一版 → 追問修正 → 自己微調\n（存成你的 AI 寫作 SOP）"},
 {d:15,w:"W3 圖像多媒體",t:"不會畫圖也能出圖",
 q:"你用 AI 生了一張圖，覺得哪裡怪怪的但不滿意。接下來怎麼做最有效率？",
-o:["重新下一個更長、更詳細的描述，一次寫好","多生十張，總有一張可以用","針對不滿意的地方，追加描述"],a:2,
-e:["A 一次寫超長的描述，但你其實還不知道問題出在哪，改了半天可能改錯地方。","B 是碰運氣——生一百張，你還是不知道怎麼控制。","C 最快：先隨便下一個描述，看出來的圖哪裡不滿意，<strong>就針對那個地方追加描述</strong>。這也是這整套的核心：第一版是草稿，改比重來快。"],
+o:["針對不滿意的地方，追加描述","重新下一個更長、更詳細的描述，一次寫好","多生十張，總有一張可以用"],a:0,
+e:["B 一次寫超長的描述，但你其實還不知道問題出在哪，改了半天可能改錯地方。","C 是碰運氣——生一百張，你還是不知道怎麼控制。","A 最快：先隨便下一個描述，看出來的圖哪裡不滿意，<strong>就針對那個地方追加描述</strong>。這也是這整套的核心：第一版是草稿，改比重來快。"],
 p:"其他地方都不動，只把＿＿改成＿＿。"},
 {d:16,w:"W3 圖像多媒體",t:"為什麼別人的圖比較美",
 q:"你想生一張貓的圖。哪一個描述出來的圖最美？",
-o:["一隻貓","一隻可愛的貓，畫漂亮一點","一隻橘貓，坐在窗台，午後陽光，電影感，淺景深"],a:2,
-e:["A 只給主體，出來就是一張很普通的貓。","B 加了「可愛」「漂亮」，但形容詞不是畫面——AI 不知道你要的漂亮是哪一種。","C 三個都給了：<strong>主體</strong>（橘貓）、<strong>場景</strong>（窗台、午後陽光）、<strong>風格</strong>（電影感、淺景深）。你只給三分之一資訊，它就得自己補完剩下的，補得很平庸。"],
+o:["一隻橘貓，坐在窗台，午後陽光，電影感，淺景深","一隻貓","一隻可愛的貓，畫漂亮一點"],a:0,
+e:["B 只給主體，出來就是一張很普通的貓。","C 加了「可愛」「漂亮」，但形容詞不是畫面——AI 不知道你要的漂亮是哪一種。","A 三個都給了：<strong>主體</strong>（橘貓）、<strong>場景</strong>（窗台、午後陽光）、<strong>風格</strong>（電影感、淺景深）。你只給三分之一資訊，它就得自己補完剩下的，補得很平庸。"],
 p:"像底片相機拍的／宮崎駿風格／電影感，淺景深"},
 {d:17,w:"W3 圖像多媒體",t:"簡報做不完",
 q:"明天要交簡報，你對著空白頁發呆。最該丟給 AI 的是哪一步？",
@@ -663,18 +666,18 @@ e:["A 跟 B 現在模板跟素材庫都很強，自己拉一拉很快，不是�
 p:"幫我做十頁簡報大綱，主題＿＿，對象＿＿。"},
 {d:18,w:"W3 圖像多媒體",t:"一張圖講清一個概念",
 q:"你想把一個知識點做成圖文卡，卡住了。圖文卡真正難的是哪一步？",
-o:["設計跟排版","找一張好看的圖","把一堆內容濃縮成幾句金句"],a:2,
-e:["A 跟 B 現在 Canva 模板很多，選個風格套上去就好，不是門檻。","真正卡住的是<strong>濃縮</strong>——把一整篇東西壓成三到五句，每句都要有分量。","這件事 AI 比你想像中會：你挑重點，它幫你精煉字句。"],
+o:["設計跟排版","把一堆內容濃縮成幾句金句","找一張好看的圖"],a:1,
+e:["A 跟 C 現在 Canva 模板很多，選個風格套上去就好，不是門檻。","真正卡住的是<strong>濃縮</strong>——把一整篇東西壓成三到五句，每句都要有分量。","這件事 AI 比你想像中會：你挑重點，它幫你精煉字句。"],
 p:"這句話能不能更短、更有記憶點？"},
 {d:19,w:"W3 圖像多媒體",t:"配音聽起來像機器",
 q:"你用 AI 配音，聽起來死死的、一聽就是機器。問題最可能出在哪？",
-o:["聲音選錯了","語速設定太快","腳本寫得太書面"],a:2,
-e:["A 跟 B 現在都很好調整，而且 AI 配音已經自然到很多人聽不出來，聲音本身通常不是問題。","真正的關鍵是：<strong>AI 念的是你的文字</strong>。你的文字卡，念出來就卡。","書面語寫出來的句子念起來一定死板——因為那根本不是人講話的方式。"],
+o:["聲音選錯了","腳本寫得太書面","語速設定太快"],a:1,
+e:["A 跟 C 現在都很好調整，而且 AI 配音已經自然到很多人聽不出來，聲音本身通常不是問題。","真正的關鍵是：<strong>AI 念的是你的文字</strong>。你的文字卡，念出來就卡。","書面語寫出來的句子念起來一定死板——因為那根本不是人講話的方式。"],
 p:"寫腳本時故意加語助詞跟停頓：\n對、你知道嗎、說真的"},
 {d:20,w:"W3 圖像多媒體",t:"拍片卡詞",
 q:"你按下錄影鍵就卡詞，拍十遍都不滿意。短影音真正難的是什麼？",
-o:["講話不夠流暢","設備不夠好","沒有結構，觀眾三秒就滑走"],a:2,
-e:["A 是結果不是原因——你卡詞，通常是因為不知道下一句要講什麼。","B 設備影響畫質，不影響觀眾留不留得住。","真正難的是<strong>結構</strong>：觀眾三秒沒被抓住就滑走了。AI 很擅長套公式，你把公式交給它，它幫你把內容填進去，你只管照唸。"],
+o:["沒有結構，觀眾三秒就滑走","講話不夠流暢","設備不夠好"],a:0,
+e:["B 是結果不是原因——你卡詞，通常是因為不知道下一句要講什麼。","C 設備影響畫質，不影響觀眾留不留得住。","真正難的是<strong>結構</strong>：觀眾三秒沒被抓住就滑走了。AI 很擅長套公式，你把公式交給它，它幫你把內容填進去，你只管照唸。"],
 p:"幫我寫 60 秒短影音腳本，主題＿＿，用 hook、痛點、解法、行動四段式。"},
 {d:21,w:"W3 圖像多媒體",t:"一個知識點，兩種內容",
 q:"你做好了一張知識圖文卡。接下來怎麼讓這個知識點的效益最大？",
@@ -683,13 +686,13 @@ e:["A 只是同一個東西換地方貼，受眾還是同一群。","B 你還是
 p:"讓 AI 把同一個知識點，先寫成圖文卡文字，再改寫成 30 秒口播腳本。"},
 {d:22,w:"W4 效率變現",t:"Excel 做不完",
 q:"你手上有一大份散亂資料，資料量很大。哪一個動作最能幫你省下核對的時間？",
-o:["整理完之後，自己從頭核對一次","多生幾個版本交叉比對","先問「這份資料裡有沒有異常值？」"],a:2,
-e:["A 最累，而且人眼核對大量資料，本來就容易漏。","B 是拿 AI 的答案比 AI 的答案，意義不大。","C 先讓 AI 幫你抓明顯錯誤或漏填的地方——<strong>這種「找例外」的事，人做很累，AI 做很快</strong>。先把地雷清掉，後面整理出來的表格才可信。"],
+o:["先問「這份資料裡有沒有異常值？」","整理完之後，自己從頭核對一次","多生幾個版本交叉比對"],a:0,
+e:["B 最累，而且人眼核對大量資料，本來就容易漏。","C 是拿 AI 的答案比 AI 的答案，意義不大。","A 先讓 AI 幫你抓明顯錯誤或漏填的地方——<strong>這種「找例外」的事，人做很累，AI 做很快</strong>。先把地雷清掉，後面整理出來的表格才可信。"],
 p:"幫我整理成表格，欄位是＿＿。\n整理完再追：「這份資料裡有沒有異常值？」"},
 {d:23,w:"W4 效率變現",t:"AI 當你的免費家教",
 q:"你讓 AI 當家教教 Python，學完一個段落。接下來哪一步最扎實？",
-o:["繼續往下學，不懂的地方再回頭看","請它把這個段落再講一次","讓 AI 出幾題考考你，答錯了讓它解釋你錯在哪"],a:2,
-e:["A 最容易，也最容易「假裝學會」——看得懂跟寫得出來是兩件事。","B 再聽一次還是被動輸入，效果有限。","C 是主動輸出：AI 出題考你，答錯了讓它解釋錯在哪。而且它<strong>不會嫌你煩</strong>，你可以一直重複問到懂，這是真人家教很難做到的。"],
+o:["繼續往下學，不懂的地方再回頭看","讓 AI 出幾題考考你，答錯了讓它解釋你錯在哪","請它把這個段落再講一次"],a:1,
+e:["A 最容易，也最容易「假裝學會」——看得懂跟寫得出來是兩件事。","C 再聽一次還是被動輸入，效果有限。","B 是主動輸出：AI 出題考你，答錯了讓它解釋錯在哪。而且它<strong>不會嫌你煩</strong>，你可以一直重複問到懂，這是真人家教很難做到的。"],
 p:"出幾題考我。\n答錯再說：「解釋我錯在哪。」"},
 {d:24,w:"W4 效率變現",t:"找資料找到眼花",
 q:"你為了做研究找了十篇文章，根本讀不完。怎麼做最好？",
@@ -703,18 +706,18 @@ e:["A 有技巧可以解，B 是甜蜜的煩惱。","真正吃掉時間的是 C�
 p:"我的品牌是＿＿，受眾是＿＿，他們在意＿＿，語氣要＿＿。"},
 {d:26,w:"W4 效率變現",t:"工具收藏一堆，沒一個用熟",
 q:"你 AI 工具收藏了一大堆，卻沒一個真的用熟。問題在哪？",
-o:["工具還不夠多，要繼續找","應該等工具穩定再開始用","每一類挑一個，用熟再說"],a:2,
-e:["A 是惡性循環——收藏越多越不知道用哪個，最後一個都用不深。","B 工具一直在換，你永遠等不到那天。","C 才是對的：工具不是越多越好，<strong>每一類挑一個用到滾瓜爛熟</strong>，效率比收藏一百個但每個都摸不透高太多。"],
+o:["工具還不夠多，要繼續找","每一類挑一個，用熟再說","應該等工具穩定再開始用"],a:1,
+e:["A 是惡性循環——收藏越多越不知道用哪個，最後一個都用不深。","C 工具一直在換，你永遠等不到那天。","B 才是對的：工具不是越多越好，<strong>每一類挑一個用到滾瓜爛熟</strong>，效率比收藏一百個但每個都摸不透高太多。"],
 p:"先從你最常做的那件事開始——常寫東西就先熟寫作工具，有成就感之後再擴展到下一類。"},
 {d:27,w:"W4 效率變現",t:"三個地雷",
 q:"下面哪一個做法「最危險」？",
-o:["照抄 AI 給的市場數據去做簡報","讓 AI 幫你起草 email，自己改過再寄","把公司還沒公開的財報貼給 AI 整理"],a:2,
-e:["A 有風險，但數字查證一下就解決。","B 是對的用法——AI 幫你起頭，判斷跟創意還是你自己來。","C 最嚴重：<strong>資料一旦貼進去，平台可能拿去訓練，你很難收回來</strong>。公司機密跟個資，一次都不要貼。"],
+o:["把公司還沒公開的財報貼給 AI 整理","照抄 AI 給的市場數據去做簡報","讓 AI 幫你起草 email，自己改過再寄"],a:0,
+e:["B 有風險，但數字查證一下就解決。","C 是對的用法——AI 幫你起頭，判斷跟創意還是你自己來。","A 最嚴重：<strong>資料一旦貼進去，平台可能拿去訓練，你很難收回來</strong>。公司機密跟個資，一次都不要貼。"],
 p:"只要是數字、日期、法規這類錯了會出事的資訊，一定回頭查一次來源。"},
 {d:28,w:"W4 效率變現",t:"技巧想不起來用",
 q:"你 AI 技巧學了一堆，卻是想到才用，從沒變成習慣。最有效的解法是？",
-o:["每天空出一段時間專門練習 AI","把技巧列表貼在桌前提醒自己","把 AI 綁進你原本每天就會做的事裡"],a:2,
-e:["A 最難維持——你等於多出一件新任務，撐不過一週。","B 提醒歸提醒，沒有觸發點你還是會忘。","C 厲害在<strong>不用另外空出時間</strong>：挑三件你每天都會重複做的事，把 AI 寫進流程裡。綁在既有的習慣上，才會真的變成習慣。"],
+o:["每天空出一段時間專門練習 AI","把 AI 綁進你原本每天就會做的事裡","把技巧列表貼在桌前提醒自己"],a:1,
+e:["A 最難維持——你等於多出一件新任務，撐不過一週。","C 提醒歸提醒，沒有觸發點你還是會忘。","B 厲害在<strong>不用另外空出時間</strong>：挑三件你每天都會重複做的事，把 AI 寫進流程裡。綁在既有的習慣上，才會真的變成習慣。"],
 p:"email：AI 起草 → 改語氣 → 寄出\n會議：錄音轉字 → AI 整理 → 存檔"},
 {d:29,w:"收尾・回顧",t:"30 天前 vs 現在",
 q:"30 天回頭看，這趟真正練出來的東西是什麼？",
@@ -723,8 +726,8 @@ e:["A 工具一直在換，明年可能就換掉了。","B 提示詞是別人的
 p:"翻回你這 30 天的對話紀錄，隨便挑一個你用 AI 解決掉的麻煩。你會發現比想像中多很多。"},
 {d:30,w:"收尾・回顧",t:"30 天只是起點",
 q:"30 天結束了。從「會用」走到「用得深」，中間差的是什麼？",
-o:["學更多技巧","換更強的工具","有人帶你走過真正的應用場景"],a:2,
-e:["A 技巧早就夠用了——你現在手上已經有 29 招，缺的不是數量。","B 工具會一直進步，但方向得自己找。","C 才是關鍵：自動化、客製助理、接 API 這些，<strong>光靠自學摸索會走很多冤枉路</strong>，要有人帶你走過真正的應用場景。"],
+o:["有人帶你走過真正的應用場景","學更多技巧","換更強的工具"],a:0,
+e:["B 技巧早就夠用了——你現在手上已經有 29 招，缺的不是數量。","C 工具會一直進步，但方向得自己找。","A 才是關鍵：自動化、客製助理、接 API 這些，<strong>光靠自學摸索會走很多冤枉路</strong>，要有人帶你走過真正的應用場景。"],
 p:"這關沒有新技巧——你已經有 29 個了。\n今天該做的是把它們從「學過」變成「在用」。\n\n🎓 完成 30 關，領取你的「AI 初學者證書」。"}
 ];
 
@@ -735,14 +738,17 @@ try{const r=localStorage.getItem(KEY);if(r)S=Object.assign(S,JSON.parse(r));}cat
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
 const $=id=>document.getElementById(id);
 const show=id=>{document.querySelectorAll(".screen").forEach(s=>s.classList.remove("on"));$(id).classList.add("on");window.scrollTo(0,0)};
+const ymd=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+const todayStr=()=>ymd(new Date());
 const toast=m=>{const t=$("toast");t.textContent=m;t.classList.add("on");setTimeout(()=>t.classList.remove("on"),1900)};
 
 function refreshHome(){
   const n=S.done.length;
   $("m-done").textContent=n;
-  $("m-tips").textContent=n;
+  $("m-tips").textContent=Math.min(n,29);
   $("m-left").textContent=30-n;
-  $("streak-txt").textContent = S.streak>0 ? "連續 "+S.streak+" 天" : "還沒開始";
+  const alive=S.lastDate===todayStr()||S.lastDate===yesterday();
+  $("streak-txt").textContent = n===0 ? "還沒開始" : (alive&&S.streak>0 ? "連續 "+S.streak+" 天" : "今天玩一關，重新開始連續");
   const next=nextLevel();
   $("btn-start").textContent = n===0 ? "開始 Day 1" : (next ? "繼續 Day "+next.d : "30 關全部完成");
   refreshTiers();
@@ -821,7 +827,7 @@ function finish(i,right){
   const timeout = i===-1;
   if(!S.done.includes(cur.d)){
     S.done.push(cur.d);
-    const today=new Date().toISOString().slice(0,10);
+    const today=todayStr();
     if(S.lastDate!==today){S.streak=(S.lastDate===yesterday())?S.streak+1:1;S.lastDate=today}
     save();
   }
@@ -833,28 +839,32 @@ function finish(i,right){
   if(timeout){v.className="verdict time";v.innerHTML=`<span class="icon">!</span>時間到，看一下解釋`; }
   else if(right){v.className="verdict ok";v.innerHTML=`<span class="icon">✓</span>答對了`;}
   else{v.className="verdict no";v.innerHTML=`<span class="icon">✕</span>答錯了，沒關係`;}
+  $("r-ans").textContent="正解："+"ABC"[cur.a]+"・"+cur.o[cur.a];
   $("r-explain").innerHTML=cur.e.map(x=>`<p>${x}</p>`).join("");
   $("r-tip").textContent=cur.p;
   $("btn-copy").textContent="複製";$("btn-copy").classList.remove("done");
   const nx=nextLevel();
   const btnN=$("btn-next");
-  if(cur.d===30&&S.done.length===30){
+  if(S.done.length===30){
     btnN.textContent="領取結業證書";
     $("r-hint").textContent="30 關全部完成。";
-  }else if(nx){btnN.textContent="下一關・Day "+nx.d;$("r-hint").textContent="明天再來可以接下一關。";}
+  }else if(nx){btnN.textContent="下一關・Day "+nx.d;$("r-hint").textContent="想繼續就直接接下一關，想慢慢來也可以明天再玩。";}
   else{btnN.textContent="回到地圖";$("r-hint").textContent="";}
   show("s-result");
 }
 
-function yesterday(){const d=new Date();d.setDate(d.getDate()-1);return d.toISOString().slice(0,10)}
+function yesterday(){const d=new Date();d.setDate(d.getDate()-1);return ymd(d)}
 
 $("btn-start").onclick=()=>{const n=nextLevel();if(n)startLevel(n.d);else showCert()};
 $("btn-map").onclick=()=>{buildMap();show("s-map")};
 $("btn-back-home").onclick=()=>{refreshHome();show("s-home")};
 $("btn-unlock").onclick=()=>{S.unlockAll=true;save();buildMap();toast("已解鎖全部 30 關")};
 $("btn-retry").onclick=()=>startLevel(cur.d);
+$("g-quit").onclick=()=>{clearInterval(timer);answered=true;refreshHome();show("s-home")};
+$("btn-r-home").onclick=()=>{refreshHome();show("s-home")};
+if(new URLSearchParams(location.search).has("debug"))$("unlock-all").style.display="";
 $("btn-next").onclick=()=>{
-  if(cur.d===30&&S.done.length===30){showCert();return}
+  if(S.done.length===30){showCert();return}
   const nx=nextLevel();if(nx)startLevel(nx.d);else{buildMap();show("s-map")}
 };
 $("btn-copy").onclick=()=>{
@@ -865,7 +875,8 @@ $("btn-copy").onclick=()=>{
   function fallback(){
     const ta=document.createElement("textarea");ta.value=t;ta.style.position="fixed";ta.style.opacity="0";
     document.body.appendChild(ta);ta.select();
-    try{document.execCommand("copy");done()}catch(e){toast("複製失敗，請手動選取")}
+    let ok=false;try{ok=document.execCommand("copy")}catch(e){}
+    ok?done():toast("複製失敗，請手動選取");
     document.body.removeChild(ta);
   }
 };
@@ -928,6 +939,7 @@ function fmtDate(){const d=new Date();return `${d.getFullYear()} 年 ${d.getMont
 function showCert(){drawCert($("cert-name").value.trim());show("s-cert")}
 $("cert-name").oninput=()=>drawCert($("cert-name").value.trim());
 $("btn-dl").onclick=()=>{
+  if(!$("cert-name").value.trim()){toast("先輸入名字再下載");$("cert-name").focus();return}
   try{
     const url=$("cert-canvas").toDataURL("image/png");
     const a=document.createElement("a");a.href=url;a.download="AI初學者證書.png";
@@ -945,14 +957,15 @@ $("btn-cert-back").onclick=()=>{buildMap();show("s-map")};
 const UNLOCK_API="https://copybench-seven.vercel.app/api/unlock";
 const pick1=a=>a[Math.floor(Math.random()*a.length)];
 
-function copyText(t){
-  const ok=()=>toast("已複製");
+function copyText(t,onOk){
+  const ok=()=>{toast("已複製");if(onOk)onOk()};
   if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(ok,fb);}else fb();
   function fb(){
     const ta=document.createElement("textarea");ta.value=t;ta.style.position="fixed";ta.style.opacity="0";
     document.body.appendChild(ta);ta.select();
-    try{document.execCommand("copy");ok()}catch(e){toast("複製失敗，請手動選取")}
+    let done=false;try{done=document.execCommand("copy")}catch(e){}
     document.body.removeChild(ta);
+    done?ok():toast("複製失敗，請手動選取");
   }
 }
 function feedback(id,ok,text,copy){
@@ -960,7 +973,7 @@ function feedback(id,ok,text,copy){
   const d=document.createElement("div");d.className="fb"+(ok?"":" warn");d.textContent=text;
   if(copy){
     const b=document.createElement("button");b.className="copy-btn";b.textContent="複製";
-    b.onclick=()=>{copyText(copy);b.textContent="已複製";b.classList.add("done")};
+    b.onclick=()=>copyText(copy,()=>{b.textContent="已複製";b.classList.add("done")});
     d.appendChild(document.createElement("br"));d.appendChild(b);
   }
   box.appendChild(d);
@@ -982,33 +995,33 @@ const DOM_TIP=[
  "回答不好就追問、對話太長就請它整理摘要再開新對話"
 ];
 const TEST=[
-{d:4,q:"一般情況下，你開了一個新對話，AI 還記得你在別的對話講過的事嗎？",o:["記得，AI 會記住你所有的對話","不記得，新對話要重新交代一次","只記得最重要的部分"],a:1,
+{d:4,q:"一般情況下，你開了一個新對話，AI 還記得你在別的對話講過的事嗎？",o:["不記得，新對話要重新交代一次","記得，AI 會記住你所有的對話","只記得最重要的部分"],a:0,
  e:"一般來說每個對話是分開的（有些工具有「記憶」功能，但別指望它記得細節）。換新對話，重要背景要重講一次——或者存成專案／常駐設定。"},
-{d:1,q:"AI 很有自信地給你一個法規條號跟罰款金額，你應該？",o:["直接照用，講得這麼肯定一定對","回頭查證原始來源","換另一個 AI 問，兩個答案一樣就對"],a:1,
+{d:1,q:"AI 很有自信地給你一個法規條號跟罰款金額，你應該？",o:["直接照用，講得這麼肯定一定對","換另一個 AI 問，兩個答案一樣就對","回頭查證原始來源"],a:2,
  e:"這叫「幻覺」：AI 會很有自信地講錯。兩個 AI 講一樣也不代表對——數字、法規、日期這種錯了會出事的，一定查原始來源。"},
 {d:6,q:"AI 第一次的回答不夠好，最有效率的做法是？",o:["關掉，重開一個新對話再問","針對不滿意的地方繼續追問","換一個 AI 工具試試"],a:1,
  e:"追問最快：AI 還記得前面的內容，你只要講清楚哪裡要改。重開對話等於把前面給的資訊全丟掉。"},
-{d:5,q:"下面哪一個「不該」貼給 AI？",o:["一篇公開的新聞報導","客人的姓名、電話和病歷資料","你自己寫的草稿"],a:1,
+{d:5,q:"下面哪一個「不該」貼給 AI？",o:["一篇公開的新聞報導","你自己寫的草稿","客人的姓名、電話和病歷資料"],a:2,
  e:"個資跟機密一旦貼上去就很難收回，有些平台可能拿去訓練。客人的個人資料一律不要貼。"},
-{d:0,q:"下面哪一個指令，AI 最可能一次就給你能用的結果？",o:["幫我排下週的班表","幫我排下週的班表，公平一點","你是店長，幫我排下週三個人的班表，每人每週休兩天、週末至少兩人在班，用表格呈現"],a:2,
- e:"C 四件事都講了：角色（店長）、情境（三個人、下週）、目標（班表）、限制（休兩天、週末兩人、表格）。「公平一點」太模糊，AI 只能猜。"},
+{d:0,q:"下面哪一個指令，AI 最可能一次就給你能用的結果？",o:["你是店長，幫我排下週三個人的班表，每人每週休兩天、週末至少兩人在班，用表格呈現","幫我排下週的班表","幫我排下週的班表，公平一點"],a:0,
+ e:"A 四件事都講了：角色（店長）、情境（三個人、下週）、目標（班表）、限制（休兩天、週末兩人、表格）。「公平一點」太模糊，AI 只能猜。"},
 {d:0,q:"AI 的建議很籠統（例如「多方評估再做決定」），哪一句追問最有用？",o:["再詳細一點","給我兩個今天就能做的具體做法，每個一句話","你確定嗎？"],a:1,
  e:"「再詳細一點」AI 只會把同樣的空話講長。B 指定了數量、時間、長度，逼它給出能執行的東西。"},
 {d:2,q:"想知道今天最新的颱風停班消息，哪個做法最可靠？",o:["直接問一般的聊天 AI","用有「上網搜尋」功能的 AI，並請它附上來源","問它昨天的新聞，自己推算"],a:1,
  e:"AI 學到的資料有截止日，今天發生的事它不會知道，硬問只會亂猜。要即時消息就用會上網查的 AI，而且請它附來源，你才能點進去確認。"},
-{d:2,q:"一份 30 頁的 PDF 合約想請 AI 整理重點，第一步怎麼做？",o:["貼其中一小段就好","用能上傳檔案的 AI，直接上傳整份","憑記憶跟 AI 描述合約內容"],a:1,
+{d:2,q:"一份 30 頁的 PDF 合約想請 AI 整理重點，第一步怎麼做？",o:["用能上傳檔案的 AI，直接上傳整份","貼其中一小段就好","憑記憶跟 AI 描述合約內容"],a:0,
  e:"很多 AI 可以直接讀檔案。給它完整原文，它才不會漏掉你沒貼到的條款；憑記憶描述，等於讓它根據你的誤解做整理。"},
-{d:1,q:"AI 幫你寫好一則活動公告，發出去前最該檢查什麼？",o:["字數夠不夠長","日期、價格、地址這些事實有沒有錯","形容詞用得夠不夠多"],a:1,
+{d:1,q:"AI 幫你寫好一則活動公告，發出去前最該檢查什麼？",o:["字數夠不夠長","形容詞用得夠不夠多","日期、價格、地址這些事實有沒有錯"],a:2,
  e:"文字順不順可以慢慢改，事實寫錯就是出包：日期錯了人家白跑、價格錯了你得認。AI 常常自己「補」一個看起來合理的數字，發出去前逐項對過。"},
-{d:4,q:"想讓 AI 回答客人問題時照你們店的價目表跟規定講，最好的做法？",o:["相信 AI 自己知道","把價目表跟規定交給它當參考資料，並要它只根據這些資料回答","叫它講保守一點"],a:1,
+{d:4,q:"想讓 AI 回答客人問題時照你們店的價目表跟規定講，最好的做法？",o:["把價目表跟規定交給它當參考資料，並要它只根據這些資料回答","相信 AI 自己知道","叫它講保守一點"],a:0,
  e:"AI 不知道你店裡的規定，不給資料它只能編。把資料交給它當參考（很多工具可以存成「專案」一直帶著），再規定「資料裡沒有的就說不知道」。"},
-{d:5,q:"客人問某種保養品能不能治療痘痘，你請 AI 回答，最恰當的做法？",o:["直接把 AI 的回答轉給客人","當參考就好，醫療問題請客人問醫師，不自己下結論","叫 AI 講肯定一點比較專業"],a:1,
+{d:5,q:"客人問某種保養品能不能治療痘痘，你請 AI 回答，最恰當的做法？",o:["直接把 AI 的回答轉給客人","叫 AI 講肯定一點比較專業","當參考就好，醫療問題請客人問醫師，不自己下結論"],a:2,
  e:"醫療、法律、財務這種講錯會傷人的問題，AI 可以幫你整理資訊，但不能替你下結論，更不能用它的話對客人背書。"},
 {d:6,q:"跟 AI 聊了很久，它開始忘記你一開始講的條件，怎麼辦？",o:["在同一個對話一直提醒它","請它把目前的重點整理成摘要，開新對話貼上摘要再繼續","換一個 AI 從頭來"],a:1,
  e:"對話太長會超過 AI 一次記得住的量，最前面的條件會被擠掉。請它先整理摘要，帶著摘要開新對話，等於幫它把記憶重新整理乾淨。"},
-{d:3,q:"同一件事你每週都要請 AI 做一次（例如整理週報），最省力的做法是？",o:["每次重新想、重新打一遍指令","把效果好的指令存成模板，每次只換內容","每週換不同的 AI 試試看"],a:1,
+{d:3,q:"同一件事你每週都要請 AI 做一次（例如整理週報），最省力的做法是？",o:["把效果好的指令存成模板，每次只換內容","每次重新想、重新打一遍指令","每週換不同的 AI 試試看"],a:0,
  e:"效果好的指令是資產。存成模板、把會變的地方挖空，下次只填內容，品質也穩定。"},
-{d:3,q:"要辦一件複雜的事（例如一場小活動），怎麼交給 AI 最好？",o:["一句話全丟給它：「幫我辦一場活動」","先拆成幾步（目的→流程→報名訊息→檢查清單），一步一步請它做","等 AI 更聰明一點再說"],a:1,
+{d:3,q:"要辦一件複雜的事（例如一場小活動），怎麼交給 AI 最好？",o:["一句話全丟給它：「幫我辦一場活動」","等 AI 更聰明一點再說","先拆成幾步（目的→流程→報名訊息→檢查清單），一步一步請它做"],a:2,
  e:"一句話丟大事，只會拿到一份很空的計畫。拆成小步、每一步交代清楚，每一步你也都能檢查。"}
 ];
 const LV=[null,
@@ -1016,8 +1029,10 @@ const LV=[null,
  {name:"中階",go:"從中階開始",desc:"基本概念你懂了，缺的是手感：下指令時把角色、情境、目標、限制講齊，拿到籠統的回答知道怎麼追問。<strong>這一階要你自己動手寫</strong>。"},
  {name:"高階",go:"從高階開始",desc:"你已經會用 AI 了。接下來差的不是更多技巧，是<strong>把單點連成系統</strong>——重複的事變流程、好用的指令變模板、大事拆成小步。"}
 ];
-let tIdx=0,tAns=[];
-function startTest(){tIdx=0;tAns=[];renderTestQ();show("s-test")}
+let tIdx=0,tAns=[],tTimer=null;
+const TEST_V=2;
+function stopTestTimer(){clearTimeout(tTimer);tTimer=null}
+function startTest(){stopTestTimer();tIdx=0;tAns=[];renderTestQ();show("s-test")}
 function renderTestQ(){
   const it=TEST[tIdx];
   $("t-count").textContent="第 "+(tIdx+1)+" / "+TEST.length+" 題";
@@ -1038,9 +1053,9 @@ function testPick(i){
     b.disabled=true;
     if(j===it.a)b.classList.add("pick-right");else if(j===i)b.classList.add("pick-wrong");else b.classList.add("dim");
   });
-  setTimeout(()=>{tIdx++;if(tIdx<TEST.length)renderTestQ();else finishTest()},620);
+  tTimer=setTimeout(()=>{tTimer=null;tIdx++;if(tIdx<TEST.length)renderTestQ();else finishTest()},620);
 }
-const testValid=()=>!!(S.test&&S.test.ans&&S.test.ans.length===TEST.length);
+const testValid=()=>!!(S.test&&S.test.v===TEST_V&&S.test.ans&&S.test.ans.length===TEST.length);
 function domScores(ans){
   const s=DOMS.map(()=>0);
   TEST.forEach((it,i)=>{if(ans[i]===it.a)s[it.d]++});
@@ -1052,7 +1067,7 @@ function finishTest(){
   const score=ok.filter(Boolean).length;
   // 基礎觀念錯 2 題以上先回初階；其餘看總分：12 題以上高階
   const level = basic<3 ? 1 : (score>=12 ? 3 : 2);
-  S.level=level;S.test={score,ans:tAns.slice()};save();
+  S.level=level;S.test={v:TEST_V,score,ans:tAns.slice()};save();
   showLevel();
 }
 function renderBars(){
@@ -1074,7 +1089,7 @@ function renderBars(){
     : "練功房：我 7 項都拿滿了，想問怎麼把 AI 用得更深";
   $("lv-dm-copy").textContent="複製這句";
 }
-$("lv-dm-copy").onclick=()=>{copyText($("lv-dm").textContent);$("lv-dm-copy").textContent="已複製，去 LINE 貼上"};
+$("lv-dm-copy").onclick=()=>copyText($("lv-dm").textContent,()=>{$("lv-dm-copy").textContent="已複製，去 LINE 貼上"});
 function showLevel(){
   const L=LV[S.level];
   $("lv-name").textContent=L.name;
@@ -1103,20 +1118,27 @@ function renderReview(){
 /* ---------- 解鎖（交給文案工作台後端驗碼） ---------- */
 // 2026-09-29：M5 暫緩（9/27 改走成長型博主路線），高階跟中階一樣加 LINE 就解鎖
 const tierOK=n=> n===1 || S.tier==="line" || S.tier==="student";
+let unlocking=false;
 async function unlock(where){
+  if(unlocking)return;
   const code=$(where+"-code").value.trim(), msg=$(where+"-msg");
   if(!code){msg.textContent="先輸入解鎖碼";return}
+  const btns=document.querySelectorAll("[data-unlock]");
+  unlocking=true;btns.forEach(b=>b.disabled=true);
   msg.textContent="驗證中⋯";
   let tier=null;
+  const ac=new AbortController(),to=setTimeout(()=>ac.abort(),10000);
   try{
-    const r=await fetch(UNLOCK_API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({code})});
+    const r=await fetch(UNLOCK_API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({code}),signal:ac.signal});
     if(r.status===200){tier=(await r.json()).tier}
     else if(r.status===401){msg.textContent="這組碼不對，再檢查一下";return}
     else if(r.status===429){msg.textContent="試太多次了，一小時後再試";return}
     else{msg.textContent="驗證服務暫時有問題，晚點再試";return}
   }catch(e){msg.textContent="現在連不上驗證服務，晚點再試";return}
+  finally{clearTimeout(to);unlocking=false;btns.forEach(b=>b.disabled=false)}
   if(tier==="student"){S.tier="student"}
-  else if(tier==="line"&&S.tier!=="student"){S.tier="line"}
+  else if(tier==="line"){if(S.tier!=="student")S.tier="line"}
+  else{msg.textContent="驗證服務暫時有問題，晚點再試";return}
   save();$(where+"-code").value="";
   msg.textContent="";toast("中階、高階都解鎖了 🎁");
   openTier(where==="t2"?2:3);
@@ -1131,11 +1153,12 @@ function refreshTiers(){
   tag(1,true,"開放","");
   tag(2,tierOK(2),"已解鎖","加 LINE 解鎖");
   tag(3,tierOK(3),"已解鎖","加 LINE 解鎖");
-  document.querySelectorAll(".tier-card").forEach(c=>c.classList.toggle("mine",+c.dataset.tier===S.level));
+  document.querySelectorAll(".tier-card").forEach(c=>c.classList.toggle("mine",testValid()&&+c.dataset.tier===S.level));
 }
 function openTier(n){
   if(n===1){renderT1();show("s-t1");return}
   const id="t"+n, open=tierOK(n);
+  $(id+"-msg").textContent="";
   $(id+"-lock").style.display=open?"none":"block";
   $(id+"-body").style.display=open?"block":"none";
   if(n===2)renderGymStat();
@@ -1243,7 +1266,8 @@ $("a-go").onclick=()=>{
   const f={角色:val("a-role"),情境:val("a-ctx"),目標:val("a-goal"),限制:val("a-lim")};
   const miss=Object.keys(f).filter(k=>!f[k]);
   if(miss.length){feedback("a-fb",false,"還缺「"+miss.join("、")+"」沒填。少一格，AI 猜的成分就變多——補完再交一次，看看差別。");return}
-  const prompt="你是"+f.角色+"。現在的情況是："+f.情境+"。請幫我"+f.目標+"。請注意："+f.限制+"。";
+  const goal=f.目標.replace(/^(請)?幫我/,"");
+  const prompt="你是"+f.角色+"。現在的情況是："+f.情境+"。請幫我"+goal+"。請注意："+f.限制+"。";
   feedback("a-fb",true,
     pick1(["👍 四個要素都到位，這已經是一個合格的指令：","🎯 四格都填滿了，指令組出來了：","✅ 到位！這句拿去問 AI，猜的成分已經很低："])+"\n\n"+prompt+"\n\n教練點評：\n・"+
     pick1(["情境寫得越具體（有數字、有時間、有卡在哪），AI 給的東西越不像罐頭","角色講清楚「什麼樣的人」，比只寫職稱更能讓 AI 抓到你要的口氣","目標寫成「一件可以直接交出來的東西」，AI 才不會給你一堆選項讓你自己挑"])+
@@ -1280,7 +1304,7 @@ $("w-go").onclick=()=>{
   const miss=[];if(!task)miss.push("這件事是什麼");if(!when)miss.push("觸發時機");if(steps.length<3)miss.push("至少三個步驟");if(!chk)miss.push("自己把關的那一步");
   if(miss.length){feedback("w-fb",false,"還缺：「"+miss.join("、")+"」。步驟卡的價值在於下次照著做不用動腦，缺一塊就得重想。");return}
   const card="【步驟卡】"+task+"\n觸發時機："+when+"\n"+steps.map((s,i)=>(i+1)+". "+s).join("\n")+"\n⚠ 自己把關："+chk;
-  const hasAI=steps.some(s=>/ai/i.test(s));
+  const hasAI=steps.some(s=>/(^|[^a-z])ai([^a-z]|$)|人工智慧|chatgpt|claude|gemini/i.test(s));
   feedback("w-fb",true,"步驟卡組好了，存起來下次照做：\n\n"+card+"\n\n教練點評：\n・"+
     (hasAI?"你有寫明哪一步交給 AI，這張卡下次拿出來就能直接執行":"目前沒有一步寫明「交給 AI」。把最花時間、最機械的那一步標出來交給 AI，這張卡才真的幫你省時間")+
     "\n・「自己把關」那一步不要省——AI 不知道你知道的現場狀況，最後一道判斷要留給自己\n・同一件事照卡做過三次，再回頭改卡：哪一步其實可以合併、哪一步可以整個交給 AI",card);
@@ -1289,7 +1313,9 @@ $("p-go").onclick=()=>{
   const orig=val("p-orig"),vars=val("p-vars").split(/[,，、]/).map(s=>s.trim()).filter(Boolean);
   if(!orig||!vars.length){feedback("p-fb",false,"原本的指令跟「會變的地方」都要填。會變的地方用逗號分開，例如：客人名字,抱怨的事");return}
   let tpl=orig;const notFound=[];
-  vars.forEach((v,i)=>{if(tpl.includes(v))tpl=tpl.split(v).join("【＿＿"+(i+1)+"】");else notFound.push(v)});
+  vars.forEach(v=>{if(!orig.includes(v))notFound.push(v)});
+  vars.map((v,i)=>[v,i]).filter(([v])=>!notFound.includes(v)).sort((a,b)=>b[0].length-a[0].length)
+    .forEach(([v,i])=>{tpl=tpl.split(v).join("【＿＿"+(i+1)+"】")});
   if(notFound.length===vars.length){feedback("p-fb",false,"你列的「會變的地方」在原本的指令裡都找不到，要一字不差照原句抄。找不到的："+notFound.join("、"));return}
   const legend=vars.filter(v=>!notFound.includes(v)).map(v=>"【＿＿"+(vars.indexOf(v)+1)+"】＝ 原本是「"+v+"」").join("\n");
   feedback("p-fb",true,"模板做好了：\n\n"+tpl+"\n\n"+legend+(notFound.length?"\n\n（這幾個在原句裡找不到，沒有挖空："+notFound.join("、")+"）":"")+
@@ -1309,8 +1335,8 @@ $("d-go").onclick=()=>{
 /* ---------- 綁定 ---------- */
 $("btn-test").onclick=startTest;
 $("btn-cert-next").onclick=startTest;
-$("t-quit").onclick=()=>{refreshHome();show("s-home")};
-$("lv-go").onclick=()=>openTier(S.level||1);
+$("t-quit").onclick=()=>{stopTestTimer();refreshHome();show("s-home")};
+$("lv-go").onclick=()=>openTier(testValid()?S.level:1);
 $("lv-retest").onclick=startTest;
 $("lv-review-btn").onclick=()=>{const b=$("lv-review");if(b.style.display==="none"){renderReview();b.style.display="block";$("lv-review-btn").textContent="收起解析"}else{b.style.display="none";$("lv-review-btn").textContent="看 "+TEST.length+" 題解析"}};
 $("t1-next").onclick=()=>openTier(2);
